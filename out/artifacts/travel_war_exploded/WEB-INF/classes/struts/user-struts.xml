@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <package name="user" namespace="/" extends="struts-default">
+        <action name="add" class="com.fz.travel.controller.ControllerDemo" method="add">
+            <result name="demo" type="redirect">
+                <param name="location">demo.jsp</param>
+            </result>
+        </action>
+
+        <action name="delete" class="com.fz.travel.controller.ControllerDemo" method="delete">
+            <result name="demo" type="redirect">
+                <param name="location">demo.jsp</param>
+            </result>
+        </action>
+
+        <action name="update" class="com.fz.travel.controller.ControllerDemo" method="update">
+            <result name="demo" type="redirect">
+                <param name="location">demo.jsp</param>
+            </result>
+        </action>
+
+        <action name="list" class="com.fz.travel.controller.ControllerDemo" method="list">
+            <result name="demo" type="redirect">
+                <param name="location">demo.jsp</param>
+            </result>
+        </action>
+
+    </package>
+
+</struts>

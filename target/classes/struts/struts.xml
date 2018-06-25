@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.devMode" value="true" />
+    <!-- 每次HTTP请求均重新加载资源文件 -->
+    <constant name="struts.i18n.reload" value="true" />
+    <!-- Action由Spring托管 -->
+    <constant name="struts.objectFactory" value="spring" />
+
+    <include file="struts/user-struts.xml" />
+
+
+
+</struts>

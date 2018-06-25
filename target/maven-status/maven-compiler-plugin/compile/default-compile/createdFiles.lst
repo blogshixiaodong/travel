@@ -1,0 +1,4 @@
+com\fz\travel\service\impl\DemoServiceImpl.class
+com\fz\travel\bean\User.class
+com\fz\travel\controller\ControllerDemo.class
+com\fz\travel\service\IDemoService.class

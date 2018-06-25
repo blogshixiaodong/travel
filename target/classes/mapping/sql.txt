@@ -1,0 +1,5 @@
+INSERT INTO User VALUES(1, '11', '111', '男', '21', '183', '福建省', 'C:');
+INSERT INTO User VALUES(2, '22', '222', '女', '22', '171', '福建省', 'D:');
+INSERT INTO User VALUES(3, '33', '333', '男', '23', '159', '福建省', 'F:');
+INSERT INTO User VALUES(4, '44', '444', '女', '24', '156', '福建省', 'E:');
+INSERT INTO User VALUES(5, '55', '555', '男', '25', '128', '福建省', 'F:');
