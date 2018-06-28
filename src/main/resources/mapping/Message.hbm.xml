@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.fz.travel.bean.Message" table="message" catalog="travel">
+        <id name="messageId" type="java.lang.Integer">
+            <column name="MESSAGEID" />
+            <generator class="increment" />
+        </id>
+        <property name="messageInfo" type="java.lang.String">
+            <column name="MESSAGEINFO" />
+        </property>
+        <property name="replayInfo" type="java.lang.String">
+            <column name="REPLAYINFO" />
+        </property>
+        <property name="messageTime" type="java.lang.String">
+            <column name="MESSAGETIME" />
+        </property>
+        <property name="replayTime" type="java.lang.String">
+            <column name="REPLAYTIME" />
+        </property>
+        <many-to-one name="visitor" class="com.fz.travel.bean.Visitor" lazy="false">
+            <column name="VISITORID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

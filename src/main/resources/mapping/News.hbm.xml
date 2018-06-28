@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.fz.travel.bean.News" table="news" catalog="travel">
+        <id name="newsId" type="java.lang.Integer">
+            <column name="NEWSID" />
+            <generator class="increment" />
+        </id>
+        <property name="newsType" type="java.lang.String">
+            <column name="NEWSTYPE" />
+        </property>
+        <property name="newsDate" type="java.lang.String">
+            <column name="NEWSDATE" />
+        </property>
+        <property name="newsHeadLine" type="java.lang.String">
+            <column name="NEWSHEADLINE" />
+        </property>
+        <property name="newsContent" type="java.lang.String">
+            <column name="NEWSCONTENT" />
+        </property>
+    </class>
+</hibernate-mapping>

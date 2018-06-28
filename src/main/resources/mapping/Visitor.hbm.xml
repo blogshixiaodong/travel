@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.fz.travel.bean.Visitor" table="visitor" catalog="travel">
+        <id name="visitorId" type="java.lang.Integer">
+            <column name="VISITORID" />
+            <generator class="increment" />
+        </id>
+        <property name="visitorGender" type="java.lang.String">
+            <column name="VISITORGENDER" />
+        </property>
+        <property name="visitorPhone" type="java.lang.String">
+            <column name="VISITORPHONE" />
+        </property>
+        <property name="visitorDate" type="java.lang.String">
+            <column name="VISITORDATE" />
+        </property>
+        <set name="hotelSet" table="VISITORHOTEL" cascade="all" inverse="false" lazy="false">
+            <key>
+                <column name="VISITORID" />
+            </key>
+            <many-to-many class="com.fz.travel.bean.Hotel" column="HOTELID" />
+        </set>
+        <set name="messageSet" table="MESSAGE" inverse="false" lazy="false">
+            <key>
+                <column name="VISITORID" />
+            </key>
+            <one-to-many class="com.fz.travel.bean.Message" />
+        </set>
+        <set name="touristNoteSet" table="TOURISTNOTE" inverse="false" lazy="false">
+            <key>
+                <column name="VISITORID" />
+            </key>
+            <one-to-many class="com.fz.travel.bean.TouristNote" />
+        </set>
+        <set name="touristLineSet" table="TOURISTLINE" cascade="all" inverse="false" lazy="false">
+            <key>
+                <column name="VISITORID" />
+            </key>
+            <many-to-many class="com.fz.travel.bean.TouristLine" column="TOURISTLINEID" />
+        </set>
+
+        <one-to-one name="visitorAccount" class="com.fz.travel.bean.VisitorAccount" property-ref="visitor">
+        </one-to-one>
+        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.fz.travel.bean.Hotel" table="hotel" catalog="travel">
+        <id name="hotelId" type="java.lang.Integer">
+            <column name="HOTELID" />
+            <generator class="increment" />
+        </id>
+        <property name="hotelName" type="java.lang.String">
+            <column name="HOTELNAME" />
+        </property>
+        <property name="hotelPhone" type="java.lang.String">
+            <column name="HOTELPHONE" />
+        </property>
+        <property name="hotelIntroduce" type="java.lang.String">
+            <column name="HOTELINTRODUCE" />
+        </property>
+        <property name="hotelPrice" type="java.lang.Double">
+            <column name="HOTELPRICE" />
+        </property>
+        <property name="hotelAddress" type="java.lang.String">
+            <column name="HOTELADDRESS" />
+        </property>
+        <set name="visitorSet" table="VISITORHOTEL" cascade="all" inverse="false" lazy="false">
+            <key>
+                <column name="HOTELID" />
+            </key>
+            <many-to-many class="com.fz.travel.bean.Visitor" column="VISITORID" />
+        </set>
+
+    </class>
+</hibernate-mapping>
