@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.fz.travel.bean.Scenery" table="scenery" catalog="travel">
+        <id name="sceneryId" type="java.lang.Integer">
+            <column name="SCENERYID" />
+            <generator class="increment" />
+        </id>
+        <property name="sceneryPhoto" type="java.lang.String">
+            <column name="SCENERYPHOTO" />
+        </property>
+        <property name="sceneryPrice" type="java.lang.String">
+            <column name="SCENERYPRICE" />
+        </property>
+        <property name="sceneryIntroduce" type="java.lang.String">
+            <column name="SCENERYINTRODUCE" />
+        </property>
+        <property name="sceneryName" type="java.lang.String">
+            <column name="SCENERYNAME" />
+        </property>
+        <property name="sceneryOpenTime" type="java.lang.String">
+            <column name="SCENERYOPENTIME" />
+        </property>
+        <set name="touristLineSet" table="SCENERYLINE" cascade="all" inverse="false" lazy="false">
+            <key>
+                <column name="SCENERYID" />
+            </key>
+            <many-to-many class="com.fz.travel.bean.TouristLine" column="TOURISTLINEID" />
+        </set>
+
+    </class>
+</hibernate-mapping>
