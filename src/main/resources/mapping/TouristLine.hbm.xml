@@ -12,11 +12,11 @@
         <property name="touristLinePrice" type="java.lang.Double">
             <column name="TOURISTLINEPRICE" />
         </property>
-        <set name="scenerySet" table="LINESCENERY" cascade="all" inverse="false" lazy="false">
+        <set name="lineScenerySet" cascade="all" inverse="false" lazy="false">
             <key>
                 <column name="TOURISTLINEID" />
             </key>
-            <many-to-many class="com.fz.travel.bean.Scenery" column="SCENERYID" />
+            <one-to-many class="com.fz.travel.bean.LineScenery" />
         </set>
     </class>
 </hibernate-mapping>

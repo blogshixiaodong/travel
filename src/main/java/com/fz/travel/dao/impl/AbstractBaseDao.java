@@ -72,7 +72,7 @@ public abstract class AbstractBaseDao<T> implements BaseDao<T> {
 
     @Override
     public void saveOrUpdate(Object entity) {
-        session.saveOrUpdate(entity);
+        getSession().saveOrUpdate(entity);
     }
 
     @Override
