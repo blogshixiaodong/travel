@@ -1,5 +1,6 @@
 package com.fz.travel.bean;
 
+
 import java.io.Serializable;
 import java.util.Set;
 

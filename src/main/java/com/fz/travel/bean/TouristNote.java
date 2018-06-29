@@ -2,7 +2,7 @@ package com.fz.travel.bean;
 
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @author: jiangjaimin
@@ -11,46 +11,46 @@ import java.sql.Date;
 
 public class TouristNote implements Serializable {
 
-    private Integer touristNoteId;
+    private Integer TouristNoteId;
 
-    private String touristNoteInfo;
+    private String TouristNoteInfo;
 
-    private String touristNoteHeadLine;
+    private String TouristNoteHeadLine;
 
-    private Date touristNoteTime;
+    private Date TouristNoteTime;
 
     private Visitor visitor;
 
     public Integer getTouristNoteId() {
-        return touristNoteId;
+        return TouristNoteId;
     }
 
     public void setTouristNoteId(Integer touristNoteId) {
-        this.touristNoteId = touristNoteId;
+        TouristNoteId = touristNoteId;
     }
 
     public String getTouristNoteInfo() {
-        return touristNoteInfo;
+        return TouristNoteInfo;
     }
 
     public void setTouristNoteInfo(String touristNoteInfo) {
-        this.touristNoteInfo = touristNoteInfo;
+        TouristNoteInfo = touristNoteInfo;
     }
 
     public String getTouristNoteHeadLine() {
-        return touristNoteHeadLine;
+        return TouristNoteHeadLine;
     }
 
     public void setTouristNoteHeadLine(String touristNoteHeadLine) {
-        this.touristNoteHeadLine = touristNoteHeadLine;
+        TouristNoteHeadLine = touristNoteHeadLine;
     }
 
     public Date getTouristNoteTime() {
-        return touristNoteTime;
+        return TouristNoteTime;
     }
 
     public void setTouristNoteTime(Date touristNoteTime) {
-        this.touristNoteTime = touristNoteTime;
+        TouristNoteTime = touristNoteTime;
     }
 
     public Visitor getVisitor() {
