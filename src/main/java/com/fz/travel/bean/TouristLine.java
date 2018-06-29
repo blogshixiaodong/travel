@@ -41,4 +41,12 @@ public class TouristLine implements Serializable {
         this.scenerySet = scenerySet;
     }
 
+    @Override
+    public String toString() {
+        return "TouristLine{" +
+                "touristLineId=" + touristLineId +
+                ", touristLinePrice=" + touristLinePrice +
+                ", scenerySet=" + scenerySet +
+                '}';
+    }
 }

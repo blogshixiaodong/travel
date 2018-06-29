@@ -7,7 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 import java.util.Date;
 
-public interface MessageDao {
+public interface MessageDao extends PageDao<Message> {
     public void reply(Message message,String reply);
 
     public void insert(Message message);

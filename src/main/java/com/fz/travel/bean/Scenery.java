@@ -2,7 +2,7 @@ package com.fz.travel.bean;
 
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -82,4 +82,16 @@ public class Scenery implements Serializable {
         this.touristLineSet = touristLineSet;
     }
 
+    @Override
+    public String toString() {
+        return "Scenery{" +
+                "sceneryId=" + sceneryId +
+                ", sceneryPhoto='" + sceneryPhoto + '\'' +
+                ", sceneryPrice=" + sceneryPrice +
+                ", sceneryIntroduce='" + sceneryIntroduce + '\'' +
+                ", sceneryName='" + sceneryName + '\'' +
+                ", sceneryOpenTime=" + sceneryOpenTime +
+                ", touristLineSet=" + touristLineSet +
+                '}';
+    }
 }

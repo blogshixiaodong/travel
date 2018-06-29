@@ -1,7 +1,8 @@
 package com.fz.travel.bean;
 
+
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -99,5 +100,20 @@ public class Visitor implements Serializable {
 
     public void setVisitorAccount(VisitorAccount visitorAccount) {
         this.visitorAccount = visitorAccount;
+    }
+
+    @Override
+    public String toString() {
+        return "Visitor{" +
+                "visitorId=" + visitorId +
+                ", visitorGender='" + visitorGender + '\'' +
+                ", visitorPhone='" + visitorPhone + '\'' +
+                ", visitorDate=" + visitorDate +
+                ", hotelSet=" + hotelSet +
+                ", touristNoteSet=" + touristNoteSet +
+                ", touristLineSet=" + touristLineSet +
+                ", messageSet=" + messageSet +
+                ", visitorAccount=" + visitorAccount +
+                '}';
     }
 }

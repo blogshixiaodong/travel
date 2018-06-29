@@ -1,5 +1,6 @@
 package com.fz.travel.bean;
 
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -78,5 +79,18 @@ public class Hotel implements Serializable {
 
     public void setVisitorSet(Set<Visitor> visitorSet) {
         this.visitorSet = visitorSet;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "hotelId=" + hotelId +
+                ", hotelName='" + hotelName + '\'' +
+                ", hotelPhone='" + hotelPhone + '\'' +
+                ", hotelIntroduce='" + hotelIntroduce + '\'' +
+                ", hotelPrice=" + hotelPrice +
+                ", hotelAddress='" + hotelAddress + '\'' +
+                ", visitorSet=" + visitorSet +
+                '}';
     }
 }

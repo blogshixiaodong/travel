@@ -2,7 +2,7 @@ package com.fz.travel.bean;
 
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @author: jiangjaimin
@@ -79,5 +79,18 @@ public class Message implements Serializable {
 
     public void setVisitor(Visitor visitor) {
         this.visitor = visitor;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "messageId=" + messageId +
+                ", messageInfo='" + messageInfo + '\'' +
+                ", replayInfo='" + replayInfo + '\'' +
+                ", messageTime=" + messageTime +
+                ", replayTime=" + replayTime +
+                ", visitorId=" + visitorId +
+                ", visitor=" + visitor +
+                '}';
     }
 }

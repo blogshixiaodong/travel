@@ -1,9 +1,5 @@
 package com.fz.travel.bean;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -40,5 +36,14 @@ public class VisitorAccount implements Serializable {
 
     public void setVisitor(Visitor visitor) {
         this.visitor = visitor;
+    }
+
+    @Override
+    public String toString() {
+        return "VisitorAccount{" +
+                "accountId=" + accountId +
+                ", password=" + password +
+                ", visitor=" + visitor +
+                '}';
     }
 }

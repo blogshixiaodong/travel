@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class MessageDaoImpl extends AbstractBaseDao<Message> implements MessageDao{
+
+    private PageContainer<Message> pageContainer;
     @Override
     public void reply(Message message, String reply) {
 
@@ -20,16 +22,28 @@ public class MessageDaoImpl extends AbstractBaseDao<Message> implements MessageD
 
     @Override
     public void delete(Message message) {
-
+       this.delete(message);
     }
 
     @Override
     public PageContainer<Message> selectAllMessage() {
-        return null;
+        String hql = "select * from MESSAGE";
+        return this.list(hql, pageContainer);
     }
 
     @Override
     public PageContainer<Message> selectByTime(Date time) {
-        return null;
+        String hql = "select * from MESSAGE where messageTime=?";
+        return this.list(hql,pageContainer,time);
+    }
+
+    @Override
+    public PageContainer<Message> getPageContainer() {
+        return pageContainer;
+    }
+
+    @Override
+    public void setPageContainer(PageContainer<Message> pageContainer) {
+        this.pageContainer = pageContainer;
     }
 }
