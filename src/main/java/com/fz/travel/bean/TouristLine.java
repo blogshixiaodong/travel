@@ -2,6 +2,7 @@ package com.fz.travel.bean;
 
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,7 +16,7 @@ public class TouristLine implements Serializable {
 
     private Double touristLinePrice;
 
-    private Set<Scenery> scenerySet;
+    private Set<LineScenery> lineScenerySet = new HashSet<LineScenery>();
 
     public Integer getTouristLineId() {
         return touristLineId;
@@ -33,12 +34,12 @@ public class TouristLine implements Serializable {
         this.touristLinePrice = touristLinePrice;
     }
 
-    public Set<Scenery> getScenerySet() {
-        return scenerySet;
+    public Set<LineScenery> getLineScenerySet() {
+        return lineScenerySet;
     }
 
-    public void setScenerySet(Set<Scenery> scenerySet) {
-        this.scenerySet = scenerySet;
+    public void setLineScenerySet(Set<LineScenery> lineScenerySet) {
+        this.lineScenerySet = lineScenerySet;
     }
 
     @Override
