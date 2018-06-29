@@ -90,7 +90,6 @@ public class Hotel implements Serializable {
                 ", hotelIntroduce='" + hotelIntroduce + '\'' +
                 ", hotelPrice=" + hotelPrice +
                 ", hotelAddress='" + hotelAddress + '\'' +
-                ", visitorSet=" + visitorSet +
                 '}';
     }
 }

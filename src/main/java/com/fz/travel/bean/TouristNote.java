@@ -11,46 +11,46 @@ import java.util.Date;
 
 public class TouristNote implements Serializable {
 
-    private Integer TouristNoteId;
+    private Integer touristNoteId;
 
-    private String TouristNoteInfo;
+    private String touristNoteInfo;
 
-    private String TouristNoteHeadLine;
+    private String touristNoteHeadLine;
 
-    private Date TouristNoteTime;
+    private Date touristNoteTime;
 
     private Visitor visitor;
 
     public Integer getTouristNoteId() {
-        return TouristNoteId;
+        return touristNoteId;
     }
 
     public void setTouristNoteId(Integer touristNoteId) {
-        TouristNoteId = touristNoteId;
+        this.touristNoteId = touristNoteId;
     }
 
     public String getTouristNoteInfo() {
-        return TouristNoteInfo;
+        return touristNoteInfo;
     }
 
     public void setTouristNoteInfo(String touristNoteInfo) {
-        TouristNoteInfo = touristNoteInfo;
+        this.touristNoteInfo = touristNoteInfo;
     }
 
     public String getTouristNoteHeadLine() {
-        return TouristNoteHeadLine;
+        return touristNoteHeadLine;
     }
 
     public void setTouristNoteHeadLine(String touristNoteHeadLine) {
-        TouristNoteHeadLine = touristNoteHeadLine;
+        this.touristNoteHeadLine = touristNoteHeadLine;
     }
 
     public Date getTouristNoteTime() {
-        return TouristNoteTime;
+        return touristNoteTime;
     }
 
     public void setTouristNoteTime(Date touristNoteTime) {
-        TouristNoteTime = touristNoteTime;
+        this.touristNoteTime = touristNoteTime;
     }
 
     public Visitor getVisitor() {
