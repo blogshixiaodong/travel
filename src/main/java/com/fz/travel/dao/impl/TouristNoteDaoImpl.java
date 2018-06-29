@@ -3,14 +3,15 @@ package com.fz.travel.dao.impl;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.TouristNote;
 import com.fz.travel.dao.TouristNoteDao;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author Shixiaodong
  * @date 2018/6/29 8:48
  */
+@Repository
 public class TouristNoteDaoImpl extends AbstractBaseDao<TouristNote> implements TouristNoteDao {
 
     private PageContainer<TouristNote> pageContainer;
@@ -31,13 +32,27 @@ public class TouristNoteDaoImpl extends AbstractBaseDao<TouristNote> implements 
     }
 
     @Override
-    public PageContainer<TouristNote> getTouristNoteList() {
-        return null;
+    public PageContainer<TouristNote> selectTouristNoteListByVisitorId(Integer visitorId) {
+        String hql = "FROM TouristNote t where t.visitor.visitorId = ?";
+        return this.list(hql, pageContainer, visitorId);
     }
 
     @Override
-    public List<TouristNote> gettouristNoteList(Date date) {
-        return null;
+    public PageContainer<TouristNote> selectTouristNoteListByDate(Date date) {
+        String hql = "FROM TouristNote t where t.touristNoteTime = STR_TO_DATE(?,'%Y-%m-%d')";
+        return this.list(hql, pageContainer, date);
+    }
+
+    @Override
+    public PageContainer<TouristNote> selectTouristNoteListByHeadLine(String headLine) {
+        String hql = "FROM TouristNote t where t.touristNoteHeadLine like ?";
+        return this.list(hql, pageContainer, "%" + headLine + "%");
+    }
+
+    @Override
+    public PageContainer<TouristNote> selectTouristNoteListByVisitorIdAndDate(Integer visitorId, Date date) {
+        String hql = "FROM TouristNote t where t.visitor.visitorId = ? AND t.touristNoteTime = STR_TO_DATE(?,'%Y-%m-%d')";
+        return this.list(hql, pageContainer, visitorId, date);
     }
 
     @Override
