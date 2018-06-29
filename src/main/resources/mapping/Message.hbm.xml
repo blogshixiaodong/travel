@@ -21,7 +21,7 @@
             <column name="REPLAYTIME" />
         </property>
         <many-to-one name="visitor" class="com.fz.travel.bean.Visitor" lazy="false">
-            <column name="VISITORID"></column>
+            <column name="VISITORID" />
         </many-to-one>
     </class>
 </hibernate-mapping>
