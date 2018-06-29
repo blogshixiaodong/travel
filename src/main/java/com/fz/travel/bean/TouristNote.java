@@ -61,4 +61,14 @@ public class TouristNote implements Serializable {
         this.visitor = visitor;
     }
 
+    @Override
+    public String toString() {
+        return "TouristNote{" +
+                "touristNoteId=" + touristNoteId +
+                ", touristNoteInfo='" + touristNoteInfo + '\'' +
+                ", touristNoteHeadLine='" + touristNoteHeadLine + '\'' +
+                ", touristNoteTime=" + touristNoteTime +
+                ", visitor=" + visitor +
+                '}';
+    }
 }

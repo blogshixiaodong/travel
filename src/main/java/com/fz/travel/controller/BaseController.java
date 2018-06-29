@@ -21,17 +21,40 @@ public class BaseController {
     @Autowired
     protected HttpSession session;
 
+    //获取当前登陆对象
     protected Object getCurrentRole() {
-        return null;
+        return session.getAttribute("role");
     }
 
+    //设置当前登陆对象
+    protected void setCurrentRole(Object role) {
+        session.setAttribute("role", role);
+    }
+
+    //注销当前登陆对象
+    protected void removeCurrentRole() {
+        session.removeAttribute("role");
+    }
+
+    //获取时间对象
     protected Date getDate() {
         return new Date();
     }
 
+    //按固定格式获取时间字符串
     protected String getDateToString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(getDate());
+    }
+
+    //获取session
+    protected HttpSession getSession() {
+        return session;
+    }
+
+    //获取request
+    protected HttpServletRequest getRequest() {
+        return request;
     }
 
 }
