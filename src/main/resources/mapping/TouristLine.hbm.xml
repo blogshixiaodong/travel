@@ -9,10 +9,10 @@
             <column name="TOURISTLINEID" />
             <generator class="increment" />
         </id>
-        <property name="touristLinePrice" type="java.lang.String">
+        <property name="touristLinePrice" type="java.lang.Double">
             <column name="TOURISTLINEPRICE" />
         </property>
-        <set name="scenerySet" table="SCENERYLINE" cascade="all" inverse="false" lazy="false">
+        <set name="scenerySet" table="LINESCENERY" cascade="all" inverse="false" lazy="false">
             <key>
                 <column name="TOURISTLINEID" />
             </key>

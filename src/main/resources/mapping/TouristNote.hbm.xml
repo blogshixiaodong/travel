@@ -4,7 +4,8 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.fz.travel.bean.TouristNote" table="TouristNote" catalog="travel">
+    <class name="com.fz.travel.bean.TouristNote" table="touristnote" catalog="travel">
+
         <id name="TouristNoteId" type="java.lang.Integer">
             <column name="TOURISTNOTEID" />
             <generator class="increment" />
@@ -19,7 +20,7 @@
             <column name="TOURISTNOTETIME" />
         </property>
         <many-to-one name="visitor" class="com.fz.travel.bean.Visitor" lazy="false">
-            <column name="VISITORID"/>
+            <column name="VISITORID"></column>
         </many-to-one>
     </class>
 </hibernate-mapping>

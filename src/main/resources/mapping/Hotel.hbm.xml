@@ -6,7 +6,7 @@
 
     <class name="com.fz.travel.bean.Hotel" table="hotel" catalog="travel">
         <id name="hotelId" type="java.lang.Integer">
-            <column name="HOTELID" />
+            <column name="HOTELId" />
             <generator class="increment" />
         </id>
         <property name="hotelName" type="java.lang.String">

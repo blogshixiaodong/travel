@@ -14,14 +14,14 @@
         <property name="replayInfo" type="java.lang.String">
             <column name="REPLAYINFO" />
         </property>
-        <property name="messageTime" type="java.lang.String">
+        <property name="messageTime" type="java.util.Date">
             <column name="MESSAGETIME" />
         </property>
-        <property name="replayTime" type="java.lang.String">
+        <property name="replayTime" type="java.util.Date">
             <column name="REPLAYTIME" />
         </property>
         <many-to-one name="visitor" class="com.fz.travel.bean.Visitor" lazy="false">
-            <column name="VISITORID" />
+            <column name="VISITORID"></column>
         </many-to-one>
     </class>
 </hibernate-mapping>
