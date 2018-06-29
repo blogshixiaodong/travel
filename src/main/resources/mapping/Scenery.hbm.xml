@@ -23,11 +23,11 @@
         <property name="sceneryOpenTime" type="java.util.Date">
             <column name="SCENERYOPENTIME" />
         </property>
-        <set name="touristLineSet" table="LINESCENERY" cascade="all" inverse="false" lazy="false">
+        <set name="lineScenerySet" cascade="all" inverse="false" lazy="false">
             <key>
                 <column name="SCENERYID" />
             </key>
-            <many-to-many class="com.fz.travel.bean.TouristLine" column="TOURISTLINEID" />
+            <one-to-many class="com.fz.travel.bean.LineScenery" />
         </set>
 
     </class>

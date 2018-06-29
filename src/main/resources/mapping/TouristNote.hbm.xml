@@ -6,17 +6,17 @@
 
     <class name="com.fz.travel.bean.TouristNote" table="touristnote" catalog="travel">
 
-        <id name="TouristNoteId" type="java.lang.Integer">
+        <id name="touristNoteId" type="java.lang.Integer">
             <column name="TOURISTNOTEID" />
             <generator class="increment" />
         </id>
-        <property name="TouristNoteInfo" type="java.lang.String">
+        <property name="touristNoteInfo" type="java.lang.String">
             <column name="TOURISTNOTEINFO" />
         </property>
-        <property name="TouristNoteHeadLine" type="java.lang.String">
+        <property name="touristNoteHeadLine" type="java.lang.String">
             <column name="TOURISTNOTEHEADLINE" />
         </property>
-        <property name="TouristNoteTime" type="java.util.Date">
+        <property name="touristNoteTime" type="java.util.Date">
             <column name="TOURISTNOTETIME" />
         </property>
         <many-to-one name="visitor" class="com.fz.travel.bean.Visitor" lazy="false">

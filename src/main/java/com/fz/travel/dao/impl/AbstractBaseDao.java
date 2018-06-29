@@ -48,7 +48,7 @@ public abstract class AbstractBaseDao<T> implements BaseDao<T> {
 
     @Override
     public void delete(T entity) {
-        session.delete(entity);
+        getSession().delete(entity);
     }
 
     @Override
@@ -60,7 +60,7 @@ public abstract class AbstractBaseDao<T> implements BaseDao<T> {
 
     @Override
     public void update(Object entity) {
-        session.update(entity);
+        getSession().update(entity);
     }
 
     @Override
@@ -72,7 +72,7 @@ public abstract class AbstractBaseDao<T> implements BaseDao<T> {
 
     @Override
     public void saveOrUpdate(Object entity) {
-        session.saveOrUpdate(entity);
+        getSession().saveOrUpdate(entity);
     }
 
     @Override

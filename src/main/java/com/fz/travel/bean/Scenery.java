@@ -24,7 +24,7 @@ public class Scenery implements Serializable {
 
     private Date sceneryOpenTime;
 
-    private Set<TouristLine> touristLineSet;
+    private Set<LineScenery> lineScenerySet;
 
     public Integer getSceneryId() {
         return sceneryId;
@@ -74,12 +74,11 @@ public class Scenery implements Serializable {
         this.sceneryOpenTime = sceneryOpenTime;
     }
 
-    public Set<TouristLine> getTouristLineSet() {
-        return touristLineSet;
+    public Set<LineScenery> getLineScenerySet() {
+        return lineScenerySet;
     }
 
-    public void setTouristLineSet(Set<TouristLine> touristLineSet) {
-        this.touristLineSet = touristLineSet;
+    public void setLineScenerySet(Set<LineScenery> lineScenerySet) {
+        this.lineScenerySet = lineScenerySet;
     }
-
 }
