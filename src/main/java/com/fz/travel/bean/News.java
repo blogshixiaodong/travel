@@ -61,4 +61,14 @@ public class News implements Serializable {
         this.newsContent = newsContent;
     }
 
+    @Override
+    public String toString() {
+        return "News{" +
+                "newsId=" + newsId +
+                ", newsType='" + newsType + '\'' +
+                ", newsDate=" + newsDate +
+                ", newsHeadLine='" + newsHeadLine + '\'' +
+                ", newsContent='" + newsContent + '\'' +
+                '}';
+    }
 }

@@ -37,4 +37,13 @@ public class VisitorAccount implements Serializable {
     public void setVisitor(Visitor visitor) {
         this.visitor = visitor;
     }
+
+    @Override
+    public String toString() {
+        return "VisitorAccount{" +
+                "accountId=" + accountId +
+                ", password=" + password +
+                ", visitor=" + visitor +
+                '}';
+    }
 }

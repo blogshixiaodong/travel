@@ -81,4 +81,17 @@ public class Scenery implements Serializable {
     public void setLineScenerySet(Set<LineScenery> lineScenerySet) {
         this.lineScenerySet = lineScenerySet;
     }
+
+    @Override
+    public String toString() {
+        return "Scenery{" +
+                "sceneryId=" + sceneryId +
+                ", sceneryPhoto='" + sceneryPhoto + '\'' +
+                ", sceneryPrice=" + sceneryPrice +
+                ", sceneryIntroduce='" + sceneryIntroduce + '\'' +
+                ", sceneryName='" + sceneryName + '\'' +
+                ", sceneryOpenTime=" + sceneryOpenTime +
+                '}';
+    }
+
 }

@@ -101,4 +101,15 @@ public class Visitor implements Serializable {
     public void setVisitorAccount(VisitorAccount visitorAccount) {
         this.visitorAccount = visitorAccount;
     }
+
+    @Override
+    public String toString() {
+        return "Visitor{" +
+                "visitorId=" + visitorId +
+                ", visitorGender='" + visitorGender + '\'' +
+                ", visitorPhone='" + visitorPhone + '\'' +
+                ", visitorDate=" + visitorDate +
+                ", visitorAccount=" + visitorAccount +
+                '}';
+    }
 }

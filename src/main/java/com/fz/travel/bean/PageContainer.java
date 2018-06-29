@@ -68,4 +68,14 @@ public class PageContainer<T> implements Serializable {
         this.list = list;
     }
 
+    @Override
+    public String toString() {
+        return "PageContainer{" +
+                "pageSize=" + pageSize +
+                ", recordCount=" + recordCount +
+                ", pageCount=" + pageCount +
+                ", currentPageNo=" + currentPageNo +
+                ", list=" + list +
+                '}';
+    }
 }
