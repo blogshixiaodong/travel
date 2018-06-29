@@ -15,7 +15,7 @@
         <property name="visitorPhone" type="java.lang.String">
             <column name="VISITORPHONE" />
         </property>
-        <property name="visitorDate" type="java.lang.String">
+        <property name="visitorDate" type="java.util.Date">
             <column name="VISITORDATE" />
         </property>
         <set name="hotelSet" table="VISITORHOTEL" cascade="all" inverse="false" lazy="false">
@@ -36,7 +36,7 @@
             </key>
             <one-to-many class="com.fz.travel.bean.TouristNote" />
         </set>
-        <set name="touristLineSet" table="TOURISTLINE" cascade="all" inverse="false" lazy="false">
+        <set name="touristLineSet" table="visitorline" cascade="all" inverse="false" lazy="false">
             <key>
                 <column name="VISITORID" />
             </key>

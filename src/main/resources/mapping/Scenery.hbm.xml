@@ -11,7 +11,7 @@
         <property name="sceneryPhoto" type="java.lang.String">
             <column name="SCENERYPHOTO" />
         </property>
-        <property name="sceneryPrice" type="java.lang.String">
+        <property name="sceneryPrice" type="java.lang.Double">
             <column name="SCENERYPRICE" />
         </property>
         <property name="sceneryIntroduce" type="java.lang.String">
@@ -20,10 +20,10 @@
         <property name="sceneryName" type="java.lang.String">
             <column name="SCENERYNAME" />
         </property>
-        <property name="sceneryOpenTime" type="java.lang.String">
+        <property name="sceneryOpenTime" type="java.util.Date">
             <column name="SCENERYOPENTIME" />
         </property>
-        <set name="touristLineSet" table="SCENERYLINE" cascade="all" inverse="false" lazy="false">
+        <set name="touristLineSet" table="LINESCENERY" cascade="all" inverse="false" lazy="false">
             <key>
                 <column name="SCENERYID" />
             </key>
