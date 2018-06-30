@@ -8,26 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>index</title>
+    <title>FuZhou Travel</title>
     <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css" />
-    <style>
-        .carousel {
-            height: 360px;
-            /*height: auto;*/
-            background-color: #000000;
-        }
-        .carousel .item{
-            /*height: auto;*/
-            height: 360px;
-            background-color: #000000;
-        }
-        .carousel img{
-            height: 360px;
-        }
-        .row {
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="module/css/common.css" />
+    <link rel="stylesheet" href="module/css/index.css" />
 </head>
 <body>
     <div class="container">
@@ -40,28 +24,37 @@
                     </div>
                     <div>
                         <ul class="nav navbar-nav navbar-left">
-                            <li><a href="#">iOS</a></li>
-                            <li><a href="#">SVN</a></li>
+                            <li><a href="#">福州介绍</a></li>
+                            <li><a href="#">福州景点</a></li>
+                            <li><a href="#">旅游线路</a></li>
+                            <li><a href="#">旅游游记</a></li>
+                            <li><a href="#">旅游新闻</a></li>
+                            <li><a href="#">周边酒店</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Java
+                                    留言
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">jmeter</a></li>
-                                    <li><a href="#">EJB</a></li>
-                                    <li><a href="#">Jasper Report</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">分离的链接</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">另一个分离的链接</a></li>
+                                    <li><a href="#">我要留言</a></li>
+                                    <li><a href="#">留言查看</a></li>
                                 </ul>
                             </li>
+
                         </ul>
                     </div>
                     <div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">登陆</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    登陆
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">游客登陆</a></li>
+                                    <li><a href="#">管理员登陆</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#">注册</a></li>
                         </ul>
                     </div>
@@ -105,20 +98,93 @@
             <!-- 左边新闻列表 -->
             <div class="col-md-8 cols-sm-12 cols-xs-12">
                 <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">这里是面板头部标题</div>
-                        <div class="panel-body">这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分</div>
-                        <div class="panel-footer">这里是面板尾部部分</div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            旅游资讯
+                            <front style="float: right">
+                                <a href="#">
+                                    <span class="badge">→</span>
+                                </a>
+                            </front>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>编号</th>
+                                        <th>标题</th>
+                                        <th>时间</th>
+                                        <th>类型</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>100</td>
+                                        <td>1</td>
+                                        <td>100</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            最新线路
+                            <front style="float: right">
+                                <a href="#">
+                                    <span class="badge">→</span>
+                                </a>
+                            </front>
+                        </div>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>名称</th>
+                                    <th>价格</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>100</td>
+                                    <td>1</td>
+                                    <td>100</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            游客游记
+                            <front style="float: right">
+                                <a href="#">
+                                    <span class="badge">→</span>
+                                </a>
+                            </front>
+                        </div>
+                        <div class="panel-body">
+
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- 侧边其他信息显示 -->
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">这里是面板头部标题</div>
                     <div class="panel-body">这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分</div>
-                    <div class="panel-footer">这里是面板尾部部分</div>
                 </div>
             </div>
         </div>
