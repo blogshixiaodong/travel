@@ -91,7 +91,6 @@ public class Scenery implements Serializable {
                 ", sceneryIntroduce='" + sceneryIntroduce + '\'' +
                 ", sceneryName='" + sceneryName + '\'' +
                 ", sceneryOpenTime=" + sceneryOpenTime +
-                ", touristLineSet=" + touristLineSet +
                 '}';
     }
 }

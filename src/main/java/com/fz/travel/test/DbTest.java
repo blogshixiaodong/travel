@@ -1,7 +1,10 @@
 package com.fz.travel.test;
 
 import com.fz.travel.bean.News;
+import com.fz.travel.bean.PageContainer;
+import com.fz.travel.bean.TouristNote;
 import com.fz.travel.bean.Visitor;
+import com.fz.travel.dao.NewsDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -21,30 +24,20 @@ public class DbTest {
     public SessionFactory sessionFactory;
     public Session session;
     public Transaction transaction;
-
+    NewsDao newsDao;
     @Before
     public void before(){
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
-        sessionFactory = (SessionFactory)ctx.getBean("sessionFactory");
-        session = sessionFactory.openSession();
-        transaction = session.beginTransaction();
+        newsDao = (NewsDao)ctx.getBean("newDaoImpl");
+        //sessionFactory = (SessionFactory)ctx.getBean("sessionFactory");
+        //session = sessionFactory.openSession();
+       //transaction = session.beginTransaction();
     }
 
-    @Test
-    public void test(){
-        //String hql = "SELECT COUNT(*) FROM User u LEFT JOIN u.engclassSet ec LEFT JOIN ec.timeSheetSet ts WHERE u.userId = 40000 AND ec.engclassId = 70000 AND STR_TO_DATE(ts.recordTime,'%Y-%m-%d') = STR_TO_DATE('2015-05-08','%Y-%m-%d') ";
-        //Query query = session.createQuery(hql);
-        //System.out.println(query.uniqueResult());
-        Visitor visitor = (Visitor) session.get(Visitor.class, 1);
-        News news=(News)session.get(News.class,1);
-
-        System.out.println(visitor.getHotelSet());
-    }
-
-    @After
-    public void after(){
-        transaction.commit();
-        session.close();
-        sessionFactory.close();
+    public void test() {
+        PageContainer pageContainer;
+        News news=new News();
+        news.setNewsId(2);
+       newsDao.insert(news);
     }
 }

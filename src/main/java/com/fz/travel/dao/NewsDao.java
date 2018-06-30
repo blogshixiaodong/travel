@@ -5,7 +5,7 @@ import com.fz.travel.bean.PageContainer;
 
 import java.io.Serializable;
 
-public interface NewsDao {
+public interface NewsDao extends PageDao {
     public void insert(News news);
 
     public void delete(News news);

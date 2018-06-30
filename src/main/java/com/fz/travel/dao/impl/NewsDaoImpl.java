@@ -32,11 +32,13 @@ public class NewsDaoImpl extends AbstractBaseDao<News> implements NewsDao{
         return this.list(hql,pageContainer,str);
     }
 
+    @Override
     public PageContainer<News> getPageContainer() {
         return pageContainer;
     }
 
-    public void setPageContainer(PageContainer<News> pageContainer) {
-        this.pageContainer = pageContainer;
+    @Override
+    public void setPageContainer(PageContainer pageContainer) {
+          this.pageContainer=pageContainer;
     }
 }

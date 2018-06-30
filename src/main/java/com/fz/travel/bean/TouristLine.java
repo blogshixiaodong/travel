@@ -46,7 +46,6 @@ public class TouristLine implements Serializable {
         return "TouristLine{" +
                 "touristLineId=" + touristLineId +
                 ", touristLinePrice=" + touristLinePrice +
-                ", scenerySet=" + scenerySet +
                 '}';
     }
 }

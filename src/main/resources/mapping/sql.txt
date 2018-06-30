@@ -3,3 +3,15 @@ INSERT INTO User VALUES(2, '22', '222', '女', '22', '171', '福建省', 'D:');
 INSERT INTO User VALUES(3, '33', '333', '男', '23', '159', '福建省', 'F:');
 INSERT INTO User VALUES(4, '44', '444', '女', '24', '156', '福建省', 'E:');
 INSERT INTO User VALUES(5, '55', '555', '男', '25', '128', '福建省', 'F:');
+
+INSERT INTO hotel VALUES(1, '11', '183590', '123', 120.5, '福建省');
+INSERT INTO hotel VALUES(2, '22', '18535490', '15223', 1120.5, '福建省');
+INSERT INTO hotel VALUES(3, '33', '183543590', '563123', 1230.5, '福建省');
+
+INSERT INTO visitor VALUES(1, 'man', '183597', '2010-5-6');
+INSERT INTO visitor VALUES(2, 'female', '163', '2010-7-2');
+INSERT INTO visitor VALUES(3, 'man', '15897', '2010-5-25');
+
+INSERT INTO touristnote VALUES(1, 'tourist', 'head', '2018-6-29', 1);
+INSERT INTO touristnote VALUES(2, 'tourist note', 'head line', '2018-6-19', 2);
+INSERT INTO touristnote VALUES(3, 'tourist note note', 'head line line', '2018-6-19', 1);

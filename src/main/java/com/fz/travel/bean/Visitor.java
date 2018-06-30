@@ -109,10 +109,6 @@ public class Visitor implements Serializable {
                 ", visitorGender='" + visitorGender + '\'' +
                 ", visitorPhone='" + visitorPhone + '\'' +
                 ", visitorDate=" + visitorDate +
-                ", hotelSet=" + hotelSet +
-                ", touristNoteSet=" + touristNoteSet +
-                ", touristLineSet=" + touristLineSet +
-                ", messageSet=" + messageSet +
                 ", visitorAccount=" + visitorAccount +
                 '}';
     }
