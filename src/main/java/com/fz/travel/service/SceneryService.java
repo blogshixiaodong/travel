@@ -43,4 +43,12 @@ public interface SceneryService {
     * @return : com.fz.travel.bean.Scenery
     */
     Scenery querySceneryBySceneryId(Integer sceneryId);
+
+    /*
+    * @Description:根据景点名称查询景点
+    * @param :  [pageContainer, hotelName]
+    * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Scenery>
+    */
+    PageContainer<Scenery> querySceneryBySceneryName(PageContainer<Scenery> pageContainer,String hotelName);
+
 }

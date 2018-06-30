@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="hotel" namespace="/hotel" extends="struts-default">
+        <action name="createHotel" class="com.fz.travel.controller.HotelController" method="createHotel">
+            <result name="success" type="redirect">
+                <!--添加成功,进入所有酒店页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="deleteHotelByHotelId" class="com.fz.travel.controller.HotelController" method="deleteHotelByHotelId">
+            <result name="success" type="redirect">
+                <!--删除成功,进入所有酒店页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="updateHotel" class="com.fz.travel.controller.HotelController" method="updateHotel">
+            <result name="success" type="redirect">
+                <!--修改成功,进入所有酒店页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="queryHotelByHotelId" class="com.fz.travel.controller.HotelController" method="queryHotelByHotelId">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="queryAllHotel" class="com.fz.travel.controller.HotelController" method="queryAllHotel">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="queryHotelByCondition" class="com.fz.travel.controller.HotelController" method="queryHotelByCondition">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+    </package>
+</struts>
