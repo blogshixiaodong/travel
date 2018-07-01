@@ -3,11 +3,17 @@ package com.fz.travel.controller;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.Scenery;
 import com.fz.travel.service.SceneryService;
+<<<<<<< HEAD
 import com.fz.travel.utils.JsonUtils;
 import com.opensymphony.xwork2.Action;
 import net.sf.json.JSONObject;
 
 import net.sf.json.JsonConfig;
+=======
+import com.opensymphony.xwork2.Action;
+import net.sf.json.JSONObject;
+
+>>>>>>> origin/master
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,6 +23,7 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class SceneryController extends BaseController {
+<<<<<<< HEAD
 
     private String jsonResult = "";
 
@@ -26,6 +33,16 @@ public class SceneryController extends BaseController {
 
     @Autowired
     private SceneryService sceneryService;
+=======
+    @Autowired
+    private SceneryService sceneryService;
+
+    private Scenery scenery;
+
+    private String jsonResult = "";
+
+    private PageContainer<Scenery> pageContainer;
+>>>>>>> origin/master
 
     //添加景点信息
     public String createScenery(){
@@ -55,6 +72,7 @@ public class SceneryController extends BaseController {
     //查询所有景点信息
     public String queryAllScenery(){
         pageContainer = sceneryService.queryAllScenery(pageContainer);
+<<<<<<< HEAD
         jsonResult = pageContainer.toJson("lineScenerySet");
         return Action.SUCCESS;
     }
@@ -82,4 +100,9 @@ public class SceneryController extends BaseController {
     public void setPageContainer(PageContainer<Scenery> pageContainer) {
         this.pageContainer = pageContainer;
     }
+=======
+        jsonResult = JSONObject.fromObject(pageContainer).toString();
+        return Action.SUCCESS;
+    }
+>>>>>>> origin/master
 }
