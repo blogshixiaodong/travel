@@ -8,7 +8,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -38,28 +40,44 @@ public class TouristLineDaoImplTest {
         pageContainer.setPageSize(5);
     }
 
-    public Scenery createScenery(Integer id) {
-        Scenery scenery = new Scenery();
-        scenery.setSceneryId(id);
-        return scenery;
+    public LineScenery createLineScenery(Scenery scenery,Integer order) {
+        LineScenery lineScenery = new LineScenery();
+        lineScenery.setScenery(scenery);
+        lineScenery.setOrder(order);
+        lineScenery.setTouristLine(touristLine);
+        return lineScenery;
     }
 
 
     @Test
     public void insertTouristLine() throws Exception {
-        Set<Scenery> scenerySet = new HashSet<>();
-        for(int i = 1; i <= 3; i++) {
-            scenerySet.add(createScenery(i));
+        //TouristLine touristLine = new TouristLine();
+        touristLine.setTouristLineId(2);
+
+        Set<LineScenery> lineScenerySet = new HashSet<LineScenery>();
+        List<Scenery> sceneryList = new ArrayList<Scenery>();
+        Scenery scenery1 = new Scenery();
+        Scenery scenery2 = new Scenery();
+        Scenery scenery3 = new Scenery();
+        scenery1.setSceneryId(3);
+        scenery2.setSceneryId(4);
+        scenery3.setSceneryId(5);
+        sceneryList.add(scenery1);
+        sceneryList.add(scenery2);
+        sceneryList.add(scenery3);
+        int i = 0;
+        for(Scenery scenery : sceneryList){
+            lineScenerySet.add(createLineScenery(scenery,i++));
         }
 
-        touristLine.setScenerySet(scenerySet);
+        touristLine.setLineScenerySet(lineScenerySet);
         touristLine.setTouristLinePrice(999.9);
-
         touristLineDao.insertTouristLine(touristLine);
     }
 
     @Test
     public void deleteTouristLine() throws Exception {
+        //TouristLine touristLine =
     }
 
     @Test
@@ -72,6 +90,9 @@ public class TouristLineDaoImplTest {
         touristLine =  touristLineDao.selectTouristLineById(1);
 
         System.out.println(touristLine);
+        for(LineScenery lineScenery : touristLine.getLineScenerySet()){
+            System.out.println(lineScenery.getScenery());
+        }
 
     }
 
