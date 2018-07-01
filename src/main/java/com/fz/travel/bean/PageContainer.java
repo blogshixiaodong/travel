@@ -1,5 +1,9 @@
 package com.fz.travel.bean;
 
+import com.fz.travel.utils.JsonUtils;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -77,5 +81,34 @@ public class PageContainer<T> implements Serializable {
                 ", currentPageNo=" + currentPageNo +
                 ", list=" + list +
                 '}';
+    }
+
+    public class PageContainerJson {
+        protected Integer total;
+        protected Object rows;
+
+        public Integer getTotal() {
+            return total;
+        }
+
+        public void setTotal(Integer total) {
+            this.total = total;
+        }
+
+        public Object getRows() {
+            return rows;
+        }
+
+        public void setRows(Object rows) {
+            this.rows = rows;
+        }
+    }
+
+    public String toJson(String... properties) {
+        JsonConfig jsonConfig = JsonUtils.JsonExclude(properties);
+        PageContainerJson pageContainerJson = new PageContainerJson();
+        pageContainerJson.setTotal(this.recordCount);
+        pageContainerJson.setRows(this.list);
+        return JSONObject.fromObject(pageContainerJson, jsonConfig).toString();
     }
 }

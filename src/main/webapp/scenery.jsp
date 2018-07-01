@@ -94,131 +94,99 @@
                         </front>
                     </front>
                 </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>编号</th>
-                        <th>标题</th>
-                        <th>时间</th>
-                        <th>类型</th>
-                        <th>类型</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>100</td>
-                        <td>1</td>
-                        <td>100</td>
-                    </tr>
-                    </tbody>
-
-                </table>
+                <table id="scenerys" class="table table-striped table-hover"></table>
             </div>
 
         </div>
 
     </div>
 
-    <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="module/js/common/common.js"></script>
     <script type="text/javascript">
-        var json = "{'total': 200, 'pageSize': 2, 'rows': [" +
-            "{" +
-            "'sceneryId': 1," +
-            "'sceneryName': 'name'," +
-            "'sceneryOpenTime': '2018-7-1'" +
-            "}]}"
 
-        alert(json);
         //激活下拉列表
         $(".dropdown-toggle").dropdown();
-//        $.get(
-//            "localhost:",
-//            function (result) {
-//                if(result.code == 200) {
-//                    var data = jsonConvertToBootstrapTableData(result);
-//                    $(".table").bootstrapTable({
-//                        data: data,
-//                        dataType: json,
-//                        cache: false,
-//                        striped: true
-//                    })
-//                }
-//            }
-//        );
 
-        function initTable(json) {
-            $(".table").bootstrapTable({
-                url:"http://127.0.0.1/yjstar-manager/system/role_manage/data1.json",
-                method: 'get',
-                dataType: "json",
-                // data:json.data.dataList,
+        $(function() {
+            initTable();
+
+        })
+
+        function initTable() {
+            $("#scenerys").bootstrapTable("destroy");
+            $("#scenerys").bootstrapTable({
+                url: "scenery/queryAllScenery.action",
+                method: "get",
                 cache: false, // 不缓存
-                // height: getHeight(), // 设置高度，会启用固定表头的特性
                 striped: true, // 隔行加亮
                 pagination: true, // 开启分页功能
+                pageNumber: 1,
+                pageSize: 5,    //每页的记录行数（*）
+                sidePagination: "server",
                 search: false, // 开启搜索功能
                 showColumns: false, // 开启自定义列显示功能
                 showRefresh: false, // 开启刷新功能
+                queryParamsType: "undefined",
                 queryParams: queryParams,
-                pageSize: json.pageSize, //每页的记录行数（*）
-                minimumCountColumns: 2, // 设置最少显示列个数
-                clickToSelect: true, // 单击行即可以选中
-                uniqueId: "id", //每一行的唯一标识，一般为主键列
-                sortName: 'id', // 设置默认排序为 name
-                sortOrder: 'desc', // 设置排序为反序 desc
+                //minimumCountColumns: 2, // 设置最少显示列个数
+                //clickToSelect: true, // 单击行即可以选中
+                //uniqueId: "sceneryId", //每一行的唯一标识，一般为主键列
+                //sortName: 'sceneryId', // 设置默认排序为 name
+                //sortOrder: 'desc', // 设置排序为反序 desc
                 columns: [{
                     field: 'sceneryId',
                     title: '景点编号',
                     align: 'center',
                     valign: 'middle',
                     sortable: true // 开启排序功能
-                },{
+                }, {
                     field: 'sceneryName',
                     title: '景点名称',
                     align: 'center',
                     valign: 'middle',
-                    formatter: operateFormatter,
-                    events: window.operateEvents,
+                    formatter: linkToDetail,
+                }, {
+                    field: 'sceneryPrice',
+                    title: '门票价格',
+                    align: 'center',
+                    valign: 'middle',
+                    sortable: true,
                 }, {
                     field: 'sceneryOpenTime',
                     title: '开放时间',
                     align: 'center',
                     valign: 'middle',
-                    sortable: true,
-                }]
+                    formatter: operateFormatter,
+                }],
+                responseHandler: function (e) {
+                    var json = JSON.parse(e);
+                    return json;
+                },
+                onLoadSuccess: function() {
+                    alert("加载成功");
+                },
+                onLoadError: function() {
+                    alert("加载失败");
+                }
             });
             function operateFormatter(value, row, index) {
-                return [
-                    '<a href="#edit-modal-dialog" data-toggle="modal" class="edit" title="edit" href="javascript:void(0)">',
-                    '修改',
-                    '</a>  ',
-                    '&nbsp;&nbsp;&nbsp;&nbsp;',
-                    '<a href="#impower-modal-dialog" data-toggle="modal" class="impower" title="impower" href="javascript:void(0)">',
-                    '授权',
-                    '</a>  ',
-                    '&nbsp;&nbsp;&nbsp;&nbsp;',
-                    '<a class="remove" href="javascript:void(0)" title="Remove">',
-                    '删除',
-                    '</a>',
-                ].join('');
+                return jsonDateToString(value);
             }
+
             function queryParams(params) {
-                console.log(params);
                 return {
-                    pageSize: params.limit,
-                    offset: params.offset,
-                    roleName: $("#roleName").val(),
-                    name: params.sort,
-                    order: params.order
+                    "pageContainer.pageSize": 5,
+                    "pageContainer.currentPageNo": 1
                 };
             }
+            function linkToDetail(value, row, index) {
+                return '<a href="#">' + value + '</a>';
+            }
         }
-        initTable(json);
-
 
     </script>
 </body>

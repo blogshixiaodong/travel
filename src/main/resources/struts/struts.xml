@@ -14,6 +14,8 @@
     <constant name="struts.objectFactory" value="spring" />
 
     <include file="struts/user-struts.xml" />
+    <include file="struts/scenery-struts.xml" />
+    <include file="struts/hotel-struts.xml" />
 
 
 

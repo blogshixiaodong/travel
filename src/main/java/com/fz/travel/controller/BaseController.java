@@ -12,29 +12,29 @@ import java.util.Date;
  * @author Shixiaodong
  * @date 2018/6/25 19:58
  */
-@Controller
+//@Controller
 public class BaseController {
 
-    @Autowired
-    protected HttpServletRequest request;
-
-    @Autowired
-    protected HttpSession session;
-
-    //获取当前登陆对象
-    protected Object getCurrentRole() {
-        return session.getAttribute("role");
-    }
-
-    //设置当前登陆对象
-    protected void setCurrentRole(Object role) {
-        session.setAttribute("role", role);
-    }
-
-    //注销当前登陆对象
-    protected void removeCurrentRole() {
-        session.removeAttribute("role");
-    }
+//    @Autowired
+//    protected HttpServletRequest request;
+//
+//    @Autowired
+//    protected HttpSession session;
+//
+//    //获取当前登陆对象
+//    protected Object getCurrentRole() {
+//        return session.getAttribute("role");
+//    }
+//
+//    //设置当前登陆对象
+//    protected void setCurrentRole(Object role) {
+//        session.setAttribute("role", role);
+//    }
+//
+//    //注销当前登陆对象
+//    protected void removeCurrentRole() {
+//        session.removeAttribute("role");
+//    }
 
     //获取时间对象
     protected Date getDate() {
@@ -48,13 +48,13 @@ public class BaseController {
     }
 
     //获取session
-    protected HttpSession getSession() {
-        return session;
-    }
-
-    //获取request
-    protected HttpServletRequest getRequest() {
-        return request;
-    }
+//    protected HttpSession getSession() {
+//        return session;
+//    }
+//
+//    //获取request
+//    protected HttpServletRequest getRequest() {
+//        return request;
+//    }
 
 }
