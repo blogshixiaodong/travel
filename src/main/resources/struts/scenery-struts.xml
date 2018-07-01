@@ -5,11 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-<<<<<<< HEAD
     <package name="scenery" namespace="/scenery" extends="json-default, struts-default">
-=======
-    <package name="scenery" namespace="/scenery" extends="struts-default">
->>>>>>> origin/master
         <action name="createScenery" class="com.fz.travel.controller.SceneryController" method="createScenery">
             <result name="success" type="redirect">
                 <!--添加成功,进入所有景点页面  -->
@@ -20,11 +16,7 @@
             </result>
         </action>
 
-<<<<<<< HEAD
         <action name="deleteSceneryBySceneryId" class="com.fz.travel.controller.SceneryController" method="deleteSceneryBySceneryId">
-=======
-        <action name="deleteSceneryBySceneryId" class="com.fz.travel.controllerSceneryController" method="deleteSceneryBySceneryId">
->>>>>>> origin/master
             <result name="success" type="redirect">
                 <!--删除成功,进入景点酒店页面  -->
                 <param name="location">demo.jsp</param>
@@ -34,11 +26,7 @@
             </result>
         </action>
 
-<<<<<<< HEAD
         <action name="updateScenery" class="com.fz.travel.controller.SceneryController" method="updateSceney">
-=======
-        <action name="updateScenery" class="com.fz.travel.controller.SceneryController" method="updateScenery">
->>>>>>> origin/master
             <result name="success" type="redirect">
                 <!--修改成功,进入景点酒店页面  -->
                 <param name="location">demo.jsp</param>
@@ -59,14 +47,11 @@
                 <param name="root">jsonResult</param>
             </result>
         </action>
-<<<<<<< HEAD
-=======
 
         <action name="querySceneryByCondition" class="com.fz.travel.controller.SceneryController" method="queryHotelByCondition">
             <result name="success" type="json">
                 <param name="root">jsonResult</param>
             </result>
         </action>
->>>>>>> origin/master
     </package>
 </struts>
