@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="scenery" namespace="/scenery" extends="json-default, struts-default">
+        <action name="createScenery" class="com.fz.travel.controller.SceneryController" method="createScenery">
+            <result name="success" type="redirect">
+                <!--添加成功,进入所有景点页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="deleteSceneryBySceneryId" class="com.fz.travel.controller.SceneryController" method="deleteSceneryBySceneryId">
+            <result name="success" type="redirect">
+                <!--删除成功,进入景点酒店页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="updateScenery" class="com.fz.travel.controller.SceneryController" method="updateSceney">
+            <result name="success" type="redirect">
+                <!--修改成功,进入景点酒店页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="queryHotelBySceneryId" class="com.fz.travel.controller.SceneryController" method="querySceneryBySceneryId">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="queryAllScenery" class="com.fz.travel.controller.SceneryController" method="queryAllScenery">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+    </package>
+</struts>
