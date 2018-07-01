@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="touristNote" namespace="/touristNote" extends="struts-default">
+        <action name="createTouristNote" class="com.fz.travel.controller.TouristNoteController" method="createTouristNote">
+            <result name="success" type="redirect">
+                <!--添加成功,进入所有酒店页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="findTouristNoteListByHeadLine" class="com.fz.travel.controller.HotelController" method="findTouristNoteListByHeadLine">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="findTouristNoteListByVisitorId" class="com.fz.travel.controller.HotelController" method="findTouristNoteListByVisitorId">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="findTouristNoteListByVisitorIdAndDate" class="com.fz.travel.controller.HotelController" method="findTouristNoteListByVisitorIdAndDate">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="findTouristNoteListByDate" class="com.fz.travel.controller.HotelController" method="findTouristNoteListByDate">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+    </package>
+</struts>
