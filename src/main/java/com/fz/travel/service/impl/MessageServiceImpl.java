@@ -5,9 +5,11 @@ import com.fz.travel.bean.PageContainer;
 import com.fz.travel.dao.MessageDao;
 import com.fz.travel.dao.impl.MessageDaoImpl;
 import com.fz.travel.service.MessageService;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+@Service
 public class MessageServiceImpl implements MessageService {
     PageContainer<Message> pageContainer;
     MessageDao messageDao = new MessageDaoImpl();
@@ -19,7 +21,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void delete(Message message) {
 
-         messageDao.delete(message);
+         messageDao.deleteByMessage(message);
     }
 
     @Override

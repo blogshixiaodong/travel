@@ -5,7 +5,9 @@ import com.fz.travel.bean.PageContainer;
 import com.fz.travel.dao.NewsDao;
 import com.fz.travel.dao.impl.NewsDaoImpl;
 import com.fz.travel.service.NewsService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class NewsServiceImpl implements NewsService {
     private PageContainer<News> pageContainer;
 
@@ -16,8 +18,8 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void delete(News news) {
-        newsDao.delete(news);
+    public void deleteByNews(News news) {
+        newsDao.deleteByNews(news);
     }
 
     @Override
@@ -26,7 +28,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void selectByTitle(String title) {
-        pageContainer = newsDao.selectByTitle(title);
+    public void selectByHeadLine(String title) {
+        pageContainer = newsDao.selectByHeadLine(title);
     }
 }

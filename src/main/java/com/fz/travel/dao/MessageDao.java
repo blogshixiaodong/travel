@@ -8,11 +8,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 public interface MessageDao extends PageDao<Message> {
-    public void reply(Message message,String reply);
+    public void reply(Message message);
 
     public void insert(Message message);
 
-    public void delete(Message message);
+    public void deleteByMessage(Message message);
+
+    public PageContainer<Message> selectByMessageId(Serializable messageId);
 
     public PageContainer<Message> selectAllMessage();
 

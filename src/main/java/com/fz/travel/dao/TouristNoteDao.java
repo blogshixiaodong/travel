@@ -18,8 +18,12 @@ public interface TouristNoteDao extends PageDao<TouristNote> {
 
     void updateTouristNote(TouristNote touristNote);
 
-    PageContainer<TouristNote> getTouristNoteList();
+    PageContainer<TouristNote> selectTouristNoteListByHeadLine(String headLine);
 
-    List<TouristNote> gettouristNoteList(Date date);
+    PageContainer<TouristNote> selectTouristNoteListByDate(Date date);
+
+    PageContainer<TouristNote> selectTouristNoteListByVisitorId(Integer visitorId);
+
+    PageContainer<TouristNote> selectTouristNoteListByVisitorIdAndDate(Integer visitorId, Date date);
 
 }

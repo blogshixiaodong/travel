@@ -8,9 +8,10 @@ import java.io.Serializable;
 public interface NewsDao extends PageDao {
     public void insert(News news);
 
-    public void delete(News news);
+    public void deleteByNews(News news);
+
 
     public PageContainer<News> selectAllNews();
 
-    public PageContainer<News> selectByTitle(String title);
+    public PageContainer<News> selectByHeadLine(String headLine);
 }

@@ -35,13 +35,15 @@ CREATE TABLE `hotel` (
 DROP TABLE IF EXISTS `linescenery`;
 
 CREATE TABLE `linescenery` (
+  `lineSceneryId` int(11) NOT NULL auto_increment,
   `sceneryId` int(11) default NULL,
   `touristLineId` int(11) default NULL,
   `order` int(11) default NULL,
+  PRIMARY KEY  (`lineSceneryId`),
   KEY `sceneryidfk` (`sceneryId`),
   KEY `lineidfk` (`touristLineId`),
-  CONSTRAINT `sceneryidfk` FOREIGN KEY (`sceneryId`) REFERENCES `scenery` (`sceneryId`),
-  CONSTRAINT `lineidfk` FOREIGN KEY (`touristLineId`) REFERENCES `touristline` (`touristLineId`)
+  CONSTRAINT `lineidfk` FOREIGN KEY (`touristLineId`) REFERENCES `touristline` (`touristLineId`),
+  CONSTRAINT `sceneryidfk` FOREIGN KEY (`sceneryId`) REFERENCES `scenery` (`sceneryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `message` */

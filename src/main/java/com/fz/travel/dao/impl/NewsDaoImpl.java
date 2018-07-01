@@ -3,9 +3,11 @@ package com.fz.travel.dao.impl;
 import com.fz.travel.bean.News;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.dao.NewsDao;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 
+@Repository
 public class NewsDaoImpl extends AbstractBaseDao<News> implements NewsDao{
     private PageContainer<News> pageContainer;
     @Override
@@ -14,22 +16,21 @@ public class NewsDaoImpl extends AbstractBaseDao<News> implements NewsDao{
     }
 
     @Override
-    public void delete(News news) {
+    public void deleteByNews(News news) {
 
         this.delete(news);
     }
 
     @Override
     public PageContainer<News> selectAllNews() {
-        String hql="select * from NEWS";
+        String hql="FROM News";
         return this.list(hql,pageContainer);
     }
 
     @Override
-    public PageContainer<News> selectByTitle(String title){
-        String hql="select * from NEWS where newsHeadLine like ?";
-        String str ="%" + title+ "%,";
-        return this.list(hql,pageContainer,str);
+    public PageContainer<News> selectByHeadLine(String headLine){
+        String hql = "FROM News where newsHeadLine like ?";
+        return this.list(hql, pageContainer, "%" + headLine + "%");
     }
 
     @Override
