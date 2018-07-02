@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class NewsDaoImpl extends AbstractBaseDao<News> implements NewsDao{
     private PageContainer<News> pageContainer;
     @Override
-    public void insert(News news) {
+    public void insertNews(News news) {
        this.save(news);
     }
 
@@ -19,6 +19,11 @@ public class NewsDaoImpl extends AbstractBaseDao<News> implements NewsDao{
     public void deleteByNews(News news) {
 
         this.delete(news);
+    }
+
+    @Override
+    public News selectByNewsId(Serializable newsId) {
+        return  this.get(newsId);
     }
 
     @Override

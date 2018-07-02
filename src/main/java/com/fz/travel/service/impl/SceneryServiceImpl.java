@@ -33,19 +33,16 @@ public class SceneryServiceImpl implements SceneryService {
         if(scenery == null){
             return "景点不存在";
         }
-        /*if(scenery.getTouristLineSet() == null || scenery.getTouristLineSet().size() == 0){
+        if(scenery.getLineScenerySet() == null || scenery.getLineScenerySet().size() == 0){
             sceneryDaoImpl.deleteScenery(scenery);
             return "删除成功";
         }else{
             return "删除失败";
-        }*/
-        return "";
+        }
     }
 
     @Override
     public PageContainer<Scenery> queryAllScenery(PageContainer<Scenery> pageContainer) {
-        pageContainer.setCurrentPageNo(1);
-        pageContainer.setPageSize(5);
         sceneryDaoImpl.setPageContainer(pageContainer);
         return sceneryDaoImpl.selectAllScenery();
     }
@@ -53,6 +50,12 @@ public class SceneryServiceImpl implements SceneryService {
     @Override
     public Scenery querySceneryBySceneryId(Integer sceneryId) {
         return sceneryDaoImpl.selectSceneryBySceneryId(sceneryId);
+    }
+
+    @Override
+    public PageContainer<Scenery> querySceneryBySceneryName(PageContainer<Scenery> pageContainer,String sceneryName) {
+        sceneryDaoImpl.setPageContainer(pageContainer);
+        return sceneryDaoImpl.selectSceneryBySceneryName(sceneryName);
     }
 
     public SceneryDao getSceneryDaoImpl() {

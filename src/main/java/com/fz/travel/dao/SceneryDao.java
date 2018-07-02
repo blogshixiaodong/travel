@@ -53,4 +53,11 @@ public interface SceneryDao extends PageDao<Scenery>{
     */
     PageContainer<Scenery> selectAllScenery();
 
+    /*
+    * @Description:根据景点名称查询景点信息
+    * @param :  [sceneryName]
+    * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Scenery>
+    */
+    PageContainer<Scenery> selectSceneryBySceneryName(String sceneryName);
+
 }

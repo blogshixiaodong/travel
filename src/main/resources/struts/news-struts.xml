@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="news" namespace="/news" extends="json-default, struts-default">
+
+        <action name="createNews" class="com.fz.travel.controller.NewsController" method="creatNews">
+            <result name="success" type="redirect">
+                <!--添加成功,进入新闻页面  -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+        <action name="deleteNewsByNewsId" class="com.fz.travel.controller.MessageController" method="deleteNewsByNewsId">
+            <result name="success" type="redirect">
+                <!--删除成功,进入新闻界面 -->
+                <param name="location">demo.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">index.jsp</param>
+            </result>
+        </action>
+
+
+
+        <action name="queryNewsByNewsId" class="com.fz.travel.controller.NewsController" method="queryNewsByNewsId">
+            <result name="success" type="redirect">
+                <!-- 点击新闻查看具体新闻内容-->
+                <param name="location">../news_detail.jsp</param>
+            </result>
+        </action>
+
+        <action name="queryNewsByNewsHeadLine" class="com.fz.travel.controller.NewsController" method="queryNewsByHeadLine">
+            <result name="success" type="json">
+                <!-- 按标题查询，跳到显示界面-->
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="queryAllNews" class="com.fz.travel.controller.NewsController" method="queryAllNews">
+            <result name="success" type="json">
+                <!-- 显示所有新闻-->
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+    </package>
+</struts>

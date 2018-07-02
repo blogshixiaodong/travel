@@ -1,0 +1,16 @@
+.carousel {
+    height: 360px;
+    /*height: auto;*/
+    background-color: #000000;
+}
+.carousel .item{
+    /*height: auto;*/
+    height: 360px;
+    background-color: #000000;
+}
+.carousel img{
+    height: 360px;
+}
+.row {
+    margin-top: 10px;
+}

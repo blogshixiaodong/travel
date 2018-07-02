@@ -35,9 +35,6 @@ public class DbTest {
     }
 
     public void test() {
-        PageContainer pageContainer;
-        News news=new News();
-        news.setNewsId(2);
-       newsDao.insert(news);
+
     }
 }

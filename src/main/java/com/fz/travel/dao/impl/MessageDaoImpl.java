@@ -18,7 +18,7 @@ public class MessageDaoImpl extends AbstractBaseDao<Message> implements MessageD
     }
 
     @Override
-    public void insert(Message message) {
+    public void insertMessage(Message message) {
       this.save(message);
     }
 
@@ -28,9 +28,8 @@ public class MessageDaoImpl extends AbstractBaseDao<Message> implements MessageD
     }
 
     @Override
-    public PageContainer<Message> selectByMessageId(Serializable messageId) {
-        String hql = "FROM Message WHERE messageId = ?";
-        return this.list(hql, pageContainer,messageId);
+    public Message selectByMessageId(Serializable messageId) {
+       return this.get(messageId);
     }
 
     @Override

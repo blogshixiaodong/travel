@@ -9,26 +9,35 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class NewsServiceImpl implements NewsService {
-    private PageContainer<News> pageContainer;
-
-    private NewsDao newsDao = new NewsDaoImpl();
+    private NewsDao newsDao;
     @Override
-    public void insert(News news) {
-        newsDao.insert(news);
+    public void addNews(News news) {
+        newsDao.insertNews(news);
     }
 
     @Override
-    public void deleteByNews(News news) {
-        newsDao.deleteByNews(news);
+    public String removeByNews(Integer newsId) {
+        News news = newsDao.selectByNewsId(newsId);
+        if(news  == null){
+            return "新闻不存在";
+        }
+        else
+            newsDao.deleteByNews(news);
+        return  "删除新闻成功";
+    }
+     @Override
+     public News queryByNewsId(Integer newsId){
+        return newsDao.selectByNewsId(newsId);
+     }
+    @Override
+    public PageContainer<News> queryAllNews(PageContainer<News> pageContainer) {
+        newsDao.setPageContainer(pageContainer);
+        return newsDao.selectAllNews();
     }
 
     @Override
-    public void selectAllNews() {
-        pageContainer = newsDao.selectAllNews();
-    }
-
-    @Override
-    public void selectByHeadLine(String title) {
-        pageContainer = newsDao.selectByHeadLine(title);
+    public PageContainer<News> queryByHeadLine(String headLine,PageContainer<News> pageContainer) {
+        newsDao.setPageContainer(pageContainer);
+        return  newsDao.selectByHeadLine(headLine);
     }
 }

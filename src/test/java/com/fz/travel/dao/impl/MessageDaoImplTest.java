@@ -32,9 +32,8 @@ public class MessageDaoImplTest {
 
     @Test
     public void selectByMessageId() throws Exception {
-        messageDao.setPageContainer(pageContainer);
-        pageContainer = messageDao.selectByMessageId(1);
-        System.out.println(pageContainer.getList());
+        message = messageDao.selectByMessageId(1);
+        System.out.println(message);
 
     }
 
@@ -53,7 +52,7 @@ public class MessageDaoImplTest {
         Message message = new Message();
         message.setMessageInfo("hello");
         message.setMessageTime(new Date());
-        messageDao.insert(message);
+        messageDao.insertMessage(message);
 
     }
 

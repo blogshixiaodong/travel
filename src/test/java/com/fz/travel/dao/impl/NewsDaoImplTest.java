@@ -28,7 +28,7 @@ public class NewsDaoImplTest {
          News news = new News();
          news.setNewsContent("adasdad");
 
-         newsDao.insert(news);
+         newsDao.insertNews(news);
     }
 
     @Test

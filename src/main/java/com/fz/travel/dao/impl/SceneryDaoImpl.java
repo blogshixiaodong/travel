@@ -3,6 +3,7 @@ package com.fz.travel.dao.impl;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.Scenery;
 import com.fz.travel.dao.SceneryDao;
+import jdk.nashorn.internal.ir.ReturnNode;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +14,9 @@ import java.util.List;
  */
 @Repository
 public class SceneryDaoImpl extends AbstractBaseDao<Scenery> implements SceneryDao {
+
     PageContainer<Scenery> pageContainer;
+
     @Override
     public Long insertScenery(Scenery scenery) {
         return ((Integer)this.save(scenery)).longValue();
@@ -43,6 +46,12 @@ public class SceneryDaoImpl extends AbstractBaseDao<Scenery> implements SceneryD
     public PageContainer<Scenery> selectAllScenery() {
         String hql = "FROM Scenery";
         return this.list(hql,pageContainer);
+    }
+
+    @Override
+    public PageContainer<Scenery> selectSceneryBySceneryName(String sceneryName) {
+        String hql = "FORM Scenery WHERE sceneryName like ?";
+        return this.list(hql,pageContainer,"%" + sceneryName + "%");
     }
 
     @Override
