@@ -102,7 +102,7 @@ public class Visitor implements Serializable {
         this.visitorAccount = visitorAccount;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "Visitor{" +
                 "visitorId=" + visitorId +
@@ -111,5 +111,5 @@ public class Visitor implements Serializable {
                 ", visitorDate=" + visitorDate +
                 ", visitorAccount=" + visitorAccount +
                 '}';
-    }
+    }*/
 }

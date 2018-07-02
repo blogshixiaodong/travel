@@ -17,6 +17,8 @@
     <include file="struts/scenery-struts.xml" />
     <include file="struts/hotel-struts.xml" />
     <include file="struts/touristNote-struts.xml" />
+    <include file="struts/visitorAccount-struts.xml" />
+    <include file="struts/adminAccount-struts.xml" />
 
 
 
