@@ -37,7 +37,7 @@
               return;
             }
             alert("登录失败");
-            location.href = "./adminLogin.jsp";
+            location.href = "adminLogin.jsp";
           }
         });
         return false;
