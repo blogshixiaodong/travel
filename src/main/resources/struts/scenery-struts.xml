@@ -6,7 +6,6 @@
 
 <struts>
     <package name="scenery" namespace="/scenery" extends="json-default, struts-default">
-
         <action name="createScenery" class="com.fz.travel.controller.SceneryController" method="createScenery">
             <result name="success" type="redirect">
                 <!--添加成功,进入所有景点页面  -->
@@ -48,6 +47,5 @@
                 <param name="root">jsonResult</param>
             </result>
         </action>
-
     </package>
 </struts>

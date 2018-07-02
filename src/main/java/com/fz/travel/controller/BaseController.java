@@ -1,12 +1,10 @@
 package com.fz.travel.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import com.opensymphony.xwork2.ActionContext;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * @author Shixiaodong
@@ -17,10 +15,9 @@ public class BaseController {
 
 //    @Autowired
 //    protected HttpServletRequest request;
-//
-//    @Autowired
-//    protected HttpSession session;
-//
+
+    protected Map<String,Object> session ;
+
 //    //获取当前登陆对象
 //    protected Object getCurrentRole() {
 //        return session.getAttribute("role");
@@ -48,13 +45,16 @@ public class BaseController {
     }
 
     //获取session
-//    protected HttpSession getSession() {
-//        return session;
-//    }
-//
-//    //获取request
+    protected Map<String, Object> getSession() {
+        return  (Map<String,Object>) ActionContext.getContext().get("session");
+    }
+
+    //获取request
 //    protected HttpServletRequest getRequest() {
 //        return request;
 //    }
 
+    protected void putSessionAttribute(String key,Object value){
+        getSession().put(key,value);
+    }
 }
