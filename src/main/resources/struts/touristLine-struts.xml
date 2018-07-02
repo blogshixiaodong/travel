@@ -5,21 +5,17 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <package name="touristNote" namespace="/touristNote" extends="json-default, struts-default">
+    <package name="touristLine" namespace="/touristLine" extends="json-default, struts-default">
 
         <action name="findTouristLineList" class="com.fz.travel.controller.TouristLineController" method="findTouristLineList">
-            <result name="success" type="redirect">
-                <!--添加成功,进入所有酒店页面  -->
-                <param name="location">demo.jsp</param>
-            </result>
-            <result name="error" type="redirect">
-                <param name="location">index.jsp</param>
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
             </result>
         </action>
 
         <action name="findTouristLineListById" class="com.fz.travel.controller.TouristLineController" method="findTouristLineListById">
-            <result name="success" type="json">
-                <param name="root">jsonResult</param>
+            <result name="success" type="redirect">
+                <param name="location">../touristline_detail.jsp</param>
             </result>
         </action>
 
