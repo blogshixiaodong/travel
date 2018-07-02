@@ -51,7 +51,7 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">游客登陆</a></li>
+                                    <li><a href="visitorLogin.jsp">游客登陆</a></li>
                                     <li><a href="#">管理员登陆</a></li>
                                 </ul>
                             </li>
