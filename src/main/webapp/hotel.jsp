@@ -123,9 +123,17 @@
                 method: "get",
                 cache: false, // 不缓存
                 striped: true, // 隔行加亮
+                height:300,
+                uniqueId: "hotelId", //每一行的唯一标识，一般为主键列
+                sortName: 'hotelId', // 设置默认排序为 name
+                sortOrder: 'asc', // 设置排序为反序 desc
+                sortTable:true,
                 pagination: true, // 开启分页功能
                 pageNumber: 1,
                 pageSize: 5,    //每页的记录行数（*）
+                pageList: [5, 10, 15, 20],
+                paginationPreText: "上一页",
+                paginationNextText: "下一页",
                 sidePagination: "server",
                 search: false, // 开启搜索功能
                 showColumns: false, // 开启自定义列显示功能
@@ -133,10 +141,8 @@
                 queryParamsType: "undefined",
                 queryParams: queryParams,
                 //minimumCountColumns: 2, // 设置最少显示列个数
-                //clickToSelect: true, // 单击行即可以选中
-                //uniqueId: "sceneryId", //每一行的唯一标识，一般为主键列
-                //sortName: 'sceneryId', // 设置默认排序为 name
-                //sortOrder: 'desc', // 设置排序为反序 desc
+                clickToSelect: true, // 单击行即可以选中
+
                 columns: [{
                     field: 'hotelId',
                     title: '酒店编号',
@@ -188,8 +194,8 @@
                 var hotelLowPrice = $("#hotelLowPrice").val();
                 var hotelHighPrice = $("#hotelHighPrice").val();
                 return {
-                    "pageContainer.pageSize": 5,
-                    "pageContainer.currentPageNo": 1,
+                    "pageContainer.pageSize": params.pageSize,
+                    "pageContainer.currentPageNo": params.pageNumber,
                     "hotel.hotelName":hotelName,
                     "hotel.hotelAddress":hotelAddress,
                     "hotelLowPrice":hotelLowPrice,

@@ -36,8 +36,7 @@ public class HotelController extends BaseController {
     }
 
     public String createVisitorHotel(){
-        //第二个参数为用户编号
-        hotelService.addVisitorHotel(hotel.getHotelId(),2);
+        hotelService.addVisitorHotel(hotel.getHotelId(),getCurrentVisitor().getVisitorId());
         jsonResult = "预定成功";
         return Action.SUCCESS;
     }
