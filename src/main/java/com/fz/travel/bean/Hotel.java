@@ -2,6 +2,7 @@ package com.fz.travel.bean;
 
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -23,7 +24,7 @@ public class Hotel implements Serializable {
 
     private String hotelAddress;
 
-    private Set<Visitor> visitorSet;
+    private Set<Visitor> visitorSet = new HashSet<Visitor>();
 
     public int getHotelId() {
         return hotelId;

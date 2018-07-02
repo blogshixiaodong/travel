@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="adminAccount" namespace="/adminAccount" extends="json-default, struts-default">
+        <action name="adminLoginCheck" class="com.fz.travel.controller.AdminAccountController" method="adminLoginCheck">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+        <action name="adminOutLogin" class="com.fz.travel.controller.AdminAccountController" method="adminOutLogin">
+            <result name="success" type="redirect">
+                <param name="location">../index.jsp</param>
+            </result>
+        </action>
+
+    </package>
+</struts>
