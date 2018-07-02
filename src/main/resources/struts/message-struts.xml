@@ -10,10 +10,10 @@
         <action name="createMessage" class="com.fz.travel.controller.MessageController" method="creatMessage">
             <result name="success" type="redirect">
                 <!--留言成功，进入留言界面-->
-                <param name="location">message.jsp</param>
+                <param name="location">../message.jsp</param>
             </result>
             <result name="error" type="redirect">
-                <param name="location">index.jsp</param>
+                <param name="location">../message.jsp</param>
             </result>
         </action>
 

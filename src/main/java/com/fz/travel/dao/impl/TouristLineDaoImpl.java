@@ -17,8 +17,8 @@ public class TouristLineDaoImpl extends AbstractBaseDao<TouristLine> implements 
     private PageContainer<TouristLine> pageContainer;
 
     @Override
-    public void insertTouristLine(TouristLine touristLine) {
-        this.save(touristLine);
+    public Integer insertTouristLine(TouristLine touristLine) {
+        return Integer.parseInt(this.save(touristLine).toString());
     }
 
     @Override

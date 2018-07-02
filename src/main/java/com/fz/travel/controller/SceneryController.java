@@ -49,6 +49,13 @@ public class SceneryController extends BaseController {
         return Action.SUCCESS;
     }
 
+    //根据景点名称查询景点
+    public String querySceneryBySceneryName() {
+        pageContainer = sceneryService.querySceneryBySceneryName(pageContainer, scenery.getSceneryName());
+        jsonResult = pageContainer.toJson("lineScenerySet");
+        return Action.SUCCESS;
+    }
+
     //查询所有景点信息
     public String queryAllScenery(){
         pageContainer = sceneryService.queryAllScenery(pageContainer);

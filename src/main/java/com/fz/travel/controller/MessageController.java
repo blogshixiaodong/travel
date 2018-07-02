@@ -1,11 +1,15 @@
 package com.fz.travel.controller;
 
 import com.fz.travel.bean.Message;
+import com.fz.travel.bean.Visitor;
 import com.fz.travel.service.MessageService;
 import com.opensymphony.xwork2.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.fz.travel.bean.PageContainer;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class MessageController extends BaseController {
@@ -20,8 +24,19 @@ public class MessageController extends BaseController {
 
     //添加留言
     public String creatMessage(){
-        messageService.addMessage(message);
-        return Action.SUCCESS;
+
+        Visitor visitor =  (Visitor) getSession().get("visitor");
+        Date date = new Date();
+
+        System.out.println(visitor);
+        if(visitor!=null){
+            message.setVisitorId(visitor.getVisitorId());
+            message.setMessageTime(date);
+            messageService.addMessage(message);
+            return  Action.SUCCESS;
+        }
+        else
+          return Action.ERROR;
     }
     //删除留言
     String deleteMessageByMessageId(){
@@ -33,6 +48,8 @@ public class MessageController extends BaseController {
     }
     //回复留言
     public String replyMessage(){
+        Date date = new Date();
+        message.setReplayTime(date);
        messageService.reply(message);
        return Action.SUCCESS;
     }
@@ -40,14 +57,13 @@ public class MessageController extends BaseController {
 
     public String  queryMessageByMessageInfo(){
         pageContainer = messageService.queryByMessageInfo(message.getMessageInfo(),pageContainer);
-        jsonResult = pageContainer.toJson("messageSet");
+        jsonResult = pageContainer.toJson("visitor");
         return Action.SUCCESS;
     }
     //显示所有留言
     public String queryAllMessage(){
         pageContainer = messageService.queryAllMessage(pageContainer);
-        jsonResult = pageContainer.toJson("messageSet");
-        System.out.println(pageContainer.getList());
+        jsonResult = pageContainer.toJson("visitor");
         return Action.SUCCESS;
     }
 

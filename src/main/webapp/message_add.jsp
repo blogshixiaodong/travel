@@ -27,10 +27,10 @@
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="introduce.jsp">福州介绍</a></li>
                         <li><a href="scenery.jsp">福州景点</a></li>
-                        <li><a href="#">旅游线路</a></li>
+                        <li><a href="touristline.jsp">旅游线路</a></li>
                         <li><a href="touristnote.jsp">旅游游记</a></li>
                         <li><a href="news.jsp">旅游新闻</a></li>
-                        <li><a href="#">周边酒店</a></li>
+                        <li><a href="hotel.jsp">周边酒店</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 留言
@@ -52,8 +52,8 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">游客登陆</a></li>
-                                <li><a href="#">管理员登陆</a></li>
+                                <li><a href="visitorLogin.jsp">游客登陆</a></li>
+                                <li><a href="adminLogin.jsp">管理员登陆</a></li>
                             </ul>
                         </li>
                         <li><a href="#">注册</a></li>
@@ -72,7 +72,7 @@
 
                         <form style="margin:0px" class="form-inline" action="message/createMessage.action" method="post">
                             留言：<br>
-                            <textarea name="news.newInfo" id="news.newsInfo" cols="100%" rows="5"></textarea><br>
+                            <textarea name="message.messageInfo" id="message.messageInfo" cols="100%" rows="5"></textarea><br>
                             <button id="submitCondition" type="submit" class="btn btn-default btn-sm">发表</button>
                         </form>
 

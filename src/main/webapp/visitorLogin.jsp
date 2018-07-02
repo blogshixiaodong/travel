@@ -38,7 +38,7 @@
               return;
             }
             alert("登录失败");
-            location.href = "./visitorLogin.jsp";
+            location.href = "visitorLogin.jsp";
           }
         });
         return false;

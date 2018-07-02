@@ -27,10 +27,11 @@
                         <ul class="nav navbar-nav navbar-left">
                             <li><a href="introduce.jsp">福州介绍</a></li>
                             <li><a href="scenery.jsp">福州景点</a></li>
-                            <li><a href="#">旅游线路</a></li>
+                            <li><a href="touristline.jsp">旅游线路</a></li>
                             <li><a href="touristnote.jsp">旅游游记</a></li>
                             <li><a href="news.jsp">旅游新闻</a></li>
-                            <li><a href="#">周边酒店</a></li>
+                            <li><a href="hotel.jsp">周边酒店</a></li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     留言
@@ -52,8 +53,8 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">游客登陆</a></li>
-                                    <li><a href="#">管理员登陆</a></li>
+                                    <li><a href="visitorLogin.jsp">游客登陆</a></li>
+                                    <li><a href="adminLogin.jsp">管理员登陆</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">注册</a></li>
@@ -71,14 +72,14 @@
                 <div class="panel-body">
                     <front style="float: right">
                         <front style="float: right">
-                            <form style="margin:0px" class="form-inline" action="DiscussList.jsp" method="get">
+                            <form style="margin:0px" class="form-inline">
                                 <div class="form-group">
                                     <div class="input-group input-group-sm">
                                         <span class="input-group-addon">名称</span>
-                                        <input type="text" class="form-control" name="search" value="" />
+                                        <input id="nameCondition" type="text" class="form-control" value="" />
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-default btn-sm">查找</button>
+                                <button id="submitCondition" type="button" class="btn btn-default btn-sm">查找</button>
                             </form>
                         </front>
                     </front>
@@ -86,7 +87,6 @@
                 <table id="scenerys" class="table table-striped table-hover"></table>
             </div>
         </div>
-
     </div>
 
     <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
@@ -95,47 +95,49 @@
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
     <script type="text/javascript" src="module/js/common/common.js"></script>
     <script type="text/javascript">
-
         //激活下拉列表
         $(".dropdown-toggle").dropdown();
-
+        var columns = [{
+            field: 'sceneryId',
+            title: '景点编号',
+            align: 'center',
+            valign: 'middle',
+        }, {
+            field: 'sceneryName',
+            title: '景点名称',
+            align: 'center',
+            valign: 'middle',
+            formatter: function(value, row, index) {
+                return '<a href="scenery/querySceneryBySceneryId.action?scenery.sceneryId=' + row.sceneryId + '">' + value + '</a>';
+            }
+        }, {
+            field: 'sceneryPrice',
+            title: '门票价格',
+            align: 'center',
+            valign: 'middle',
+        }, {
+            field: 'sceneryOpenTime',
+            title: '开放时间',
+            align: 'center',
+            valign: 'middle',
+            formatter: function(value, row, index) {
+                return jsonDateToString(value);
+            }
+        }];
+        var url = "scenery/queryAllScenery.action";
+        var queryParams = function(params) {
+            return {
+                "pageContainer.pageSize": params.pageSize,
+                "pageContainer.currentPageNo": params.pageNumber,
+            };
+        };
         $(function() {
-            initTable();
+
+            initTable($("#scenerys"), url, queryParams, columns);
 
         });
 
-        function initTable() {
-            $("#scenerys").bootstrapTable("destroy");
-            $("#scenerys").bootstrapTable({
-                url: "scenery/queryAllScenery.action",
-                method: "get",
-                cache: false, // 不缓存
-                striped: true, // 隔行加亮
-                height: 300,
-                sortable: true,
-                sortName: 'sceneryId', // 设置默认排序为 name
-                sortOrder: "asc",
-                uniqueId: "sceneryId", //每一行的唯一标识，一般为主键列
-                pagination: true, // 开启分页功能
-                pageNumber: 1,
-                pageSize: 3,    //每页的记录行数（*）
-                pageList: [5, 10, 15, 20],
-                paginationPreText: "上一页",
-                paginationNextText: "下一页",
-                sidePagination: "server",
-                clickToSelect: true, // 单击行即可以选中
-                search: false, // 开启搜索功能
-                showColumns: false, // 开启自定义列显示功能
-                showRefresh: false, // 开启刷新功能
-                queryParamsType: "undefined",
-                queryParams: function(params) {
-                    return {
-                        "pageContainer.pageSize": params.pageSize,
-                        "pageContainer.currentPageNo": params.pageNumber,
-                    };
-                },
-                //minimumCountColumns: 2, // 设置最少显示列个数
-
+<<<<<<< HEAD
                 columns: [{
                     field: 'sceneryId',
                     title: '景点编号',
@@ -172,10 +174,21 @@
                 },
                 onLoadError: function() {
                     alert("加载失败, 刷新重试.");
+=======
+        $("#submitCondition").click(function() {
+            var name = $("#nameCondition").val();
+            var queryParams = function(params) {
+                return {
+                    "pageContainer.pageSize": params.pageSize,
+                    "pageContainer.currentPageNo": params.pageNumber,
+                    "scenery.sceneryName": name
+>>>>>>> sxd/master
                 }
-            });
-        }
-
+            };
+            var url = "scenery/querySceneryBySceneryName.action"
+            initTable($("#scenerys"), url, queryParams, columns);
+            return false;
+        });
 
     </script>
 </body>

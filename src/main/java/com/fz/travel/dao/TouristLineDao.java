@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 public interface TouristLineDao extends PageDao<TouristLine> {
 
-    void insertTouristLine(TouristLine touristLine);
+    Integer insertTouristLine(TouristLine touristLine);
 
     void deleteTouristLine(TouristLine touristLine);
 

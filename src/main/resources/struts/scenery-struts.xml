@@ -42,6 +42,12 @@
             </result>
         </action>
 
+        <action name="querySceneryBySceneryName" class="com.fz.travel.controller.SceneryController" method="querySceneryBySceneryName">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
         <action name="queryAllScenery" class="com.fz.travel.controller.SceneryController" method="queryAllScenery">
             <result name="success" type="json">
                 <param name="root">jsonResult</param>

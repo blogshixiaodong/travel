@@ -50,8 +50,8 @@ public class SceneryDaoImpl extends AbstractBaseDao<Scenery> implements SceneryD
 
     @Override
     public PageContainer<Scenery> selectSceneryBySceneryName(String sceneryName) {
-        String hql = "FORM Scenery WHERE sceneryName like ?";
-        return this.list(hql,pageContainer,"%" + sceneryName + "%");
+        String hql = "FROM Scenery WHERE sceneryName like ?";
+        return this.list(hql, pageContainer,"%" + sceneryName + "%");
     }
 
     @Override
