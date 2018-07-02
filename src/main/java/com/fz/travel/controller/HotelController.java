@@ -43,7 +43,7 @@ public class HotelController extends BaseController {
 
     //删除酒店信息
     public String deleteHotelByHotelId(){
-        hotelService.deleteHotelByHotelId(hotel.getHotelId());
+        jsonResult = hotelService.deleteHotelByHotelId(hotel.getHotelId());
         return Action.SUCCESS;
     }
 

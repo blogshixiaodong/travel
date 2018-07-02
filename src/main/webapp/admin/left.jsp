@@ -45,9 +45,9 @@
 						<a><i class="fa fa-edit"></i>酒店信息
 						<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="#">添加酒店</a> </li>
-							<li><a href="#">修改酒店</a> </li>
-							<li><a href="#">删除酒店</a> </li>
+							<li><a href="create_hotel.jsp">添加酒店</a> </li>
+							<li><a href="update_hotel.jsp">修改酒店</a> </li>
+							<li><a href="delete_hotel.jsp">删除酒店</a> </li>
 						</ul>
 					</li>
 
