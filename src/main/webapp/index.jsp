@@ -29,7 +29,7 @@
                             <li><a href="#">旅游线路</a></li>
                             <li><a href="touristnote.jsp">旅游游记</a></li>
                             <li><a href="#">旅游新闻</a></li>
-                            <li><a href="#">周边酒店</a></li>
+                            <li><a href="hotel.jsp">周边酒店</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     留言
