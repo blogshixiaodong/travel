@@ -86,6 +86,10 @@ public class PageContainer<T> implements Serializable {
     public class PageContainerJson {
         protected Integer total;
         protected Object rows;
+        protected Integer pageSize;
+        protected Integer recordCount;
+        protected Integer pageCount;
+        protected Integer currentPageNo;
 
         public Integer getTotal() {
             return total;
@@ -102,6 +106,38 @@ public class PageContainer<T> implements Serializable {
         public void setRows(Object rows) {
             this.rows = rows;
         }
+
+        public Integer getPageSize() {
+            return pageSize;
+        }
+
+        public void setPageSize(Integer pageSize) {
+            this.pageSize = pageSize;
+        }
+
+        public Integer getRecordCount() {
+            return recordCount;
+        }
+
+        public void setRecordCount(Integer recordCount) {
+            this.recordCount = recordCount;
+        }
+
+        public Integer getPageCount() {
+            return pageCount;
+        }
+
+        public void setPageCount(Integer pageCount) {
+            this.pageCount = pageCount;
+        }
+
+        public Integer getCurrentPageNo() {
+            return currentPageNo;
+        }
+
+        public void setCurrentPageNo(Integer currentPageNo) {
+            this.currentPageNo = currentPageNo;
+        }
     }
 
     public String toJson(String... properties) {
@@ -109,6 +145,10 @@ public class PageContainer<T> implements Serializable {
         PageContainerJson pageContainerJson = new PageContainerJson();
         pageContainerJson.setTotal(this.recordCount);
         pageContainerJson.setRows(this.list);
+        pageContainerJson.setCurrentPageNo(this.currentPageNo);
+        pageContainerJson.setPageCount(this.pageCount);
+        pageContainerJson.setPageSize(this.pageSize);
+        pageContainerJson.setRecordCount(this.recordCount);
         return JSONObject.fromObject(pageContainerJson, jsonConfig).toString();
     }
 }

@@ -49,6 +49,6 @@ public interface SceneryService {
     * @param :  [pageContainer, hotelName]
     * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Scenery>
     */
-    PageContainer<Scenery> querySceneryBySceneryName(PageContainer<Scenery> pageContainer,String hotelName);
+    PageContainer<Scenery> querySceneryBySceneryName(PageContainer<Scenery> pageContainer,String sceneryName);
 
 }
