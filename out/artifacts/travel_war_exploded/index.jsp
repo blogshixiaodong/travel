@@ -28,8 +28,10 @@
                             <li><a href="scenery.jsp">福州景点</a></li>
                             <li><a href="#">旅游线路</a></li>
                             <li><a href="touristnote.jsp">旅游游记</a></li>
+
                             <li><a href="news.jsp">旅游新闻</a></li>
-                            <li><a href="#">周边酒店</a></li>
+                            <li><a href="hotel.jsp">周边酒店</a></li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     留言
@@ -37,7 +39,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="message_add.jsp">我要留言</a></li>
-                                    <li><a href="#">留言查看</a></li>
+                                    <li><a href="message.jsp">留言查看</a></li>
                                 </ul>
                             </li>
 

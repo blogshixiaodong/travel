@@ -74,7 +74,7 @@
                         <form style="margin:0px" class="form-inline" >
                             <div class="form-group">
                                 <div class="input-group input-group-sm">
-                                    <span class="input-group-addon">内容关键字</span>
+                                    <span class="input-group-addon">留言内容</span>
                                     <input id="headCondition" type="text" class="form-control" name="search" value="" />
                                 </div>
                             </div>
@@ -124,27 +124,41 @@
                 showRefresh: false, // 开启刷新功能
                 queryParamsType: "undefined",
                 queryParams: queryParams, //查询参数
-                columns: [ {
+                columns: [{
                     field: 'messageInfo',
                     title: '留言内容',
                     align: 'center',
                     valign: 'middle',
-
-                }, {
-                    field: 'replayTime',
-                    title: '回复时间',
+                },  {
+                    field: 'messageTime',
+                    title: '留言时间',
                     align: 'center',
                     valign: 'middle',
                     formatter: function(value, row, index) {
                         return jsonDateToString(value);
                     },
-                }, {
+                },{
                     field: 'replayInfo',
                     title: '回复内容',
                     align: 'center',
                     valign: 'middle',
-
-
+                    formatter:function(value,row,index){
+                        if(value==null||value=="")
+                            return "暂无回复信息！";
+                        else
+                            return value;
+                    },
+                },  {
+                    field: 'replayTime',
+                    title: '回复时间',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function(value, row, index) {
+                        if(value==null||value=="")
+                            return "暂无回复信息！";
+                        else
+                        return jsonDateToString(value);
+                    },
                 }],
                 responseHandler: function (e) {
                     var json = JSON.parse(e);

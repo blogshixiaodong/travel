@@ -11,7 +11,7 @@ public class VisitorAccount implements Serializable {
 
     private Integer accountId;
 
-    private Integer password;
+    private String password;
 
     private Visitor visitor;
     public Integer getAccountId() {
@@ -22,11 +22,11 @@ public class VisitorAccount implements Serializable {
         this.accountId = accountId;
     }
 
-    public Integer getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Integer password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

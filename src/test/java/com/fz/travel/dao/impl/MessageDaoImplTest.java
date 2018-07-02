@@ -74,10 +74,8 @@ public class MessageDaoImplTest {
     @Test
     public void selectByTime() throws Exception {
         messageDao.setPageContainer(pageContainer);
-        String time = "2018-06-30";
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date strtodate = formatter.parse(time);
-        pageContainer =  messageDao.selectByTime(new Date());
+
+        pageContainer =  messageDao.selectByMessageInfo("123");
         System.out.println(pageContainer.getList());
     }
 

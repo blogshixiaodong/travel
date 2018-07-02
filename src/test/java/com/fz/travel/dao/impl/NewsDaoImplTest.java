@@ -50,7 +50,7 @@ public class NewsDaoImplTest {
     @Test
     public void selectByHeadLine() throws Exception {
         newsDao.setPageContainer(pageContainer);
-        String headLine="123123";
+        String headLine="123";
         pageContainer =  newsDao.selectByHeadLine(headLine);
         System.out.println(pageContainer.getList());
 

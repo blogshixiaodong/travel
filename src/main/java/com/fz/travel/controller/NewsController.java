@@ -47,6 +47,7 @@ public class NewsController extends BaseController {
     //按新闻ID查询
     public String queryNewsByNewsId(){
         News news1 = newsService.queryByNewsId(news.getNewsId());
+        putSessionAttribute("news",news1);
         return  Action.SUCCESS;
     }
     //显示所有新闻

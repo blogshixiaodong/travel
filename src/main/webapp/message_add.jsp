@@ -70,7 +70,7 @@
             </div>
             <div class="panel-body">
 
-                        <form style="margin:0px" class="form-inline" action="newsCreat.action" method="post">
+                        <form style="margin:0px" class="form-inline" action="message/createMessage.action" method="post">
                             留言：<br>
                             <textarea name="news.newInfo" id="news.newsInfo" cols="100%" rows="5"></textarea><br>
                             <button id="submitCondition" type="submit" class="btn btn-default btn-sm">发表</button>

@@ -10,7 +10,7 @@
         <action name="createMessage" class="com.fz.travel.controller.MessageController" method="creatMessage">
             <result name="success" type="redirect">
                 <!--留言成功，进入留言界面-->
-                <param name="location">demo.jsp</param>
+                <param name="location">message.jsp</param>
             </result>
             <result name="error" type="redirect">
                 <param name="location">index.jsp</param>
@@ -36,8 +36,8 @@
             </result>
         </action>
 
-        <action name="queryMessageByMessageTime" class="com.fz.travel.controller.MessageController" method="queryMessageByMessageTime">
-            <result name="success" type="redirect">
+        <action name="queryMessageByMessageInfo" class="com.fz.travel.controller.MessageController" method="queryMessageByMessageInfo">
+            <result name="success" type="json">
                 <!-- 按时间查询，跳到显示界面-->
                 <param name="root">jsonResult</param>
             </result>

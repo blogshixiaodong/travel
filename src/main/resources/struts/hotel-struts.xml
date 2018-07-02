@@ -16,6 +16,12 @@
             </result>
         </action>
 
+        <action name="createVisitorHotel" class="com.fz.travel.controller.HotelController" method="createVisitorHotel">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
         <action name="deleteHotelByHotelId" class="com.fz.travel.controller.HotelController" method="deleteHotelByHotelId">
             <result name="success" type="redirect">
                 <!--删除成功,进入所有酒店页面  -->
@@ -37,8 +43,8 @@
         </action>
 
         <action name="queryHotelByHotelId" class="com.fz.travel.controller.HotelController" method="queryHotelByHotelId">
-            <result name="success" type="json">
-                <param name="root">jsonResult</param>
+            <result name="success" type="redirect">
+                <param name="location">../hotel_detail.jsp</param>
             </result>
         </action>
 

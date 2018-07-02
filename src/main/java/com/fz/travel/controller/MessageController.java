@@ -46,8 +46,8 @@ public class MessageController extends BaseController {
     //显示所有留言
     public String queryAllMessage(){
         pageContainer = messageService.queryAllMessage(pageContainer);
+        jsonResult = pageContainer.toJson("messageSet");
         System.out.println(pageContainer.getList());
-
         return Action.SUCCESS;
     }
 

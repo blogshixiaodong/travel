@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
     <title>FuZhou Scenery</title>
@@ -78,12 +79,12 @@
     <div class="row">
          <div class="panel panel-warning">
              <div class="panel-heading">
-            新闻标题： <s:property value="#session.news.newsId" />
+            新闻标题： <s:property value="#session.news.newsHeadLine" />
              </div>
              <div class="panel-heading">
                  新闻类型： <s:property value="#session.news.newsType" />
                  &nbsp&nbsp&nbsp
-                 发表时间：<s:property value="#session.news.newsDate" />
+                 发表时间：<s:date name="#session.news.newsDate" format="yyyy-MM-dd"/>
              </div>
              <div class="panel-heading">
                  新闻内容： <s:property value="#session.news.newsContent" />

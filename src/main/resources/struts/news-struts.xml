@@ -30,13 +30,11 @@
 
 
         <action name="queryNewsByNewsId" class="com.fz.travel.controller.NewsController" method="queryNewsByNewsId">
-            <result name="success" type="redirect">
-                <!-- 点击新闻查看具体新闻内容-->
-                <param name="location">../news_detail.jsp</param>
+            <result name="success" type="redirect">../news_detail.jsp
             </result>
         </action>
 
-        <action name="queryNewsByNewsHeadLine" class="com.fz.travel.controller.NewsController" method="queryNewsByHeadLine">
+        <action name="queryNewsByNewsHeadLine" class="com.fz.travel.controller.NewsController" method="queryNewsByNewsHeadLine">
             <result name="success" type="json">
                 <!-- 按标题查询，跳到显示界面-->
                 <param name="root">jsonResult</param>
