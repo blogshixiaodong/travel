@@ -2,7 +2,9 @@ package com.fz.travel.service.impl;
 
 import com.fz.travel.bean.Hotel;
 import com.fz.travel.bean.PageContainer;
+import com.fz.travel.bean.Visitor;
 import com.fz.travel.dao.HotelDao;
+import com.fz.travel.dao.VisitorDao;
 import com.fz.travel.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,21 +16,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class HotelServiceImpl implements HotelService {
 
-    final Integer pageSize = 5;
     @Autowired
     private HotelDao hotelDaoImpl;
 
-    public HotelDao getHotelDaoImpl() {
-        return hotelDaoImpl;
-    }
-
-    public void setHotelDaoImpl(HotelDao hotelDaoImpl) {
-        this.hotelDaoImpl = hotelDaoImpl;
-    }
+    @Autowired
+    private VisitorDao visitorDaoImpl;
 
     @Override
     public Long addHotel(Hotel hotel) {
         return hotelDaoImpl.insertHotel(hotel);
+    }
+
+    @Override
+    public void addVisitorHotel(Integer hotelId, Integer visitorId) {
+        Hotel hotel = hotelDaoImpl.selectHotelByHotelId(hotelId);
+        Visitor visitor = visitorDaoImpl.selectVistorByVisitorId(visitorId);
+        hotel.getVisitorSet().add(visitor);
+        hotelDaoImpl.updateHotel(hotel);
     }
 
     @Override
@@ -38,7 +42,7 @@ public class HotelServiceImpl implements HotelService {
             return "酒店不存在";
         }
         //查询一下预定表中是否有存在预定
-        if(hotel.getVisitorSet() == null || hotel.getVisitorSet().size() == 0){
+        if(hotel.getVisitorSet() == null || hotel.getVisitorSet().isEmpty()){
             hotelDaoImpl.deleteHotel(hotel);
             return "删除成功";
         }else{
@@ -64,7 +68,9 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public PageContainer<Hotel> queryHotelByCondition(PageContainer<Hotel> pageContainer, Double low, Double high, String hotelAddress, String hotelName) {
-        pageContainer.setPageSize(pageSize);
+        if(low == null && high == null && "".equals(hotelAddress) && "".equals(hotelName) ){
+            return null;
+        }
         hotelDaoImpl.setPageContainer(pageContainer);
         return hotelDaoImpl.selectHotelByConnection(low,high,hotelAddress,hotelName);
     }

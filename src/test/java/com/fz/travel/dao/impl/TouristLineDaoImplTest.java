@@ -40,17 +40,23 @@ public class TouristLineDaoImplTest {
         pageContainer.setPageSize(5);
     }
 
-    public LineScenery createLineScenery(Scenery scenery,Integer order) {
+
+    public LineScenery createLineScenery(Integer sceneryId) {
         LineScenery lineScenery = new LineScenery();
+
+
+        Scenery scenery = new Scenery();
+        scenery.setSceneryId(sceneryId);
         lineScenery.setScenery(scenery);
-        lineScenery.setOrder(order);
-        lineScenery.setTouristLine(touristLine);
+        lineScenery.setOrder(sceneryId);
+
         return lineScenery;
     }
 
 
     @Test
     public void insertTouristLine() throws Exception {
+
         //TouristLine touristLine = new TouristLine();
         touristLine.setTouristLineId(2);
 
@@ -66,13 +72,12 @@ public class TouristLineDaoImplTest {
         sceneryList.add(scenery2);
         sceneryList.add(scenery3);
         int i = 0;
-        for(Scenery scenery : sceneryList){
-            lineScenerySet.add(createLineScenery(scenery,i++));
-        }
 
         touristLine.setLineScenerySet(lineScenerySet);
         touristLine.setTouristLinePrice(999.9);
         touristLineDao.insertTouristLine(touristLine);
+       // touristLineDao.insertTouristLine(touristLine);
+
     }
 
     @Test

@@ -2,10 +2,10 @@ package com.fz.travel.dao.impl;
 
 import com.fz.travel.bean.Hotel;
 import com.fz.travel.bean.PageContainer;
+import com.fz.travel.bean.Visitor;
 import com.fz.travel.dao.HotelDao;
 import com.fz.travel.utils.SplitHqlUtils;
 import org.springframework.stereotype.Repository;
-
 
 /**
  * @author: jiangjaimin
@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class HotelDaoImpl extends AbstractBaseDao<Hotel> implements HotelDao {
+
     PageContainer<Hotel> pageContainer;
+
     @Override
     public Long insertHotel(Hotel hotel) {
         return ((Integer)this.save(hotel)).longValue();

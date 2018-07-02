@@ -43,7 +43,6 @@ public class SceneryServiceImpl implements SceneryService {
 
     @Override
     public PageContainer<Scenery> queryAllScenery(PageContainer<Scenery> pageContainer) {
-        pageContainer.setPageSize(5);
         sceneryDaoImpl.setPageContainer(pageContainer);
         return sceneryDaoImpl.selectAllScenery();
     }
@@ -55,7 +54,6 @@ public class SceneryServiceImpl implements SceneryService {
 
     @Override
     public PageContainer<Scenery> querySceneryBySceneryName(PageContainer<Scenery> pageContainer,String sceneryName) {
-        pageContainer.setPageSize(5);
         sceneryDaoImpl.setPageContainer(pageContainer);
         return sceneryDaoImpl.selectSceneryBySceneryName(sceneryName);
     }

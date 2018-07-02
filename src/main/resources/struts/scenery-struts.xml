@@ -36,19 +36,13 @@
             </result>
         </action>
 
-        <action name="queryHotelBySceneryId" class="com.fz.travel.controller.SceneryController" method="querySceneryBySceneryId">
-            <result name="success" type="json">
-                <param name="root">jsonResult</param>
+        <action name="querySceneryBySceneryId" class="com.fz.travel.controller.SceneryController" method="querySceneryBySceneryId">
+            <result name="success" type="redirect">
+                <param name="location">../scenery_detail.jsp</param>
             </result>
         </action>
 
         <action name="queryAllScenery" class="com.fz.travel.controller.SceneryController" method="queryAllScenery">
-            <result name="success" type="json">
-                <param name="root">jsonResult</param>
-            </result>
-        </action>
-
-        <action name="querySceneryByCondition" class="com.fz.travel.controller.SceneryController" method="queryHotelByCondition">
             <result name="success" type="json">
                 <param name="root">jsonResult</param>
             </result>

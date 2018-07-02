@@ -16,6 +16,13 @@ public interface HotelService {
     Long addHotel(Hotel hotel);
 
     /*
+    * @Description:添加酒店预定信息(中间表)
+    * @param :  [hotelId, visitorId]
+    * @return : void
+    */
+    void addVisitorHotel(Integer hotelId,Integer visitorId);
+
+    /*
     * @Description:根据酒店编号删除酒店信息
     * @param :  [hotelId]
     * @return : java.lang.String
@@ -49,4 +56,6 @@ public interface HotelService {
     * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Hotel>
     */
     PageContainer<Hotel> queryHotelByCondition(PageContainer<Hotel> pageContainer,Double low,Double high,String hotelAddress,String hotelName);
+
+
 }

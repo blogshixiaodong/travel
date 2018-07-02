@@ -1,18 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: 15129
-  Date: 2018/6/30
-  Time: 21:24
+  Date: 2018/7/1
+  Time: 14:24
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>FuZhou Scenery</title>
+    <title>旅游游记</title>
     <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="vendors/bootstrap-table/css/bootstrap-table.min.css" />
     <link rel="stylesheet" href="module/css/common.css" />
-    <link rel="stylesheet" href="module/css/index.css" />
 </head>
 <body>
     <div class="container">
@@ -64,9 +63,9 @@
         </div>
 
         <div class="row">
-            <div class="panel panel-primary">
+            <div class="panel panel-info">
                 <div class="panel-heading">
-                    景点信息
+                    游记列表
                 </div>
                 <div class="panel-body">
                     <front style="float: right">
@@ -83,8 +82,9 @@
                         </front>
                     </front>
                 </div>
-                <table id="scenerys" class="table table-striped table-hover"></table>
+                <table id="touristnote" class="table table-striped table-hover"></table>
             </div>
+
         </div>
 
     </div>
@@ -95,13 +95,11 @@
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
     <script type="text/javascript" src="module/js/common/common.js"></script>
     <script type="text/javascript">
-
         //激活下拉列表
         $(".dropdown-toggle").dropdown();
 
         $(function() {
             initTable();
-
         });
 
         function initTable() {

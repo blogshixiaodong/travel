@@ -55,7 +55,7 @@ public class TouristNoteDaoImplTest {
 
         touristNote.setTouristNoteId(2);
 
-        touristNoteDao.deleteTouristNote(touristNote);
+//        touristNoteDao.deleteTouristNote(touristNote);
 
     }
 

@@ -5,7 +5,6 @@ import com.fz.travel.bean.Scenery;
 import com.fz.travel.service.SceneryService;
 
 import com.opensymphony.xwork2.Action;
-import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +46,6 @@ public class SceneryController extends BaseController {
     //根据景点编号查询景点信息
     public String querySceneryBySceneryId(){
         scenery = sceneryService.querySceneryBySceneryId(scenery.getSceneryId());
-        jsonResult = JSONObject.fromObject(scenery).toString();
         return Action.SUCCESS;
     }
 
@@ -81,5 +79,4 @@ public class SceneryController extends BaseController {
     public void setPageContainer(PageContainer<Scenery> pageContainer) {
         this.pageContainer = pageContainer;
     }
-
 }
