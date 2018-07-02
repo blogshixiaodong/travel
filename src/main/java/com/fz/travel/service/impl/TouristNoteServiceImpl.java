@@ -7,6 +7,7 @@ import com.fz.travel.service.TouristNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -22,6 +23,17 @@ public class TouristNoteServiceImpl implements TouristNoteService {
     @Override
     public void saveTouristNote(TouristNote touristNote) {
         touristNoteDao.insertTouristNote(touristNote);
+    }
+
+    @Override
+    public TouristNote queryTouristNoteById(Serializable touristNoteId) {
+        return touristNoteDao.selectTouristNoteById(touristNoteId);
+    }
+
+    @Override
+    public PageContainer<TouristNote> queryTouristNoteList(PageContainer<TouristNote> pageContainer) {
+        touristNoteDao.setPageContainer(pageContainer);
+        return this.touristNoteDao.selectTouristNoteList();
     }
 
     @Override

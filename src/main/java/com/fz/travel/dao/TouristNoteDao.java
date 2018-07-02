@@ -3,6 +3,8 @@ package com.fz.travel.dao;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.TouristNote;
 
+import javax.security.auth.callback.TextOutputCallback;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +19,10 @@ public interface TouristNoteDao extends PageDao<TouristNote> {
     void deleteTouristNote(TouristNote touristNote);
 
     void updateTouristNote(TouristNote touristNote);
+
+    TouristNote selectTouristNoteById(Serializable touristNoteId);
+
+    PageContainer<TouristNote> selectTouristNoteList();
 
     PageContainer<TouristNote> selectTouristNoteListByHeadLine(String headLine);
 
