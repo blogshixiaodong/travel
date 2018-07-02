@@ -37,7 +37,9 @@ public class NewsController extends BaseController {
     }
     //按新闻标题
     public String queryNewsByNewsHeadLine(){
+        System.out.println(news.getNewsHeadLine());
         pageContainer = newsService.queryByHeadLine(news.getNewsHeadLine(),pageContainer);
+        System.out.println(pageContainer.getList());
         jsonResult = pageContainer.toJson("newsSet");
         return Action.SUCCESS;
     }
@@ -45,10 +47,11 @@ public class NewsController extends BaseController {
     //按新闻ID查询
     public String queryNewsByNewsId(){
         News news1 = newsService.queryByNewsId(news.getNewsId());
-         return Action.SUCCESS;
+        return  Action.SUCCESS;
     }
     //显示所有新闻
     public String queryAllNews(){
+
         pageContainer = newsService.queryAllNews(pageContainer);
         jsonResult = pageContainer.toJson("newsSet");
         return Action.SUCCESS;

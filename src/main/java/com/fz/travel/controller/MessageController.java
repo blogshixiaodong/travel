@@ -37,15 +37,17 @@ public class MessageController extends BaseController {
        return Action.SUCCESS;
     }
     //按留言时间查询留言
-    public String  queryMessageByMessageTime(){
-        pageContainer = messageService.queryByMessageTime(message.getMessageTime(),pageContainer);
+
+    public String  queryMessageByMessageInfo(){
+        pageContainer = messageService.queryByMessageInfo(message.getMessageInfo(),pageContainer);
         jsonResult = pageContainer.toJson("messageSet");
         return Action.SUCCESS;
     }
     //显示所有留言
-    public String queryAllScenery(){
+    public String queryAllMessage(){
         pageContainer = messageService.queryAllMessage(pageContainer);
-        jsonResult = pageContainer.toJson("messageSet");
+        System.out.println(pageContainer.getList());
+
         return Action.SUCCESS;
     }
 

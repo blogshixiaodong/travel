@@ -39,9 +39,9 @@ public class MessageDaoImpl extends AbstractBaseDao<Message> implements MessageD
     }
 
     @Override
-    public PageContainer<Message> selectByTime(Date time) {
-        String hql = "FROM Message WHERE messageTime = STR_TO_DATE(?,'%Y-%m-%d')";
-        return this.list(hql,pageContainer,time);
+    public PageContainer<Message> selectByMessageInfo(String messageInfo) {
+        String hql = "FROM Message WHERE messageInfo LIKE ?";
+        return this.list(hql, pageContainer, "%" + messageInfo + "%");
     }
 
     @Override

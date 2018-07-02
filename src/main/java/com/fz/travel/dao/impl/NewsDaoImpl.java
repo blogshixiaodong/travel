@@ -34,7 +34,7 @@ public class NewsDaoImpl extends AbstractBaseDao<News> implements NewsDao{
 
     @Override
     public PageContainer<News> selectByHeadLine(String headLine){
-        String hql = "FROM News where newsHeadLine like ?";
+        String hql = "FROM News WHERE newsHeadLine LIKE ?";
         return this.list(hql, pageContainer, "%" + headLine + "%");
     }
 

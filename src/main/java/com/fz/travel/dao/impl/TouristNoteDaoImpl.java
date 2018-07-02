@@ -5,6 +5,7 @@ import com.fz.travel.bean.TouristNote;
 import com.fz.travel.dao.TouristNoteDao;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -29,6 +30,17 @@ public class TouristNoteDaoImpl extends AbstractBaseDao<TouristNote> implements 
     @Override
     public void updateTouristNote(TouristNote touristNote) {
         this.update(touristNote);
+    }
+
+    @Override
+    public TouristNote selectTouristNoteById(Serializable touristNoteId) {
+        return this.get(touristNoteId);
+    }
+
+    @Override
+    public PageContainer<TouristNote> selectTouristNoteList() {
+        String hql = "FROM TouristNote";
+        return this.list(hql, pageContainer);
     }
 
     @Override

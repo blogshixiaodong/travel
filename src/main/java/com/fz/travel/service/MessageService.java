@@ -15,5 +15,5 @@ public interface MessageService {
   //查询所有留言
     public PageContainer<Message> queryAllMessage(PageContainer<Message> pageContainer);
   //按时间查询留言
-    public PageContainer<Message> queryByMessageTime(Date time, PageContainer<Message> pageContainer);
+    public PageContainer<Message> queryByMessageInfo(String messageInfo, PageContainer<Message> pageContainer);
 }

@@ -37,8 +37,8 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">我要留言</a></li>
-                                <li><a href="#">留言查看</a></li>
+                                <li><a href="message_add.jsp">我要留言</a></li>
+                                <li><a href="message.jsp">留言查看</a></li>
                             </ul>
                         </li>
 
@@ -71,14 +71,14 @@
             <div class="panel-body">
                 <front style="float: right">
                     <front style="float: right">
-                        <form style="margin:0px" class="form-inline" action="DiscussList.jsp" method="get">
+                        <form style="margin:0px" class="form-inline" >
                             <div class="form-group">
                                 <div class="input-group input-group-sm">
                                     <span class="input-group-addon">新闻标题</span>
-                                    <input type="text" class="form-control" name="search" value="" />
+                                    <input id="headCondition" type="text" class="form-control" name="search" value="" />
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-default btn-sm">查找</button>
+                            <button id="submitCondition" type="submit" class="btn btn-default btn-sm">查找</button>
                         </form>
                     </front>
                 </front>
@@ -97,89 +97,112 @@
 <script type="text/javascript">
     //激活下拉列表
     $(".dropdown-toggle").dropdown();
-    $(function() {
-        $.ajax({
-            url: "news/queryAllNews.action",
-            type: "post",
-            data: {
-                "pageContainer.currentPageNo": 1,
-                "pageContainer.pageSize": 5
-            },
-            dataType: "json",
-            success: function(responseText) {
-                var json = JSON.parse(responseText);
-                createNewsTable(json);
-            }
-        });
 
-    });
-
-    function createNewsTable(json) {
-        var tbody = $("#news tbody");
-        tbody.html("");
-        //创建表格
-
-        for(var i = 0; i < json.rows.length; i++) {
-            var news = json.rows[i];
-            var tr = $("<tr></tr>");
-            var newsId = $("<td></td>").html(news.newsId);
-            var newsType = $("<td></td>").html(news.newsType);
-            var newsDate = $("<td></td>").html(jsonDateToString(news.newsDate));
-            var newsHeadLine = $("<td></td>").html(news.newsHeadLine);
-            tr.append(newsId);
-            tr.append(newsType);
-            tr.append(newsDate);
-            tr.append(newsHeadLine);
-            tbody.append(tr);
+    var NewsTable = {
+        init: function(url, queryParams) {
+            $("#news").bootstrapTable("destroy");
+            $("#news").bootstrapTable({
+                url: url,
+                method: "get",
+                cache: false, // 不缓存
+                striped: true, // 隔行加亮
+                height: 300,
+                sortable: true,
+                sortName: 'newsId', // 设置默认排序为 name
+                sortOrder: "asc",
+                uniqueId: "newsId", //每一行的唯一标识，一般为主键列
+                pagination: true, // 开启分页功能
+                pageNumber: 1,
+                pageSize: 3,    //每页的记录行数（*）
+                pageList: [5, 10, 15, 20],
+                paginationPreText: "上一页",
+                paginationNextText: "下一页",
+                sidePagination: "server",
+                clickToSelect: true, // 单击行即可以选中
+                search: false, // 开启搜索功能
+                showColumns: false, // 开启自定义列显示功能
+                showRefresh: false, // 开启刷新功能
+                queryParamsType: "undefined",
+                queryParams: queryParams, //查询参数
+                columns: [{
+                    field: 'newsType',
+                    title: '新闻类型',
+                    align: 'center',
+                    valign: 'middle',
+                }, {
+                    field: 'newsHeadLine',
+                    title: '新闻标题',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function(value, row, index) {
+                        return '<a href="news/queryNewsByNewsId.action?news.newsId=' + row.newsId + '">' + value + '</a>';
+                    },
+                }, {
+                    field: 'newsDate',
+                    title: '发表时间',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function(value, row, index) {
+                        return jsonDateToString(value);
+                    },
+                }],
+                responseHandler: function (e) {
+                    var json = JSON.parse(e);
+                    return json;
+                },
+                onLoadSuccess: function() {
+                    console.log("加载成功.");
+                },
+                onLoadError: function() {
+                    alert("加载失败, 刷新重试.");
+                }
+            });
         }
-        //创建按钮组
-        var btnGroup = $("#btnGroup");
-        createBtnGroup(btnGroup, json);
-    }
+    };
 
-    $("#btnGroup").on("click", ".btn", function() {
-        var pageNo = $(this).attr("pageNo");
-        $.ajax({
-            url: "news/queryAllNews.action",
-            type: "post",
-            data: {
-                "pageContainer.currentPageNo": pageNo,
-                "pageContainer.pageSize": 5
-            },
-            dataType: "json",
-            success: function(responseText) {
-                var json = JSON.parse(responseText);
-                createNewsTable(json);
-            }
+    $(function() {
+        NewsTable.init("news/queryAllNews.action", function(params) {
+            return {
+                "pageContainer.pageSize": params.pageSize,
+                "pageContainer.currentPageNo": params.pageNumber,
+            };
         });
     });
 
     $("#submitCondition").click(function() {
-        $("#btnGroup").html("");
-        $("#news tbody").html("");
         var head = $("#headCondition").val();
-        $.ajax({
-            url: "news/queryNewsByNewsHeadLine.action",
-            type: "post",
-            data: {
-                "pageContainer.currentPageNo": 1,
+
+        var urls = "news/queryNewsByNewsHeadLine.action";
+//            TouristNoteTable.init(urls, function(params) {
+//                return {
+//                    "pageContainer.pageSize": params.pageSize,
+//                    "pageContainer.currentPageNo": params.pageNumber,
+//                    "touristNote.touristNoteHeadLine": head
+//                }
+//            });
+        $("#news").bootstrapTable("destroy");
+        var opt = {
+            url: urls,
+            silent: true,
+            query: {
                 "pageContainer.pageSize": 5,
+                "pageContainer.currentPageNo": 1,
                 "news.newsHeadLine": head
-            },
-            dataType: "json",
-            success: function(responseText) {
-                var json = JSON.parse(responseText);
-                console.log(json);
-                createNewsTable(json);
-            },
-            error: function () {
-                alert("error");
             }
+        };
+        // $("#touristnote").bootstrapTable("refresh", opt);
+
+        NewsTable.init(urls, function(params) {
+            return {
+                "pageContainer.pageSize": params.pageSize,
+                "pageContainer.currentPageNo": params.pageNumber,
+                "news.newsHeadLine": head
+            };
         });
-    })
+        return false;
+    });
 
 </script>
-
 
 </body>
 </html>

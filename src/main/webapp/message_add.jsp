@@ -37,8 +37,8 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">我要留言</a></li>
-                                <li><a href="#">留言查看</a></li>
+                                <li><a href="message_add.jsp">我要留言</a></li>
+                                <li><a href="message.jsp">留言查看</a></li>
                             </ul>
                         </li>
 
@@ -52,7 +52,7 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="message_add.jsp">游客登陆</a></li>
+                                <li><a href="#">游客登陆</a></li>
                                 <li><a href="#">管理员登陆</a></li>
                             </ul>
                         </li>
@@ -62,6 +62,31 @@
             </div>
         </nav>
     </div>
+
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                旅游新闻
+            </div>
+            <div class="panel-body">
+
+                        <form style="margin:0px" class="form-inline" action="newsCreat.action" method="post">
+                            留言：<br>
+                            <textarea name="news.newInfo" id="news.newsInfo" cols="100%" rows="5"></textarea><br>
+                            <button id="submitCondition" type="submit" class="btn btn-default btn-sm">发表</button>
+                        </form>
+
+            </div>
+            <table id="message" class="table table-striped table-hover"></table>
+        </div>
+    </div>
+
 </div>
+
+<script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="module/js/common/common.js"></script>
 </body>
 </html>

@@ -5,10 +5,12 @@ import com.fz.travel.bean.PageContainer;
 import com.fz.travel.dao.NewsDao;
 import com.fz.travel.dao.impl.NewsDaoImpl;
 import com.fz.travel.service.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class NewsServiceImpl implements NewsService {
+    @Autowired
     private NewsDao newsDao;
     @Override
     public void addNews(News news) {

@@ -37,8 +37,8 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">我要留言</a></li>
-                                <li><a href="#">留言查看</a></li>
+                                <li><a href="message_add.jsp">我要留言</a></li>
+                                <li><a href="message.jsp">留言查看</a></li>
                             </ul>
                         </li>
 
@@ -52,7 +52,7 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="message_add.jsp">游客登陆</a></li>
+                                <li><a href="#">游客登陆</a></li>
                                 <li><a href="#">管理员登陆</a></li>
                             </ul>
                         </li>
@@ -66,19 +66,19 @@
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                景点信息
+                旅游新闻
             </div>
             <div class="panel-body">
                 <front style="float: right">
                     <front style="float: right">
-                        <form style="margin:0px" class="form-inline" action="DiscussList.jsp" method="get">
+                        <form style="margin:0px" class="form-inline" >
                             <div class="form-group">
                                 <div class="input-group input-group-sm">
-                                    <span class="input-group-addon">名称</span>
-                                    <input type="text" class="form-control" name="search" value="" />
+                                    <span class="input-group-addon">内容关键字</span>
+                                    <input id="headCondition" type="text" class="form-control" name="search" value="" />
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-default btn-sm">查找</button>
+                            <button id="submitCondition" type="submit" class="btn btn-default btn-sm">查找</button>
                         </form>
                     </front>
                 </front>
@@ -95,88 +95,114 @@
 <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript" src="module/js/common/common.js"></script>
 <script type="text/javascript">
-        //激活下拉列表
-        $(".dropdown-toggle").dropdown();
-    $(function() {
-        $.ajax({
-            url: "touristNote/findTouristNoteList.action",
-            type: "post",
-            data: {
-                "pageContainer.currentPageNo": 1,
-                "pageContainer.pageSize": 5
-            },
-            dataType: "json",
-            success: function(responseText) {
-                var json = JSON.parse(responseText);
-                createTouristNoteTable(json);
-            }
-        });
+    //激活下拉列表
+    $(".dropdown-toggle").dropdown();
 
-    });
+    var MessageTable = {
+        init: function(url, queryParams) {
+            $("#message").bootstrapTable("destroy");
+            $("#message").bootstrapTable({
+                url: url,
+                method: "get",
+                cache: false, // 不缓存
+                striped: true, // 隔行加亮
+                height: 300,
+                sortable: true,
+                sortName: 'messageId', // 设置默认排序为 name
+                sortOrder: "asc",
+                uniqueId: "messageId", //每一行的唯一标识，一般为主键列
+                pagination: true, // 开启分页功能
+                pageNumber: 1,
+                pageSize: 3,    //每页的记录行数（*）
+                pageList: [5, 10, 15, 20],
+                paginationPreText: "上一页",
+                paginationNextText: "下一页",
+                sidePagination: "server",
+                clickToSelect: true, // 单击行即可以选中
+                search: false, // 开启搜索功能
+                showColumns: false, // 开启自定义列显示功能
+                showRefresh: false, // 开启刷新功能
+                queryParamsType: "undefined",
+                queryParams: queryParams, //查询参数
+                columns: [ {
+                    field: 'messageInfo',
+                    title: '留言内容',
+                    align: 'center',
+                    valign: 'middle',
 
-    function createTouristNoteTable(json) {
-        var tbody = $("#touristnote tbody");
-        tbody.html("");
-        //创建表格
-        for(var i = 0; i < json.rows.length; i++) {
-            var touristNote = json.rows[i];
-            var tr = $("<tr></tr>");
-            var touristNoteId = $("<td></td>").html(touristNote.touristNoteId);
-            var touristNoteHeadLine = $("<td></td>").html(touristNote.touristNoteHeadLine);
-            var touristNoteTime = $("<td></td>").html(jsonDateToString(touristNote.touristNoteTime));
-            var visitorId = $("<td></td>").html(touristNote.visitor.visitorId);
-            tr.append(touristNoteId);
-            tr.append(touristNoteHeadLine);
-            tr.append(touristNoteTime);
-            tr.append(visitorId);
-            tbody.append(tr);
+                }, {
+                    field: 'replayTime',
+                    title: '回复时间',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function(value, row, index) {
+                        return jsonDateToString(value);
+                    },
+                }, {
+                    field: 'replayInfo',
+                    title: '回复内容',
+                    align: 'center',
+                    valign: 'middle',
+
+
+                }],
+                responseHandler: function (e) {
+                    var json = JSON.parse(e);
+                    return json;
+                },
+                onLoadSuccess: function() {
+                    console.log("加载成功.");
+                },
+                onLoadError: function() {
+                    alert("加载失败, 刷新重试.");
+                }
+            });
         }
-        //创建按钮组
-        var btnGroup = $("#btnGroup");
-        createBtnGroup(btnGroup, json);
-    }
+    };
 
-    $("#btnGroup").on("click", ".btn", function() {
-        var pageNo = $(this).attr("pageNo");
-        $.ajax({
-            url: "touristNote/findTouristNoteList.action",
-            type: "post",
-            data: {
-                "pageContainer.currentPageNo": pageNo,
-                "pageContainer.pageSize": 5
-            },
-            dataType: "json",
-            success: function(responseText) {
-                var json = JSON.parse(responseText);
-                createTouristNoteTable(json);
-            }
+    $(function() {
+        MessageTable.init("message/queryAllMessage.action", function(params) {
+            return {
+                "pageContainer.pageSize": params.pageSize,
+                "pageContainer.currentPageNo": params.pageNumber,
+            };
         });
     });
 
     $("#submitCondition").click(function() {
-        $("#btnGroup").html("");
-        $("#touristnote tbody").html("");
         var head = $("#headCondition").val();
-        $.ajax({
-            url: "touristNote/findTouristNoteListByHeadLine.action",
-            type: "post",
-            data: {
-                "pageContainer.currentPageNo": 1,
+
+        var urls = "message/queryMessageByMessageInfo.action";
+//            TouristNoteTable.init(urls, function(params) {
+//                return {
+//                    "pageContainer.pageSize": params.pageSize,
+//                    "pageContainer.currentPageNo": params.pageNumber,
+//                    "touristNote.touristNoteHeadLine": head
+//                }
+//            });
+        $("#message").bootstrapTable("destroy");
+        var opt = {
+            url: urls,
+            silent: true,
+            query: {
                 "pageContainer.pageSize": 5,
-                "touristNote.touristNoteHeadLine": head
-            },
-            dataType: "json",
-            success: function(responseText) {
-                var json = JSON.parse(responseText);
-                console.log(json);
-                createTouristNoteTable(json);
-            },
-            error: function () {
-                alert("error");
+                "pageContainer.currentPageNo": 1,
+                "message.messageInfo": head
             }
+        };
+        // $("#touristnote").bootstrapTable("refresh", opt);
+
+        MessageTable.init(urls, function(params) {
+            return {
+                "pageContainer.pageSize": params.pageSize,
+                "pageContainer.currentPageNo": params.pageNumber,
+                "message.messageInfo": head
+            };
         });
-    })
+        return false;
+    });
 
 </script>
+
 </body>
 </html>

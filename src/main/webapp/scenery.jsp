@@ -37,8 +37,8 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">我要留言</a></li>
-                                    <li><a href="#">留言查看</a></li>
+                                    <li><a href="message_add.jsp">我要留言</a></li>
+                                    <li><a href="message.jsp">留言查看</a></li>
                                 </ul>
                             </li>
 
@@ -161,7 +161,7 @@
                     valign: 'middle',
                     formatter: function(value, row, index) {
                         return jsonDateToString(value);
-                    },
+                    }
                 }],
                 responseHandler: function (e) {
                     var json = JSON.parse(e);

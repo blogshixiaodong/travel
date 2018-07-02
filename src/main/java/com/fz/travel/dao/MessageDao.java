@@ -18,5 +18,5 @@ public interface MessageDao extends PageDao<Message> {
 
     public PageContainer<Message> selectAllMessage();
 
-    public PageContainer<Message> selectByTime(Date time);
+    public PageContainer<Message> selectByMessageInfo(String messageInfo);
 }

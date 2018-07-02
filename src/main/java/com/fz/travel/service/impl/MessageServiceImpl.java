@@ -44,8 +44,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public PageContainer<Message> queryByMessageTime(Date time,PageContainer<Message> pageContainer) {
+    public PageContainer<Message> queryByMessageInfo(String messageInfo,PageContainer<Message> pageContainer) {
         messageDao.setPageContainer(pageContainer);
-        return messageDao.selectByTime(time);
+        return messageDao.selectByMessageInfo(messageInfo);
     }
 }

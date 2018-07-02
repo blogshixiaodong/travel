@@ -3,6 +3,7 @@ package com.fz.travel.service;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.TouristNote;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,6 +17,11 @@ public interface TouristNoteService {
     void saveTouristNote(TouristNote touristNote);
 
     /***********查看游记**********/
+
+    TouristNote queryTouristNoteById(Serializable touristNoteId);
+
+    //无条件查询
+    PageContainer<TouristNote> queryTouristNoteList(PageContainer<TouristNote> pageContainer);
 
     //通过标题模糊查询
     PageContainer<TouristNote> queryTouristNoteListByHeadLine(String headLine, PageContainer<TouristNote> pageContainer);
