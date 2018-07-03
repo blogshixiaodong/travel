@@ -12,6 +12,8 @@ import net.sf.json.JsonConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.Date;
+
 /**
  * @author Shixiaodong
  * @date 2018/6/29 8:51
@@ -32,6 +34,12 @@ public class TouristNoteController extends BaseController {
 
     //添加旅游游记
     public String createTouristNote() {
+        if(getSession().get("visitor") == null) {
+            jsonResult = "请先登陆后z再发表游记.";
+            return "jsonResult";
+        }
+        touristNote.setTouristNoteTime(new Date());
+        touristNote.setVisitor((Visitor) getSession().get("visitor"));
         touristNoteService.saveTouristNote(touristNote);
         return Action.SUCCESS;
     }
