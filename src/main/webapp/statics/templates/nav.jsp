@@ -17,7 +17,7 @@
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">FuZhou Travel</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">FuZhou Travel</a>
                 </div>
 
                 <s:if test="%{#session.visitor == null && #session.admin == null}">
