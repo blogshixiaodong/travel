@@ -68,6 +68,52 @@
 					</div>
 				</div>
 			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel">
+								修改
+							</h4>
+						</div>
+						<div class="modal-body">
+							<div class="input-group date" >
+								酒店编号：<input id="deleteHotelId" type="text" class="form-control" readonly="readonly"/>
+							</div>
+							<div class="input-group date" >
+								酒店名称：<input id="deleteHotelName" type="text" class="form-control" readonly="readonly"/>
+							</div>
+							<div class="input-group date" >
+								酒店地址：<input id="deleteHotelAddress" type="text" class="form-control" readonly="readonly"/>
+							</div>
+							<div class="input-group date" >
+								酒店电话：<input id="deleteHotelPhone" type="text" class="form-control" readonly="readonly"/>
+							</div>
+							<div class="input-group date" >
+								酒店价格：<input id="deleteHotelPrice" type="text" class="form-control" readonly="readonly"/>
+							</div>
+							<div class="form-group">
+								<div class="input-group date" >
+									酒店介绍：
+									<div class="col-md-13 col-sm-12 col-xs-13">
+										<textarea id="deleteHotelIntroduce" rows="8" class="resizable_textarea form-control" placeholder="具体酒店介绍..." readonly="readonly"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+							</button>
+							<button id="deleteBtn" type="button" class="btn btn-primary">
+								确认删除
+							</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
 			<!-- /page content -->
 			<jsp:include page="footer.jsp" />
 		</div>
@@ -86,6 +132,7 @@
 		$(function() {
 			var url = "../hotel/queryAllHotel.action";
 			initTable($("#hotels"), url, queryParams, columns);
+
 		});
 
 		function queryParams(params){
@@ -122,6 +169,11 @@
 			title: '酒店地址',
 			align: 'center',
 			valign: 'middle'
+		},{
+			field: 'hotelIntroduce',
+			title: '酒店介绍',
+			align: 'center',
+			valign: 'middle'
 		}, {
             //field: '删除',
             title: '删除',
@@ -139,7 +191,7 @@
             var hotelHighPrice = $("#hotelHighPrice").val();
             if(hotelName == "" && hotelAddress == "" && hotelHighPrice == "" && hotelLowPrice == ""){
                 alert("至少输入一个查询条件");
-                window.location = "./update_hotel.jsp";
+                return;
             }
             return{
                 "pageContainer.pageSize": params.pageSize,
@@ -150,26 +202,48 @@
                 "hotelHighPrice":hotelHighPrice
             }
         }
-	 $("#submit").click(function(){
-		 var url = "../hotel/queryHotelByCondition.action";
-         initTable($("#hotels"),url,queryHotelByCondition,columns);
-		 return false;
-	});
-	$('#hotels').on("click", ".deleteBtnGroup", function() {
-		var hotelId = $(this).parent().parent().children().get(0).innerHTML;
-		$.ajax({
-			url: "../hotel/deleteHotelByHotelId.action",
-			type: "post",
-			data: {
-				"hotel.hotelId" : hotelId
-			},
-			dataType: "json",
-			success: function(responseText){
-				alert(responseText);
-				location.reload();
-			}
+		//查询键
+		$("#submit").click(function(){
+			 var url = "../hotel/queryHotelByCondition.action";
+			 initTable($("#hotels"),url,queryHotelByCondition,columns);
+			 return false;
 		});
-	});
+		//表中删除键
+		$('#hotels').on("click", ".deleteBtnGroup", function() {
+			var hotelId = $(this).parent().parent().children().get(0).innerHTML;
+			var hotelName = $(this).parent().parent().children().get(1).innerHTML;
+			var hotelPrice = $(this).parent().parent().children().get(2).innerHTML;
+			var hotelPhone = $(this).parent().parent().children().get(3).innerHTML;
+			var hotelAddress = $(this).parent().parent().children().get(4).innerHTML;
+			var hotelIntroduce = $(this).parent().parent().children().get(5).innerHTML;
+			$("#deleteHotelId").val(hotelId);
+			$("#deleteHotelName").val(hotelName);
+			$("#deleteHotelPrice").val(hotelPrice);
+			$("#deleteHotelPhone").val(hotelPhone);
+			$("#deleteHotelAddress").val(hotelAddress);
+			$("#deleteHotelIntroduce").val(hotelIntroduce);
+			$("#myModal").modal();
+		});
+
+		//(模态框)确认删除键
+		$("#deleteBtn").click(function(){
+			var hotelId = $("#deleteHotelId").val();
+			$("#myModal").modal("hide");
+			$.ajax({
+				url: "../hotel/deleteHotelByHotelId.action",
+				type: "post",
+				data: {
+					"hotel.hotelId" : hotelId
+				},
+				dataType: "json",
+				success: function(responseText){
+					alert(responseText);
+					location.reload();
+				}
+			});
+		});
+
+
 	</script>
 </body>
 </html>

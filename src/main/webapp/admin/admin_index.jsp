@@ -11,6 +11,8 @@
 	<link href="../vendors/admin/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Custom Theme Style -->
 	<link href="../vendors/admin/css/custom.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../module/css/common.css" />
+	<link rel="stylesheet" href="../module/css/index.css" />
 	</head>
 <body class="nav-md">
 	<div class="container body">
@@ -19,9 +21,9 @@
 				<!-- left nav bar -->
 				<jsp:include page="left.jsp" />
 			</div>
-			
+
 			<jsp:include page="top-nav.jsp" />
-		
+
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<div class="row">
@@ -78,7 +80,7 @@
 			<jsp:include page="footer.jsp" />
 		</div>
 	</div>
-	
+
 	<!-- jQuery -->
 	<script src="../vendors/jquery/jquery.min.js"></script>
 	<!-- Bootstrap -->
@@ -90,7 +92,7 @@
 	<script type="text/javascript">
 	//入口函数
 	//$(sendAjax(1));
-	
+
 	function sendAjax(currentPage){
 		$.ajax({
 			url:"allCourses.action",
@@ -99,7 +101,7 @@
 				"pageContainer.currentPageNo":currentPage
 			},
 			dataType:"json",
-			
+
 			success: function(responseText){
 			},
 			error: function(data){

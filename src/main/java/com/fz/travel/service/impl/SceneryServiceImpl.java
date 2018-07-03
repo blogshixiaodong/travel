@@ -23,8 +23,9 @@ public class SceneryServiceImpl implements SceneryService {
     }
 
     @Override
-    public void updateScenery(Scenery scenery) {
+    public String updateScenery(Scenery scenery) {
         sceneryDaoImpl.updateScenery(scenery);
+        return "修改成功";
     }
 
     @Override

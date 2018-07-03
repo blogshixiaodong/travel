@@ -20,11 +20,9 @@
 				<img src="../vendors/admin/images/img.jpg" alt="..." class="img-circle profile_img"/>
 			</div>
 			<div class="profile_info">
-				<span>欢迎用户</span>
-				<h2><s:property value="#session.accountId"/>   </h2>
+				<span>控制台</span>
 			</div>
 		</div>
-		<!-- /menu profile quick info -->
 		<br />
 		<!-- sidebar menu -->
 		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -32,8 +30,7 @@
 				<h3>General</h3>
 				<ul class="nav side-menu">
 					<li>
-						<a><i class="fa fa-home"></i>景点信息
-						<span class="fa fa-chevron-down"></span></a>
+						<a><i class="fa fa-home"></i>景点信息<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li><a href="#"  >上传图片</a></li>
 							<li><a href="create_scenery.jsp"  >添加景点</a></li>
@@ -42,8 +39,7 @@
 						</ul>
 					</li>
 					<li>
-						<a><i class="fa fa-edit"></i>酒店信息
-						<span class="fa fa-chevron-down"></span></a>
+						<a><i class="fa fa-edit"></i>酒店信息<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li><a href="create_hotel.jsp">添加酒店</a> </li>
 							<li><a href="update_hotel.jsp">修改酒店</a> </li>
@@ -52,8 +48,7 @@
 					</li>
 
 					<li>
-						<a><i class="fa fa-edit"></i>旅游新闻
-						<span class="fa fa-chevron-down"></span></a>
+						<a><i class="fa fa-edit"></i>旅游新闻<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li><a href="#">添加新闻</a></li>
 							<li><a href="#">修改新闻</a></li>
@@ -62,21 +57,18 @@
 					</li>
 					
 					<li>
-						<a><i class="fa fa-table"></i>留言信息
-							<span class="fa fa-chevron-down"></span></a>
+						<a><i class="fa fa-table"></i>留言信息<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
 							<li><a href="#">回复留言</a></li>
 							<li><a href="#">删除留言</a></li>
 						</ul>
 					</li>
 					<li>
-						<a><i class="fa fa-bar-chart-o"></i>旅游线路
-							<span class="fa fa-chevron-down"></span></a>
+						<a><i class="fa fa-bar-chart-o"></i>旅游线路<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="#">发布线路</a></li>
-							<li><a href="#">修改线路</a></li>
-							<li><a href="#">删除线路</a></li>
-							<li><a href="#">预定处理</a></li>
+							<li><a href="create_touritline.jsp">发布线路</a></li>
+							<li><a href="update_touristline.jsp">修改线路</a></li>
+							<li><a href="delete_touristline.jsp">删除线路</a></li>
 						</ul>
 					</li>
 				</ul>
