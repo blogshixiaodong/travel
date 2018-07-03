@@ -50,6 +50,12 @@ public interface HotelDao extends PageDao<Hotel> {
     */
     PageContainer<Hotel> selectHotelByConnection(Double low,Double high,String hotelAddress,String hotelName);
 
+    /*
+    * @Description:根据用户编号查询用户预定的酒店
+    * @param :  [visitorId]
+    * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Hotel>
+    */
+    PageContainer<Hotel> selectHotelByVisitorId(Integer visitorId);
 
 
 }

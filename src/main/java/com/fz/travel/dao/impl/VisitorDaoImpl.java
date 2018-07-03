@@ -25,6 +25,11 @@ public class VisitorDaoImpl extends AbstractBaseDao<Visitor> implements VisitorD
     }
 
     @Override
+    public void updateVisitor(Visitor visitor) {
+        this.update(visitor);
+    }
+
+    @Override
     public PageContainer<Visitor> selectVisitorList() {
         String hql = "FROM Visitor";
         return list(hql,pageContainer);

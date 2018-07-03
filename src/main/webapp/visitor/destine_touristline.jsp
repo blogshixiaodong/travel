@@ -9,13 +9,13 @@
 <html>
 <head>
     <title>旅游线路查看</title>
-    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="vendors/bootstrap-table/css/bootstrap-table.min.css" />
-    <link rel="stylesheet" href="module/css/common.css" />
+    <link rel="stylesheet" href="../vendors/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../vendors/bootstrap-table/css/bootstrap-table.min.css" />
+    <link rel="stylesheet" href="../module/css/common.css" />
 </head>
 <body>
     <div class="container">
-        <jsp:include page="statics/templates/nav.jsp"></jsp:include>
+        <jsp:include page="../statics/templates/nav.jsp"/>
 
         <div class="row">
             <div class="panel panel-info">
@@ -41,11 +41,11 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
-    <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
-    <script type="text/javascript" src="module/js/common/common.js"></script>
+    <script type="text/javascript" src="../vendors/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../module/js/common/common.js"></script>
     <script type="text/javascript">
         //激活下拉列表
         $(".dropdown-toggle").dropdown();
@@ -54,30 +54,39 @@
             title: '线路编号',
             align: 'center',
             valign: 'middle',
+            formatter: function(value, row, index) {
+                return '<a href="../touristLine/findTouristLineListById.action?touristLine.touristLineId=' + row.touristLineId + '">' + value + '</a>';
+            }
         }, {
             field: 'touristLineName',
             title: '线路名称',
             align: 'center',
             valign: 'middle',
             formatter: function(value, row, index) {
-                return '<a href="touristLine/findTouristLineListById.action?touristLine.touristLineId=' + row.touristLineId + '">' + value + '</a>';
+                return '<a href="../touristLine/findTouristLineListById.action?touristLine.touristLineId=' + row.touristLineId + '">' + value + '</a>';
             }
-        }, {
+        },{
             field: 'touristLinePrice',
             title: '线路价格',
             align: 'center',
             valign: 'middle'
-
+        },{
+            title: '预定',
+            align: 'center',
+            valign: 'middle',
+            formatter:function(value,row){
+                return '<button class="btn btn-primary btn-xs destineBtnGroup">'+"预定"+' </button>';
+            }
         }];
 
         $(function() {
-            var url = "touristLine/findTouristLineList.action";
+            var url = "../touristLine/findTouristLineList.action";
             var queryParams = function(params) {
                 return {
                     "pageContainer.pageSize": params.pageSize,
-                    "pageContainer.currentPageNo": params.pageNumber,
+                    "pageContainer.currentPageNo": params.pageNumber
                 };
-            }
+            };
             initTable($("#touristLine"), url, queryParams, columns);
         });
 
@@ -93,6 +102,22 @@
             };
             initTable($("#touristLine"), url, queryParams, columns);
             return false;
+        });
+        //表中预定键
+        $('#touristLine').on("click", ".destineBtnGroup", function(){
+            var touristLineId = $($(".destineBtnGroup").parent().parent().children().get(0)).find("a").html();
+            $.ajax({
+               url: "../visitor/visitorDestineTouristLine.action",
+               type: "post",
+               data: {
+                   "touristLine.touristLineId" : touristLineId
+               },
+               dataType: "json",
+               success: function(responseText){
+                   alert(responseText);
+                   location.reload();
+               }
+            });
         });
     </script>
 </body>

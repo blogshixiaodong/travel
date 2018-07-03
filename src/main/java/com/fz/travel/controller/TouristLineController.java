@@ -1,9 +1,6 @@
 package com.fz.travel.controller;
 
-import com.fz.travel.bean.LineScenery;
-import com.fz.travel.bean.PageContainer;
-import com.fz.travel.bean.Scenery;
-import com.fz.travel.bean.TouristLine;
+import com.fz.travel.bean.*;
 import com.fz.travel.service.LineSceneryService;
 import com.fz.travel.service.SceneryService;
 import com.fz.travel.service.TouristLineService;
@@ -162,7 +159,17 @@ public class TouristLineController extends BaseController {
 
     public String findTouristLineList() {
         pageContainer = touristLineService.queryTouristLineList(pageContainer);
-        jsonResult = pageContainer.toJson("lineScenerySet");
+        jsonResult = pageContainer.toJson("lineScenerySet","visitorSet");
+        return Action.SUCCESS;
+    }
+
+    public String findTouristLineListByVisitorId(){
+        Visitor visitor = (Visitor) getSession().get("visitor");
+        if(visitor == null){
+            return Action.ERROR;
+        }
+        pageContainer = touristLineService.queryTouristLineListByVisitorId(pageContainer,visitor.getVisitorId());
+        jsonResult = pageContainer.toJson("lineScenerySet","visitorSet");
         return Action.SUCCESS;
     }
 

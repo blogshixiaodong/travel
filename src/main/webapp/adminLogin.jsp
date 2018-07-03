@@ -33,7 +33,7 @@
           dataType: "json",
           success: function(msg){
             if(msg == ""){
-              location.href = "./index.jsp";
+              location.href = "./admin/admin_index.jsp";
               return;
             }
             alert("登录失败");

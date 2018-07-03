@@ -18,15 +18,12 @@
 				<li class="">
 					<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
 						<img src="../vendors/admin/images/img.jpg" alt="">
-							<s:property value = "#session.user.username"/>
+							<s:property value = "#session.admin.username"/>
 						<span class=" fa fa-angle-down"></span>
 					</a>
 					<ul class="dropdown-menu dropdown-usermenu pull-right">
-						<li><a href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+						<li><a href="${pageContext.request.contextPath}/adminAccount/adminOutLogin.action"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 					</ul>
-				</li>
-				<li>
-					<a href="#" class="user-profile dropdown-toggle">回到首页</a>
 				</li>
 			</ul>
 			</nav>

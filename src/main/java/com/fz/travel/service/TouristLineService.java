@@ -20,4 +20,11 @@ public interface TouristLineService {
     TouristLine queryTouristLineById(Serializable touristLineId);
 
     PageContainer<TouristLine> queryTouristLineList(PageContainer<TouristLine> pageContainer);
+
+    /*
+    * @Description:根据用户编号，查询该用户已预定的路线
+    * @param :  [visitorId]
+    * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.TouristLine>
+    */
+    PageContainer<TouristLine> queryTouristLineListByVisitorId(PageContainer<TouristLine> pageContainer,Integer visitorId);
 }

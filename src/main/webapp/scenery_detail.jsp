@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="container">
-        <jsp:include page="statics/templates/nav.jsp"></jsp:include>
+        <jsp:include page="statics/templates/nav.jsp"/>
 
         <div class="row">
             <div class="panel panel-warning">

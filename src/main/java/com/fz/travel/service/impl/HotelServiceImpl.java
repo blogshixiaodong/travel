@@ -79,4 +79,10 @@ public class HotelServiceImpl implements HotelService {
         hotelDaoImpl.setPageContainer(pageContainer);
         return hotelDaoImpl.selectHotelByConnection(low,high,hotelAddress,hotelName);
     }
+
+    @Override
+    public PageContainer<Hotel> queryHotelByVisitorId(PageContainer<Hotel> pageContainer, Integer visitorId) {
+        hotelDaoImpl.setPageContainer(pageContainer);
+        return hotelDaoImpl.selectHotelByVisitorId(visitorId);
+    }
 }
