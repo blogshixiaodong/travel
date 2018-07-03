@@ -65,8 +65,8 @@
 												<div class="col-md-13 col-sm-12 col-xs-13">
 													<textarea id="hotelIntroduce" rows="8" class="resizable_textarea form-control" placeholder="具体酒店介绍..."></textarea>
 													<br/><br/>
-													<button id="leaveInfoSubmit" type='button' class='btn btn-success btn-sm'>提交</button>
-													<button id="leaveInfoReset" type='button' class='btn btn-success btn-sm'>重置</button>
+													<button id="createSubmit" type='button' class='btn btn-success btn-sm'>提交</button>
+													<button id="createReset" type='button' class='btn btn-success btn-sm'>重置</button>
 												</div>
 											</div>
 										</div>
@@ -105,6 +105,14 @@
 			$("#hotelPhone").value = hotelPhone;
 			return;
 		}
+		if(checkNumber(hotelPrice)){
+			alert("酒店价格格式不正确");
+			return;
+		}
+		if(checkNumber(hotelPhone)){
+			alert("酒店电话格式不正确");
+			return;
+		}
 		$.ajax({
 			url:"../hotel/createHotel.action",
 			type:"post",
@@ -124,9 +132,16 @@
 			}
 		});
 	}
-	 $("#leaveInfoSubmit").click(function(){
+	$("#createSubmit").click(function(){
 		 sendAjax();
 		 return false;
+	});
+	$("#createReset").click(function(){
+		$("#hotelName").val("");
+		$("#hotelAddress").val("");
+		$("#hotelPrice").val("");
+		$("#hotelIntroduce").val("");
+		$("#hotelPhone").val("");
 	});
 	</script>
 </body>

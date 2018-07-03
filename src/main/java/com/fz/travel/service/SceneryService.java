@@ -19,9 +19,9 @@ public interface SceneryService {
     /*
     * @Description:修改景点信息
     * @param :  [scenery]
-    * @return : void
+    * @return : String
     */
-    void updateScenery(Scenery scenery);
+    String updateScenery(Scenery scenery);
 
     /*
     * @Description:根据景点编号删除景点信息

@@ -47,7 +47,7 @@ public class HotelServiceImpl implements HotelService {
             hotelDaoImpl.deleteHotel(hotel);
             return "删除成功";
         }else{
-            return "删除失败";
+            return "存在住户,删除失败";
         }
     }
 

@@ -30,7 +30,14 @@ function jsonDateToString(dateObject) {
         + appendZero(hours) + ":" + appendZero(minutes) + ":"
         + appendZero(seconds);
 }
-
+//验证字符串是否是数字
+function checkNumber(theObj) {
+    var reg = /^[0-9]+.?[0-9]*$/;
+    if(reg.test(theObj)) {
+        return true;
+    }
+    return false;
+}
 
 function createBtnGroup(btnGroup, json) {
     btnGroup.html("");
