@@ -29,7 +29,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <div><h2>删除酒店信息</h2></div>
+                                <div><h2>删除线路信息</h2></div>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
@@ -79,6 +79,11 @@
             valign: 'middle',
             sortable: true // 开启排序功能
         }, {
+            field: 'touristLineName',
+            title: '线路名称',
+            align: 'center',
+            valign: 'middle'
+        }, {
             field: 'touristLinePrice',
             title: '线路价格',
             align: 'center',
@@ -103,8 +108,7 @@
                     "touristLine.touristLineId": touristLineId
                 },
                 success: function(responseText) {
-                    //alert(responseText);
-                    location.reload();
+                    alert(responseText);
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("删除出错,请重新尝试.");

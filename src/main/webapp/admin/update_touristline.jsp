@@ -45,36 +45,32 @@
                                                 </h4>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="input-group date" >
-                                                    酒店名称：<input id="updateHotelName" type="text" class="form-control" />
-                                                </div>
-                                                <div class="input-group date" >
-                                                    酒店地址：<input id="updateHotelAddress" type="text" class="form-control" />
-                                                </div>
-                                                <div class="input-group date" >
-                                                    酒店电话：<input id="updateHotelPhone" type="text" class="form-control" />
-                                                </div>
-                                                <div class="input-group date" >
-                                                    酒店价格：<input id="updateHotelPrice" type="text" class="form-control" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="input-group date" >
-                                                        酒店介绍：
-                                                        <div class="col-md-13 col-sm-12 col-xs-13">
-                                                            <textarea id="updateHotelIntroduce" rows="8" class="resizable_textarea form-control" placeholder="具体酒店介绍..."></textarea>
-                                                            <br/><br/>
-                                                            <button id="leaveInfoSubmit" type='button' class='btn btn-success btn-sm'>提交</button>
-                                                            <button id="leaveInfoReset" type='button' class='btn btn-success btn-sm'>重置</button>
-                                                        </div>
-                                                    </div>
+                                                线路编号：<input id="touristLineId" type="text" class="form-control" disabled />
+                                                线路名称：<input id="touristLineName" type="text" class="form-control" />
+                                                线路价格：<input id="touristLinePrice" type="text" class="form-control" />
+                                                <hr />
+                                                景点列表：
+                                                <div id="sceneryGroup">
+
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                                                </button>
-                                                <button type="button" class="btn btn-primary">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                <button id="submitUpdate" type="button" class="btn btn-primary">
                                                     提交更改
                                                 </button>
+                                            </div>
+                                            <!-- 隐藏模板 -->
+                                            <div class="form-inline hide scenery" id="sceneryTemplate">
+                                                <div class="form-group">
+                                                    <input class="sceneryId form-control" type="text" placeholder="景点编号" disabled />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="sceneryName form-control" type="text" placeholder="景点名称" disabled />
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-default removeButton form-control"><i class="fa fa-minus"></i></button>
+                                                </div>
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal -->
@@ -124,13 +120,18 @@
             valign: 'middle',
             sortable: true // 开启排序功能
         }, {
+            field: 'touristLineName',
+            title: '线路名称',
+            align: 'center',
+            valign: 'middle'
+        }, {
             field: 'touristLinePrice',
             title: '线路价格',
             align: 'center',
             valign: 'middle'
         }, {
-            field: "删除操作",
-            title: "删除操作",
+            field: "修改操作",
+            title: "修改操作",
             align: "center",
             valign: "middle",
             formatter: function(value, row, index) {
@@ -140,6 +141,8 @@
 
         $("#touristLineList").on("click", ".updateLine", function() {
             var touristLineId = $(this).parent().parent().children().get(0).innerHTML;
+            var touristLineName = $(this).parent().parent().children().get(1).innerHTML;
+            var touristLinePrice = $(this).parent().parent().children().get(2).innerHTML;
             $.ajax({
                 url: "../touristLine/findLineSceneryByTouristLineId.action",
                 type: "post",
@@ -149,7 +152,8 @@
                 },
                 success: function(responseText) {
                     var json = JSON.parse(responseText);
-                    console.log(json);
+                    fillModal(touristLineId, touristLineName, touristLinePrice, json);
+                    $("#modal").modal();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("修改出错,请重新尝试.");
@@ -157,7 +161,55 @@
                 }
             });
 
-            $("#modal").modal();
+
+        });
+
+        //克隆模板，添加数据返回节点
+        function createScenery(sceneryId, sceneryName) {
+            var $template = $("#sceneryTemplate");
+            var $clone = $template.clone().removeClass("hide").removeAttr("id");
+            $clone.find(".sceneryId").val(sceneryId);
+            $clone.find(".sceneryName").val(sceneryName);
+            return $clone;
+        }
+
+        //通过json,创建相应的节点
+        function fillModal(touristLineId, touristLineName, touristLinePrice, json) {
+            $("#sceneryGroup").html("");
+            $("#touristLineId").val(touristLineId);
+            $("#touristLineName").val(touristLineName);
+            $("#touristLinePrice").val(touristLinePrice);
+            for(var i = 0; i < json.length; i++) {
+                var scenery = json[i].scenery;
+                $("#sceneryGroup").append(createScenery(scenery.sceneryId, scenery.sceneryName));
+            }
+        }
+
+        //删除景点节点
+        $("#sceneryGroup").on("click", ".removeButton", function() {
+            $(this).parents('.scenery').remove();
+        })
+
+        //确认修改
+        $("#submitUpdate").click(function() {
+            var sceneryIds = [];
+            $("#sceneryGroup .sceneryId").each(function() {
+                sceneryIds.push($(this).val());
+            });
+            //序列化k-v
+            var params = $.param({'sceneryIds': sceneryIds, "touristLine.touristLineId": $("#touristLineId").val()}, true);
+            $.ajax({
+                url: "../touristLine/updateTouristLine.action",
+                type: "post",
+                async: false,
+                data: params,
+                success: function(responseText) {
+                    $("#modal").modal("hide");
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("error");
+                }
+            });
         });
 
     </script>

@@ -7,6 +7,12 @@
 <struts>
     <package name="touristLine" namespace="/touristLine" extends="json-default, struts-default">
 
+        <action name="addTouristLine" class="com.fz.travel.controller.TouristLineController" method="addTouristLine">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
         <action name="findTouristLineList" class="com.fz.travel.controller.TouristLineController" method="findTouristLineList">
             <result name="success" type="json">
                 <param name="root">jsonResult</param>
@@ -14,6 +20,12 @@
         </action>
 
         <action name="removeTouristLine" class="com.fz.travel.controller.TouristLineController" method="removeTouristLine">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="updateTouristLine" class="com.fz.travel.controller.TouristLineController" method="updateTouristLine">
             <result name="success" type="json">
                 <param name="root">jsonResult</param>
             </result>

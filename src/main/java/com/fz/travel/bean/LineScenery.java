@@ -11,7 +11,7 @@ public class LineScenery {
 
     private TouristLine touristLine;
 
-    private Integer order;
+    private Integer sequence;
 
     public Scenery getScenery() {
         return scenery;
@@ -29,12 +29,12 @@ public class LineScenery {
         this.touristLine = touristLine;
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getSequence() {
+        return sequence;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setSequence(Integer sequence) {
+        this.sequence = sequence;
     }
 
     public Integer getLineSceneryId() {

@@ -54,6 +54,11 @@
             title: '线路编号',
             align: 'center',
             valign: 'middle',
+        }, {
+            field: 'touristLineName',
+            title: '线路名称',
+            align: 'center',
+            valign: 'middle',
             formatter: function(value, row, index) {
                 return '<a href="touristLine/findTouristLineListById.action?touristLine.touristLineId=' + row.touristLineId + '">' + value + '</a>';
             }

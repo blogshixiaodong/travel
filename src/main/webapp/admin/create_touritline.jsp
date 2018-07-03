@@ -31,7 +31,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>所有课程</h2>
+                                <h2>发布线路</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i
                                             class="fa fa-chevron-up"></i></a></li>
@@ -47,30 +47,69 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
+                                线路信息：
                                 <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12 form-group" style="margin-left: 30px">
-                                        <div class="input-group" >
-                                            线路价格：<input id="hotelName" type="text" class="form-control" />
+                                    <!--前缀-->
+                                    <div class="form-group col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">线路名称</span>
+                                            <input id="touristName" class="form-control" type="text">
                                         </div>
-                                        <div class="input-group date" >
-                                            酒店地址：<input id="hotelAddress" type="text" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">线路价格</span>
+                                            <input id="touristPrice" class="form-control" type="text">
                                         </div>
-                                        <div class="input-group date" >
-                                            酒店电话：<input id="hotelPhone" type="text" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <div class="input-group">
+                                            <button id="addScenery" type="button" class="btn btn-primary">添加景点</button>
+                                            <button id="saveTouristLine" type="button" class="btn btn-primary">保存线路信息</button>
                                         </div>
-                                        <div class="input-group date" >
-                                            酒店价格：<input id="hotelPrice" type="text" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group date" >
-                                                酒店介绍：
-                                                <div class="col-md-13 col-sm-12 col-xs-13">
-                                                    <textarea id="hotelIntroduce" rows="8" class="resizable_textarea form-control" placeholder="具体酒店介绍..."></textarea>
-                                                    <br/><br/>
-                                                    <button id="leaveInfoSubmit" type='button' class='btn btn-success btn-sm'>提交</button>
-                                                    <button id="leaveInfoReset" type='button' class='btn btn-success btn-sm'>重置</button>
-                                                </div>
+
+                                    </div>
+                                </div>
+                                <hr />
+                                景点信息：
+                                <div id="sceneryList" class="row">
+                                    <div class="row">
+                                        <div class="form-group col-lg-3">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">景点编号</span>
+                                                <input class="form-control sceneryId" type="text">
                                             </div>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">景点名称</span>
+                                                <input class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <div class="input-group">
+                                                <button type="button" class="btn btn-primary removeScenery">删除</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 隐藏模板 -->
+                                <div class="row hide scenery" id="sceneryTemplate">
+                                    <div class="form-group col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">景点编号</span>
+                                            <input class="form-control sceneryId" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">景点名称</span>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-primary removeScenery">删除</button>
                                         </div>
                                     </div>
                                 </div>
@@ -89,32 +128,75 @@
     <script src="../vendors/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../vendors/admin/js/custom.min.js"></script>
     <script src="../vendors/admin/js/common.js"></script>
 
     <script type="text/javascript">
-        //入口函数
-        //$(sendAjax(1));
-
-        function sendAjax(currentPage){
+        $(function() {
             $.ajax({
-                url:"allCourses.action",
-                type:"post",
-                data:{
-                    "pageContainer.currentPageNo":currentPage
+                url: "../scenery/queryAllScenery.action",
+                type: "get",
+                dataType: "json",
+                data: {
+                    "pageContainer.pageSize" : 100,
+                    "pageContainer.currentPageNo": 1
                 },
-                dataType:"json",
-
-                success: function(responseText){
-                },
-                error: function(data){
+                success: function(responseText) {
+//                    var json = JSON.parse(responseText);
+//                    var select = $("#sceneryList");
+//                    var rows = json.rows;
+//                    for(var i = 0; i < rows.length; i++) {
+//                        var sceneryId = rows[i].sceneryId;
+//                        var sceneryName = rows[i].sceneryName;
+//                        select.append($("<option></option>").html(sceneryId + " : " + sceneryName));
+//                    };
+//                    select.selectpicker("refresh");
                 }
+            })
+        });
+
+        //克隆模板，添加数据返回节点
+        function createScenery() {
+            var $template = $("#sceneryTemplate");
+            var $clone = $template.clone().removeClass("hide").removeAttr("id");
+            return $clone;
+        };
+
+        $("#addScenery").click(function() {
+            $("#sceneryList").append(createScenery());
+        });
+
+        $("#sceneryList").on("click", ".removeScenery", function() {
+            $(this).closest(".row").remove();
+        });
+
+        $("#saveTouristLine").click(function() {
+            var touristName = $("#touristName").val();
+            var touristPrice = $("#touristName").val();
+            var sceneryIds = [];
+            $("#sceneryList .sceneryId").each(function() {
+                sceneryIds.push($(this).val());
             });
-        }
-        $("#btnGroup").on('click','.btn',function(){
-            var pageNo = $(this).attr('pageNo');
-            sendAjax(pageNo);
+            //序列化k-v
+            var params = $.param({
+                "sceneryIds": sceneryIds,
+                "touristLine.touristLineName": touristName,
+                "touristLine.touristLinePrice": touristPrice
+            }, true);
+            $.ajax({
+                url: "../touristLine/addTouristLine.action",
+                type: "post",
+                async: false,
+                data: params,
+                success: function(responseText) {
+                    location.reload();
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("error");
+                }
+            })
         });
     </script>
 </body>

@@ -1,14 +1,14 @@
-package com.fz.travel.dao;
+package com.fz.travel.service;
 
 import com.fz.travel.bean.LineScenery;
 
 /**
  * @author Shixiaodong
- * @date 2018/6/30 10:33
+ * @date 2018/7/3 15:00
  */
-public interface LineSceneryDao {
+public interface LineSceneryService {
 
-    void insertLineScenery(LineScenery lineScenery);
+    void addLineScenery(LineScenery lineScenery);
 
     void updateLineScenery(LineScenery lineScenery);
 
