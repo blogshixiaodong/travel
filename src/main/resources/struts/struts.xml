@@ -21,5 +21,7 @@
     <include file="struts/visitorAccount-struts.xml" />
     <include file="struts/adminAccount-struts.xml" />
     <include file="struts/visitor-struts.xml" />
+    <include file="struts/message-struts.xml"/>
+    <include file="struts/news-struts.xml"/>
 
 </struts>
