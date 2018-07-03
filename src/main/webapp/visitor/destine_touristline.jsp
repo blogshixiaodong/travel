@@ -57,17 +57,11 @@
             formatter: function(value, row, index) {
                 return '<a href="touristLine/findTouristLineListById.action?touristLine.touristLineId=' + row.touristLineId + '">' + value + '</a>';
             }
-        },{
-            field: 'touristLineName',
-            title: '线路名称',
-            align: 'center',
-            valign: 'middle'
-
         }, {
             field: 'touristLinePrice',
             title: '线路价格',
             align: 'center',
-            valign: 'middle'
+            valign: 'middle',
 
         }];
 
