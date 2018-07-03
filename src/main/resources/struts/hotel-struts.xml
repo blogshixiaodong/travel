@@ -47,5 +47,10 @@
                 <param name="root">jsonResult</param>
             </result>
         </action>
+        <action name="queryHotelByVisitorId" class="com.fz.travel.controller.HotelController" method="queryHotelByVisitorId">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
     </package>
 </struts>

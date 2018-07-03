@@ -70,17 +70,10 @@
             title: '线路价格',
             align: 'center',
             valign: 'middle'
-        },{
-            title: '预定',
-            align: 'center',
-            valign: 'middle',
-            formatter:function(value,row){
-                return '<button class="btn btn-primary btn-xs destineBtnGroup">'+"预定"+' </button>';
-            }
         }];
 
         $(function() {
-            var url = "../touristLine/findTouristLineList.action";
+            var url = "../touristLine/findTouristLineListByVisitorId.action";
             var queryParams = function(params) {
                 return {
                     "pageContainer.pageSize": params.pageSize,
@@ -102,22 +95,6 @@
             };
             initTable($("#touristLine"), url, queryParams, columns);
             return false;
-        });
-        //表中预定键
-        $('#touristLine').on("click", ".destineBtnGroup", function(){
-            var touristLineId = $($(".destineBtnGroup").parent().parent().children().get(0)).find("a").html();
-            $.ajax({
-               url: "../visitor/visitorDestineTouristLine.action",
-               type: "post",
-               data: {
-                   "touristLine.touristLineId" : touristLineId
-               },
-               dataType: "json",
-               success: function(responseText){
-                   alert(responseText);
-                   location.reload();
-               }
-            });
         });
     </script>
 </body>

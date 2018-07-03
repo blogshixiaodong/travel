@@ -27,4 +27,11 @@ public interface TouristLineDao extends PageDao<TouristLine> {
     //查询所有线路
     PageContainer<TouristLine> selectTouristLineList();
 
+    /*
+    * @Description:根据用户编号，查询该用户已预定的路线
+    * @param :  [visitorId]
+    * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.TouristLine>
+    */
+    PageContainer<TouristLine> selectTouristLineListByVisitorId(Integer visitorId);
+
 }

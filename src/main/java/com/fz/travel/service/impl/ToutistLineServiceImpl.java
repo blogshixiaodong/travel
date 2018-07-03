@@ -44,4 +44,10 @@ public class ToutistLineServiceImpl implements TouristLineService {
         touristLineDao.setPageContainer(pageContainer);
         return touristLineDao.selectTouristLineList();
     }
+
+    @Override
+    public PageContainer<TouristLine> queryTouristLineListByVisitorId(PageContainer<TouristLine> pageContainer, Integer visitorId) {
+        touristLineDao.setPageContainer(pageContainer);
+        return touristLineDao.selectTouristLineListByVisitorId(visitorId);
+    }
 }

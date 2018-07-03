@@ -57,4 +57,10 @@ public class HotelDaoImpl extends AbstractBaseDao<Hotel> implements HotelDao {
         String hql = SplitHqlUtils.SplitHql(low,high,hotelAddress,hotelName);
         return this.list(hql,pageContainer);
     }
+
+    @Override
+    public PageContainer<Hotel> selectHotelByVisitorId(Integer visitorId) {
+        String hql = "SELECT h FROM Hotel h LEFT JOIN h.visitorSet v WHERE v.visitorId = ? ";
+        return this.list(hql,pageContainer,visitorId);
+    }
 }

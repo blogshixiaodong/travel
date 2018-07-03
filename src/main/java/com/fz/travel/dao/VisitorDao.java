@@ -27,4 +27,11 @@ public interface VisitorDao extends PageDao{
     * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Visitor>
     */
     PageContainer<Visitor> selectVisitorList();
+
+    /*
+    * @Description:修改用户信息
+    * @param :  [visitor]
+    * @return : void
+    */
+    void updateVisitor(Visitor visitor);
 }
