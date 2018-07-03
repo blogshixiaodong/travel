@@ -83,6 +83,7 @@
                     </front>
                     <front>
                         开放时间：2018-7-1
+                        <s:property value="scenery.sceneryid" />
                     </front>
                     <div class="clearfix" />
                 </div>

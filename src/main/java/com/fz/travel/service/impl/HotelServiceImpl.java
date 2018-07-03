@@ -6,6 +6,7 @@ import com.fz.travel.bean.Visitor;
 import com.fz.travel.dao.HotelDao;
 import com.fz.travel.dao.VisitorDao;
 import com.fz.travel.service.HotelService;
+import com.sun.org.apache.bcel.internal.generic.GOTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,8 +52,12 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void updateHotel(Hotel hotel) {
+    public String updateHotel(Hotel hotel) {
+        if( "".equals(hotel.getHotelName()) || "".equals(hotel.getHotelAddress()) || "".equals(hotel.getHotelPrice()) || "".equals(hotel.getHotelIntroduce()) || "".equals(hotel.getHotelPhone())  ){
+            return "修改失败";
+        }
         hotelDaoImpl.updateHotel(hotel);
+        return "修改成功";
     }
 
     @Override

@@ -16,6 +16,8 @@ public class TouristLine implements Serializable {
 
     private Double touristLinePrice;
 
+    private String touristLineName;
+
     private Set<LineScenery> lineScenerySet = new HashSet<LineScenery>();
 
     public Integer getTouristLineId() {
@@ -32,6 +34,14 @@ public class TouristLine implements Serializable {
 
     public void setTouristLinePrice(Double touristLinePrice) {
         this.touristLinePrice = touristLinePrice;
+    }
+
+    public String getTouristLineName() {
+        return touristLineName;
+    }
+
+    public void setTouristLineName(String touristLineName) {
+        this.touristLineName = touristLineName;
     }
 
     public Set<LineScenery> getLineScenerySet() {
