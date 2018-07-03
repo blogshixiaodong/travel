@@ -47,28 +47,50 @@
                         <div class="row">
 
 
-
-                        </div>
-                        <div class="panel-body">
-                            <front style="float: right">
-                                <front style="float: right">
-                                    <form style="margin:0px" class="form-inline" >
-                                        <div class="form-group">
-                                            <div class="input-group input-group-sm">
-                                                <span class="input-group-addon">留言关键字</span>
-                                                <input id="headCondition" type="text" class="form-control" name="search" value="" />
-                                            </div>
-                                        </div>
-                                        <button id="submitCondition" type="submit" class="btn btn-default btn-sm">查找</button>
-                                    </form>
-                                </front>
-                            </front>
-                        </div>
                         <table id="message" class="table table-striped table-hover"></table>
                     </div>
                 </div>
             </div>
         </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                回复
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group date" >
+                                留言编号：<br>
+                                <input id="updateMessageId" type="text" class="form-control" readonly="readonly"/>
+                            </div>
+                            <div class="input-group date" >
+                                留言信息：<br>
+                                <input id="updateMessageInfo" type="text" class="form-control" readonly="readonly"/>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group date" >
+                                    回复信息：
+                                    <div class="col-md-13 col-sm-12 col-xs-13">
+                                        <textarea id="updateReplyInfo" rows="8" class="resizable_textarea form-control" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                            </button>
+                            <button id="updateBtn" type="button" class="btn btn-primary">
+                                提交回复
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
         <!-- /page content -->
         <jsp:include page="footer.jsp" />
     </div>
@@ -91,92 +113,107 @@
     //激活下拉列表
     $(".dropdown-toggle").dropdown();
 
-    var MessageTable = {
-        init: function(url, queryParams) {
-            $("#message").bootstrapTable("destroy");
-            $("#message").bootstrapTable({
-                url: url,
-                method: "get",
-                cache: false, // 不缓存
-                striped: true, // 隔行加亮
-                height: 300,
-                sortable: true,
-                sortName: 'messageId', // 设置默认排序为 name
-                sortOrder: "asc",
-                uniqueId: "messageId", //每一行的唯一标识，一般为主键列
-                pagination: true, // 开启分页功能
-                pageNumber: 1,
-                pageSize: 3,    //每页的记录行数（*）
-                pageList: [5, 10, 15, 20],
-                paginationPreText: "上一页",
-                paginationNextText: "下一页",
-                sidePagination: "server",
-                clickToSelect: true, // 单击行即可以选中
-                search: false, // 开启搜索功能
-                showColumns: false, // 开启自定义列显示功能
-                showRefresh: false, // 开启刷新功能
-                queryParamsType: "undefined",
-                queryParams: queryParams, //查询参数
-                columns: [{
-                    field: 'messageInfo',
-                    title: '留言内容',
-                    align: 'center',
-                    valign: 'middle',
-                },  {
-                    field: 'messageTime',
-                    title: '留言时间',
-                    align: 'center',
-                    valign: 'middle',
-                    formatter: function(value, row, index) {
-                        return jsonDateToString(value);
-                    },
-                },{
-                    field: 'replayInfo',
-                    title: '回复内容',
-                    align: 'center',
-                    valign: 'middle',
-                    formatter:function(value,row,index){
-                        if(value==null||value=="")
-                            return "暂无回复信息！";
-                        else
-                            return value;
-                    },
-                },  {
-                    field: 'replayTime',
-                    title: '回复时间',
-                    align: 'center',
-                    valign: 'middle',
-                    formatter: function(value, row, index) {
-                        if(value==null||value=="")
-                            return "暂无回复信息！";
-                        else
-                            return jsonDateToString(value);
-                    },
-                }],
-                responseHandler: function (e) {
-                    var json = JSON.parse(e);
-                    return json;
-                },
-                onLoadSuccess: function() {
-                    console.log("加载成功.");
-                },
-                onLoadError: function() {
-                    alert("加载失败, 刷新重试.");
-                }
-            });
-        }
-    };
-
     $(function() {
-        MessageTable.init("message/queryAllMessage.action", function(params) {
-            return {
-                "pageContainer.pageSize": params.pageSize,
-                "pageContainer.currentPageNo": params.pageNumber,
-            };
-        });
+        var url = "../message/queryAllMessage.action";
+        initTable($("#message"), url, queryParams, columns);
     });
 
+    function queryParams(params){
+        return {
+            "pageContainer.pageSize": params.pageSize,
+            "pageContainer.currentPageNo": params.pageNumber
+        }
+    }
+    var  columns = [{
+        field: 'messageId',
+        title: '留言编号',
+        align: 'center',
+        valign: 'middle',
+    },  {
+        field: 'messageInfo',
+        title: '留言内容',
+        align: 'center',
+        valign: 'middle',
+    },  {
+        field: 'messageTime',
+        title: '留言时间',
+        align: 'center',
+        valign: 'middle',
+        formatter: function(value, row, index) {
+            return jsonDateToString(value);
+        },
+    },{
+        field: 'replayInfo',
+        title: '回复内容',
+        align: 'center',
+        valign: 'middle',
+        formatter:function(value,row,index){
+            if(value==null||value=="")
+                return "暂无回复信息！";
+            else
+                return value;
+        },
+    },  {
+        field: 'replayTime',
+        title: '回复时间',
+        align: 'center',
+        valign: 'middle',
+        formatter: function(value, row, index) {
+            if(value==null||value=="")
+                return "暂无回复信息！";
+            else
+                return jsonDateToString(value);
+        },
+    }, {
+        //field: '删除',
+        title: '操作',
+        align: 'center',
+        valign: 'middle',
+        formatter: function(value, row, index) {
+            return '<a href="../message/deleteMessageByMessageId?message.messageId='+row.messageId+ '">' + '删除'+ '</a>'+'     '+ '<a href="#" class=" updatebBtnGroup">'+"回复"+' </a>';
+        },
+    }]
+    $("#btnGroup").click(function(){
+        var messageId= $(this).parent().parent().childIndex(1).html();
+        var messageInfo= $(this).parent().parent().childIndex(2).html();
+        $("#updateMessageId").value(messageId)
+        $("#mymodal").modal();
+    });
+    $('#message').on("click", ".updatebBtnGroup", function() {
+        var messageId =  $(this).parent().parent().children().get(0).innerHTML;
+        var messageInfo = $(this).parent().parent().children().get(1).innerHTML;
+        var replayInfo = $(this).parent().parent().children().get(3).innerHTML;
 
+        $("#updateMessageId").val(messageId)
+        $("#updateMessageInfo").val(messageInfo)
+        $("#myModal").modal();
+        if(replayInfo!="暂无回复信息！"){
+            $("#myModal").modal("hide");
+        }
+    });
+
+    $("#updateBtn").click(function(){
+        $("#myModal").modal("hide");
+        var messageId = $("#updateMessageId").val();
+        var replyInfo = $("#updateReplyInfo").val();
+        if(replyInfo==""||replyInfo==null){
+            alert("回复信息不能为空！");
+            return;
+        }
+        $.ajax({
+            url: "../message/replyMessage.action",
+            type: "post",
+            data: {
+                "message.messageId" : messageId,
+                "message.replayInfo": replyInfo,
+            },
+            dataType: "json",
+            success: function(responseText){
+                alert(responseText);
+                location.href = "../admin/message.jsp";
+            }
+        });
+    });
 </script>
 </body>
 </html>

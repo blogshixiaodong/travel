@@ -24,13 +24,11 @@ public class MessageController extends BaseController {
 
     //添加留言
     public String creatMessage(){
-
+        getSession().get("visitor");
         Visitor visitor =  (Visitor) getSession().get("visitor");
         Date date = new Date();
-
-        System.out.println(visitor);
         if(visitor!=null){
-            message.setVisitorId(visitor.getVisitorId());
+            message.setVisitor(visitor);
             message.setMessageTime(date);
             messageService.addMessage(message);
             return  Action.SUCCESS;
@@ -39,19 +37,22 @@ public class MessageController extends BaseController {
           return Action.ERROR;
     }
     //删除留言
-    String deleteMessageByMessageId(){
-        if(messageService.removeByMessage(message.getMessageId()).equals("删除留言成功"))
-        {
+    public String deleteMessageByMessageId(){
+       messageService.removeByMessage(message.getMessageId());
+
             return Action.SUCCESS;
-        }
-        else return  Action.ERROR;
+
     }
     //回复留言
     public String replyMessage(){
         Date date = new Date();
+        Message message1 = messageService.queryByMessageId(message.getMessageId());
         message.setReplayTime(date);
-       messageService.reply(message);
-       return Action.SUCCESS;
+        message.setMessageInfo(message1.getMessageInfo());
+        message.setMessageTime(message1.getMessageTime());
+        message.setVisitor(message1.getVisitor());
+        messageService.reply(message);
+        return Action.SUCCESS;
     }
     //按留言时间查询留言
 

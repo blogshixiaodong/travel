@@ -17,16 +17,20 @@
             </result>
         </action>
 
-        <action name="deleteMesageByMessageId" class="com.fz.travel.controller.MessageController" method="deleteMessageByMessageId">
+        <action name="deleteMessageByMessageId" class="com.fz.travel.controller.MessageController" method="deleteMessageByMessageId">
             <result name="success" type="redirect">
                 <!--删除成功,进入留言界面-->
-                <param name="location">demo.jsp</param>
+                <param name="location">../admin/message.jsp</param>
             </result>
-            <result name="error" type="redirect">
-                <param name="location">index.jsp</param>
-            </result>
-        </action>
 
+        </action>
+        <action name="replyMessage" class="com.fz.travel.controller.MessageController" method="replyMessage">
+            <result name="success" type="redirect">
+                <!--删除成功,进入留言界面-->
+                <param name="location">../admin/message.jsp</param>
+            </result>
+
+        </action>
 
 
         <action name="queryMessageByMessageId" class="com.fz.travel.controller.MessageController" method="queryMessageByMessageId">

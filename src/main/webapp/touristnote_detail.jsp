@@ -16,52 +16,12 @@
 </head>
 <body>
     <div class="container">
-    <!-- 导航栏部分 -->
-        <div class="row">
-            <nav class="navbar navbar-inverse" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">FuZhou Travel</a>
-                    </div>
-                    <div>
-                        <ul class="nav navbar-nav navbar-left">
-                            <li><a href="introduce.jsp">福州介绍</a></li>
-                            <li><a href="scenery.jsp">福州景点</a></li>
-                            <li><a href="touristline.jsp">旅游线路</a></li>
-                            <li><a href="touristnote.jsp">旅游游记</a></li>
-                            <li><a href="news.jsp">旅游新闻</a></li>
-                            <li><a href="hotel.jsp">周边酒店</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    留言
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="message_add.jsp">我要留言</a></li>
-                                    <li><a href="message.jsp">留言查看</a></li>
-                                </ul>
-                            </li>
 
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    登陆
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="visitorLogin.jsp">游客登陆</a></li>
-                                    <li><a href="adminLogin.jsp">管理员登陆</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">注册</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
+    <!-- 导航栏部分 -->
+
+
+
+        <jsp:include page="statics/templates/nav.jsp"></jsp:include>
 
         <div class="row">
             <div class="panel panel-warning">

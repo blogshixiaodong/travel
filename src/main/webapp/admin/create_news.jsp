@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../vendors/bootstrap-table/css/bootstrap-table.min.css" />
     <link rel="stylesheet" href="../module/css/common.css" />
     <link rel="stylesheet" href="../module/css/index.css" />
+
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -44,7 +45,7 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-                        <form style="margin:0px" class="form-inline" action="news/createNews.action" method="post">
+                        <form name = "form1" style="margin:0px" class="form-inline" action="../news/createNews.action" method="post" onsubmit="return Validate();">
                         <div class="x_content">
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-xs-12 form-group" style="margin-left: 30px">
@@ -52,6 +53,7 @@
                                        新闻标题：<input id="news.newsHeadLine" name="news.newsHeadLine" type="text" class="form-control" />
                                     </div>
                                     <div class="input-group date" >
+                                        新闻类型：<input id="news.newsType" name="news.newsType" type="text" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group date" >
@@ -59,8 +61,8 @@
                                             <div class="col-md-13 col-sm-12 col-xs-13">
                                                 <textarea id="news.newsContent" name="news.newsContent" rows="8" class="resizable_textarea form-control"></textarea>
                                                 <br/><br/>
-                                                <button id="leaveInfoSubmit" type='button' class='btn btn-success btn-sm'>提交</button>
-                                                <button id="leaveInfoReset" type='button' class='btn btn-success btn-sm'>重置</button>
+                                                <button id="newsInfoSubmit" type="submit"  class='btn btn-success btn-sm' >提交</button>
+                                                <button id="newsInfoReset" type='reset' class='btn btn-success btn-sm'>重置</button>
                                             </div>
                                         </div>
                                     </div>
@@ -83,8 +85,30 @@
 <!-- Custom Theme Scripts -->
 <script src="../vendors/admin/js/custom.min.js"></script>
 <script src="../vendors/admin/js/common.js"></script>
-<script type="text/javascript">
 
+<script language="javascript">
+    function Validate() {
+        var newsHeadLine = document.getElementById("news.newsHeadLine");
+        var newstype = document.getElementById("news.newsType");
+        var newsContent = document.getElementById("news.newsContent");
+        if (newsHeadLine.value == null || newsHeadLine.value== "") {
+            alert("请输入新闻标题");
+            newsHeadLine.focus();
+
+            return false;        }
+        if (newstype.value == null || newstype.value == "") {
+            alert("请输入新闻类型");
+            newstype.focus();
+
+            return false;
+        }
+        if (newsContent.value == null || newsContent.value == "") {
+            alert("请输入内容");
+            newsContent.focus();
+            return false;
+        }
+      return true;
+    }
 </script>
 </body>
 </html>

@@ -8,6 +8,8 @@ public interface NewsService {
     public void addNews(News news);
     //删除新闻
     public String removeByNews(Integer newsId);
+    //更改新闻
+    public void updateNews(News news);
     //按先问ID查询
     public News queryByNewsId(Integer newsId);
     //查询所有新闻

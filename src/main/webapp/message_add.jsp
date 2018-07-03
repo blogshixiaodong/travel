@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.fz.travel.bean.Visitor" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/2
@@ -17,52 +17,8 @@
 <body>
 <div class="container">
     <!-- 导航栏部分 -->
-    <div class="row">
-        <nav class="navbar navbar-inverse" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">FuZhou Travel</a>
-                </div>
-                <div>
-                    <ul class="nav navbar-nav navbar-left">
-                        <li><a href="introduce.jsp">福州介绍</a></li>
-                        <li><a href="scenery.jsp">福州景点</a></li>
-                        <li><a href="touristline.jsp">旅游线路</a></li>
-                        <li><a href="touristnote.jsp">旅游游记</a></li>
-                        <li><a href="news.jsp">旅游新闻</a></li>
-                        <li><a href="hotel.jsp">周边酒店</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                留言
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="message_add.jsp">我要留言</a></li>
-                                <li><a href="message.jsp">留言查看</a></li>
-                            </ul>
-                        </li>
 
-                    </ul>
-                </div>
-                <div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                登陆
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="visitorLogin.jsp">游客登陆</a></li>
-                                <li><a href="adminLogin.jsp">管理员登陆</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">注册</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-
+    <jsp:include page="statics/templates/nav.jsp"></jsp:include>
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -70,7 +26,7 @@
             </div>
             <div class="panel-body">
 
-                        <form style="margin:0px" class="form-inline" action="message/createMessage.action" method="post">
+                        <form style="margin:0px" class="form-inline" action="message/createMessage.action" method="post" onsubmit="return Validate();">
                             留言：<br>
                             <textarea name="message.messageInfo" id="message.messageInfo" cols="100%" rows="5"></textarea><br>
                             <button id="submitCondition" type="submit" class="btn btn-default btn-sm">发表</button>
@@ -88,5 +44,25 @@
 <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
 <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript" src="module/js/common/common.js"></script>
+<script language="javascript">
+    function Validate() {
+        var messageInfo = document.getElementById("message.messageInfo");
+        var visitor = <%=(Visitor)session.getAttribute("visitor")%>;
+        alert(visitor.toString());
+        if (messageInfo.value == null || messageInfo.value== "") {
+            alert("请输入留言！");
+            messageInfo.focus();
+
+            return false;
+        }
+        if(visitor.toString()==null||visitor.toString()==""){
+            alert("请登录！");
+
+            return false;
+        }
+
+        return true;
+    }
+</script>
 </body>
 </html>

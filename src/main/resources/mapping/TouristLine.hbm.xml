@@ -12,6 +12,9 @@
         <property name="touristLinePrice" type="java.lang.Double">
             <column name="TOURISTLINEPRICE" />
         </property>
+        <property name="touristLineName" type="java.lang.String">
+            <column name="TOURISTLINENAME" />
+        </property>
         <set name="lineScenerySet" cascade="all" inverse="false" lazy="false">
             <key>
                 <column name="TOURISTLINEID" />

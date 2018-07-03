@@ -12,6 +12,8 @@ public interface MessageService {
     public void reply(Message message);
   //删除留言
     public String removeByMessage(Integer messageId);
+    //按照留言ID查询留言
+    public Message queryByMessageId(Integer messageId);
   //查询所有留言
     public PageContainer<Message> queryAllMessage(PageContainer<Message> pageContainer);
   //按时间查询留言

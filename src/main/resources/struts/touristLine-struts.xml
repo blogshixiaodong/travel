@@ -13,9 +13,21 @@
             </result>
         </action>
 
+        <action name="removeTouristLine" class="com.fz.travel.controller.TouristLineController" method="removeTouristLine">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
         <action name="findTouristLineListById" class="com.fz.travel.controller.TouristLineController" method="findTouristLineListById">
             <result name="success" type="redirect">
                 <param name="location">../touristline_detail.jsp</param>
+            </result>
+        </action>
+
+        <action name="findLineSceneryByTouristLineId" class="com.fz.travel.controller.TouristLineController" method="findLineSceneryByTouristLineId">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
             </result>
         </action>
 

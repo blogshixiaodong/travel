@@ -3,7 +3,12 @@ package com.fz.travel.controller;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.TouristLine;
 import com.fz.travel.service.TouristLineService;
+import com.fz.travel.utils.JsonUtils;
 import com.opensymphony.xwork2.Action;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import org.apache.struts2.json.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -23,9 +28,26 @@ public class TouristLineController extends BaseController {
     @Autowired
     private TouristLineService touristLineService;
 
+    public String removeTouristLine() {
+        touristLine = touristLineService.queryTouristLineById(touristLine.getTouristLineId());
+        if(touristLine.getLineScenerySet() != null && touristLine.getLineScenerySet().size() != 0) {
+            jsonResult = "已存在相关约束，不能删除改线路.";
+            return Action.SUCCESS;
+        }
+        touristLineService.deleteTouristLine(touristLine);
+        return Action.SUCCESS;
+    }
+
     public String findTouristLineListById() {
         touristLine = touristLineService.queryTouristLineById(touristLine.getTouristLineId());
         putSessionAttribute("touristLine", touristLine);
+        return Action.SUCCESS;
+    }
+
+    public String findLineSceneryByTouristLineId() {
+        touristLine = touristLineService.queryTouristLineById(touristLine.getTouristLineId());
+        JsonConfig jsonConfig = JsonUtils.JsonExclude("lineScenerySet", "touristLine");
+        jsonResult = JSONArray.fromObject(touristLine.getLineScenerySet(), jsonConfig).toString();
         return Action.SUCCESS;
     }
 

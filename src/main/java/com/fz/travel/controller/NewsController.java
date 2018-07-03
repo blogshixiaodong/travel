@@ -11,6 +11,8 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.Date;
+
 @Controller
 public class NewsController extends BaseController {
     private News news;
@@ -24,17 +26,30 @@ public class NewsController extends BaseController {
 
     //添加新闻
     public String createNews(){
+
+        Date date = new Date();
+        news.setNewsDate(date);
         newsService.addNews(news);
         return Action.SUCCESS;
     }
     //删除新闻
     public String deleteNewsByNewsId(){
-        if(newsService.removeByNews(news.getNewsId()).equals("删除新闻成功"))
-        {
+
+        System.out.println(news.getNewsId());
+        newsService.removeByNews(news.getNewsId());
+
         return Action.SUCCESS;
-        }
-        else return  Action.ERROR;
+
     }
+    //更改新闻
+    public String updateNews(){
+        News news1 = newsService.queryByNewsId(news.getNewsId());
+        news.setNewsType(news1.getNewsType());
+        news.setNewsDate(news1.getNewsDate());
+        newsService.updateNews(news);
+        return Action.SUCCESS;
+    }
+
     //按新闻标题
     public String queryNewsByNewsHeadLine(){
         System.out.println(news.getNewsHeadLine());

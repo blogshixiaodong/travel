@@ -10,6 +10,8 @@ public interface NewsDao extends PageDao {
 
     public void deleteByNews(News news);
 
+    public void updateNews(News news);
+
     public News selectByNewsId(Serializable newsId);
 
     public PageContainer<News> selectAllNews();

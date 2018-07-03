@@ -33,9 +33,12 @@ public class MessageServiceImpl implements MessageService {
     }
     @Override
     public void reply(Message message){
-        message.setReplayTime(new Date("YY-MM-DD"));
         messageDao.reply(message);
 
+    }
+    @Override
+    public Message queryByMessageId(Integer messageId){
+        return messageDao.selectByMessageId(messageId);
     }
     @Override
     public PageContainer<Message> queryAllMessage(PageContainer<Message> pageContainer) {

@@ -7,12 +7,8 @@
 <struts>
     <package name="hotel" namespace="/hotel" extends="json-default, struts-default">
         <action name="createHotel" class="com.fz.travel.controller.HotelController" method="createHotel">
-            <result name="success" type="redirect">
-                <!--添加成功,进入所有酒店页面  -->
-                <param name="location">index.jsp</param>
-            </result>
-            <result name="error" type="redirect">
-                <param name="location">index.jsp</param>
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
             </result>
         </action>
 
@@ -23,22 +19,14 @@
         </action>
 
         <action name="deleteHotelByHotelId" class="com.fz.travel.controller.HotelController" method="deleteHotelByHotelId">
-            <result name="success" type="redirect">
-                <!--删除成功,进入所有酒店页面  -->
-                <param name="location">index.jsp</param>
-            </result>
-            <result name="error" type="redirect">
-                <param name="location">index.jsp</param>
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
             </result>
         </action>
 
         <action name="updateHotel" class="com.fz.travel.controller.HotelController" method="updateHotel">
-            <result name="success" type="redirect">
-                <!--修改成功,进入所有酒店页面  -->
-                <param name="location">index.jsp</param>
-            </result>
-            <result name="error" type="redirect">
-                <param name="location">index.jsp</param>
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
             </result>
         </action>
 

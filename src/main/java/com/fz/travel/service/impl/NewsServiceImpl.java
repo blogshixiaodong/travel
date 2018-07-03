@@ -27,10 +27,15 @@ public class NewsServiceImpl implements NewsService {
             newsDao.deleteByNews(news);
         return  "删除新闻成功";
     }
+
+    @Override
+    public void updateNews(News news){newsDao.updateNews(news);}
+
      @Override
      public News queryByNewsId(Integer newsId){
         return newsDao.selectByNewsId(newsId);
      }
+
     @Override
     public PageContainer<News> queryAllNews(PageContainer<News> pageContainer) {
         newsDao.setPageContainer(pageContainer);

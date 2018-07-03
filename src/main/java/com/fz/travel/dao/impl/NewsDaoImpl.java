@@ -20,6 +20,10 @@ public class NewsDaoImpl extends AbstractBaseDao<News> implements NewsDao{
 
         this.delete(news);
     }
+    @Override
+    public void updateNews(News news) {
+        this.update(news);
+    }
 
     @Override
     public News selectByNewsId(Serializable newsId) {
