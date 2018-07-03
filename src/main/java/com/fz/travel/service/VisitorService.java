@@ -29,4 +29,11 @@ public interface VisitorService extends PageDao<Visitor>{
     * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Visitor>
     */
     PageContainer<Visitor> queryVisitorList();
+
+    /*
+    * @Description:用户预定线路
+    * @param :  [visitorId, touristLineId]
+    * @return : java.lang.String
+    */
+    String visitorDestineTouristLine(Integer visitorId,Integer touristLineId);
 }

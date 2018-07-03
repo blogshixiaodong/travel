@@ -57,5 +57,11 @@ public interface HotelService {
     */
     PageContainer<Hotel> queryHotelByCondition(PageContainer<Hotel> pageContainer,Double low,Double high,String hotelAddress,String hotelName);
 
+    /*
+    * @Description:根据用户编号查询用户预定酒店
+    * @param :  [pageContainer, visitorId]
+    * @return : com.fz.travel.bean.PageContainer<com.fz.travel.bean.Hotel>
+    */
+    PageContainer<Hotel> queryHotelByVisitorId(PageContainer<Hotel> pageContainer,Integer visitorId);
 
 }

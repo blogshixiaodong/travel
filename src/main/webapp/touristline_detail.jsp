@@ -17,13 +17,21 @@
 </head>
 <body>
     <div class="container">
-        <jsp:include page="statics/templates/nav.jsp"></jsp:include>
+        <jsp:include page="statics/templates/nav.jsp" />
 
         <div class="row">
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     线路编号: <s:property value="#session.touristLine.touristLineId" />
-                    <s:property value="#session.touristLine.lineScenerySe" />
+                    <s:if test="%{#session.visitor != null}">
+                        <front style="float: right">
+                            <button type="submit" class="btn btn-default btn-sm" >预定</button>
+                        </front>
+                    </s:if>
+
+                </div>
+                <div style="margin-left: 0px">
+
                 </div>
                 <div class="panel-body">
                     <table class="table">

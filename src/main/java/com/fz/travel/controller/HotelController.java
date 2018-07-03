@@ -74,6 +74,15 @@ public class HotelController extends BaseController {
         return Action.SUCCESS;
     }
 
+    //根据用户编号查询用户预定酒店
+    public String queryHotelByVisitorId(){
+        Visitor visitor = (Visitor)getSession().get("visitor");
+        pageContainer = hotelService.queryHotelByVisitorId(pageContainer,visitor.getVisitorId());
+        jsonResult = pageContainer.toJson("visitorSet");
+        return Action.SUCCESS;
+
+    }
+
     private Visitor getCurrentVisitor(){
         return (Visitor) getSession().get("visitor");
     }

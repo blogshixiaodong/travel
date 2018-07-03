@@ -18,6 +18,8 @@ public class TouristLine implements Serializable {
 
     private String touristLineName;
 
+    private Set<Visitor> visitorSet = new HashSet<Visitor>();
+
     private Set<LineScenery> lineScenerySet = new HashSet<LineScenery>();
 
     public Integer getTouristLineId() {
@@ -50,6 +52,14 @@ public class TouristLine implements Serializable {
 
     public void setLineScenerySet(Set<LineScenery> lineScenerySet) {
         this.lineScenerySet = lineScenerySet;
+    }
+
+    public Set<Visitor> getVisitorSet() {
+        return visitorSet;
+    }
+
+    public void setVisitorSet(Set<Visitor> visitorSet) {
+        this.visitorSet = visitorSet;
     }
 
     @Override

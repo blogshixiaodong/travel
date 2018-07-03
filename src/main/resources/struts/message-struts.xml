@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="message" namespace="/message" extends="json-default, struts-default">
+
+        <action name="createMessage" class="com.fz.travel.controller.MessageController" method="creatMessage">
+            <result name="success" type="redirect">
+                <!--留言成功，进入留言界面-->
+                <param name="location">../message.jsp</param>
+            </result>
+            <result name="error" type="redirect">
+                <param name="location">../message.jsp</param>
+            </result>
+        </action>
+
+        <action name="deleteMessageByMessageId" class="com.fz.travel.controller.MessageController" method="deleteMessageByMessageId">
+            <result name="success" type="redirect">
+                <!--删除成功,进入留言界面-->
+                <param name="location">../admin/message.jsp</param>
+            </result>
+
+        </action>
+        <action name="replyMessage" class="com.fz.travel.controller.MessageController" method="replyMessage">
+            <result name="success" type="redirect">
+                <!--删除成功,进入留言界面-->
+                <param name="location">../admin/message.jsp</param>
+            </result>
+
+        </action>
+
+
+        <action name="queryMessageByMessageId" class="com.fz.travel.controller.MessageController" method="queryMessageByMessageId">
+            <result name="success" type="redirect">
+                <!-- 点击新闻查看具体新闻内容-->
+                <param name="location">../message_detail.jsp</param>
+            </result>
+        </action>
+
+        <action name="queryMessageByMessageInfo" class="com.fz.travel.controller.MessageController" method="queryMessageByMessageInfo">
+            <result name="success" type="json">
+                <!-- 按时间查询，跳到显示界面-->
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <action name="queryAllMessage" class="com.fz.travel.controller.MessageController" method="queryAllMessage">
+            <result name="success" type="json">
+                <!-- 显示所有新闻-->
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+    </package>
+</struts>

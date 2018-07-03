@@ -21,5 +21,12 @@
             </key>
             <one-to-many class="com.fz.travel.bean.LineScenery" />
         </set>
+        <set name="visitorSet" table="visitorline" cascade="all" inverse="false" lazy="false">
+            <key>
+                <column name="TOURISTLINEID"/>
+            </key>
+            <many-to-many class="com.fz.travel.bean.Visitor" column="VISITORID">
+            </many-to-many>
+        </set>
     </class>
 </hibernate-mapping>

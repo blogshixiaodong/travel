@@ -43,6 +43,12 @@ public class TouristLineDaoImpl extends AbstractBaseDao<TouristLine> implements 
     }
 
     @Override
+    public PageContainer<TouristLine> selectTouristLineListByVisitorId(Integer visitorId) {
+        String hql = "SELECT t FROM TouristLine t LEFT JOIN t.visitorSet v WHERE v.visitorId = ? ";
+        return list(hql,pageContainer,visitorId);
+    }
+
+    @Override
     public PageContainer<TouristLine> getPageContainer() {
         return pageContainer;
     }
