@@ -1,4 +1,11 @@
-com\fz\travel\service\impl\DemoServiceImpl.class
-com\fz\travel\bean\User.class
+com\fz\travel\service\UserService.class
+com\fz\travel\dao\impl\UserDaoImpl.class
 com\fz\travel\controller\ControllerDemo.class
-com\fz\travel\service\IDemoService.class
+com\fz\travel\dao\BaseDao.class
+com\fz\travel\bean\PageContainer.class
+com\fz\travel\controller\BaseController.class
+com\fz\travel\service\impl\UserServiceImpl.class
+com\fz\travel\utils\ReflectUtils.class
+com\fz\travel\bean\User.class
+com\fz\travel\dao\impl\AbstractBaseDao.class
+com\fz\travel\dao\UserDao.class

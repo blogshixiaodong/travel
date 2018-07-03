@@ -16,7 +16,12 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- 导航栏部分 -->
+
+
         <jsp:include page="statics/templates/nav.jsp"></jsp:include>
+
 
         <div class="row">
             <div class="panel panel-primary">
@@ -91,6 +96,44 @@
 
         });
 
+<<<<<<< HEAD
+                columns: [{
+                    field: 'sceneryId',
+                    title: '景点编号',
+                    align: 'center',
+                    valign: 'middle',
+                }, {
+                    field: 'sceneryName',
+                    title: '景点名称',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function(value, row, index) {
+                        return '<a href="scenery/querySceneryBySceneryId.action?scenery.sceneryId=' + row.sceneryId + '">' + value + '</a>';
+                    }
+                }, {
+                    field: 'sceneryPrice',
+                    title: '门票价格',
+                    align: 'center',
+                    valign: 'middle',
+                }, {
+                    field: 'sceneryOpenTime',
+                    title: '开放时间',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function(value, row, index) {
+                        return jsonDateToString(value);
+                    }
+                }],
+                responseHandler: function (e) {
+                    var json = JSON.parse(e);
+                    return json;
+                },
+                onLoadSuccess: function() {
+                    console.log("加载成功.");
+                },
+                onLoadError: function() {
+                    alert("加载失败, 刷新重试.");
+=======
         $("#submitCondition").click(function() {
             var name = $("#nameCondition").val();
             var queryParams = function(params) {
@@ -98,6 +141,7 @@
                     "pageContainer.pageSize": params.pageSize,
                     "pageContainer.currentPageNo": params.pageNumber,
                     "scenery.sceneryName": name
+>>>>>>> sxd/master
                 }
             };
             var url = "scenery/querySceneryBySceneryName.action"

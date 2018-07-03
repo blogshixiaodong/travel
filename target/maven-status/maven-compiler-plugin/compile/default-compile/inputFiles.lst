@@ -1,4 +1,11 @@
-F:\大三下\框架编程\workspace of idea\travel\src\main\java\com\fz\travel\bean\User.java
-F:\大三下\框架编程\workspace of idea\travel\src\main\java\com\fz\travel\controller\ControllerDemo.java
-F:\大三下\框架编程\workspace of idea\travel\src\main\java\com\fz\travel\service\impl\DemoServiceImpl.java
-F:\大三下\框架编程\workspace of idea\travel\src\main\java\com\fz\travel\service\IDemoService.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\service\impl\UserServiceImpl.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\utils\ReflectUtils.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\bean\PageContainer.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\controller\ControllerDemo.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\dao\BaseDao.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\controller\BaseController.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\dao\UserDao.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\dao\impl\UserDaoImpl.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\service\UserService.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\bean\User.java
+F:\ideaworkspace\travel\src\main\java\com\fz\travel\dao\impl\AbstractBaseDao.java

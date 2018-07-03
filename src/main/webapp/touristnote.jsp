@@ -15,13 +15,23 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- 导航栏部分 -->
+
+
         <jsp:include page="statics/templates/nav.jsp"></jsp:include>
+
 
         <div class="row">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     游记列表
                 </div>
+
+                </div>
+            </nav>
+        </div>
+
                 <div class="panel-body">
                     <front style="float: right">
                         <front style="float: right">
@@ -40,9 +50,6 @@
                 <table id="touristnote" class="table table-striped table-hover"></table>
             </div>
 
-        </div>
-
-    </div>
 
     <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>

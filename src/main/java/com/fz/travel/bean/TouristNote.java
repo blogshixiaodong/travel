@@ -10,7 +10,6 @@ import java.util.Date;
  */
 
 public class TouristNote implements Serializable {
-
     private Integer touristNoteId;
 
     private String touristNoteInfo;
@@ -71,4 +70,5 @@ public class TouristNote implements Serializable {
                 ", visitor=" + visitor +
                 '}';
     }
+
 }

@@ -14,6 +14,14 @@
     <constant name="struts.objectFactory" value="spring" />
 
     <include file="struts/user-struts.xml" />
+    <include file="struts/scenery-struts.xml" />
+    <include file="struts/hotel-struts.xml" />
+    <include file="struts/touristNote-struts.xml" />
+    <include file="struts/message-struts.xml" />
+    <include file="struts/news-struts.xml" />
+    <include file="struts/visitorAccount-struts.xml" />
+    <include file="struts/adminAccount-struts.xml" />
+    <include file="struts/touristLine-struts.xml" />
 
 
 

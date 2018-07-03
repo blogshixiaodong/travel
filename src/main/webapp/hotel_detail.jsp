@@ -18,7 +18,11 @@
 </head>
 <body>
     <div class="container">
+
+
+
         <jsp:include page="statics/templates/nav.jsp"></jsp:include>
+
         <div class="row">
             <div class="panel panel-warning">
                 <div class="panel-heading">

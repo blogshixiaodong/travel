@@ -42,10 +42,10 @@ public class TouristNoteDaoImplTest {
 
         visitor.setVisitorId(1);
 
-        touristNote.setTouristNoteHeadLine("标题1");
-        touristNote.setTouristNoteInfo("内同");
-        touristNote.setTouristNoteTime(new Date());
-        touristNote.setVisitor(visitor);
+//        touristNote.setTouristNoteHeadLine("标题1");
+//        touristNote.setTouristNoteInfo("内同");
+//        touristNote.setTouristNoteTime(new Date());
+//        touristNote.setVisitor(visitor);
 
         touristNoteDao.insertTouristNote(touristNote);
     }
@@ -53,7 +53,7 @@ public class TouristNoteDaoImplTest {
     @Test
     public void deleteTouristNote() throws Exception {
 
-        touristNote.setTouristNoteId(2);
+        //touristNote.setTouristNoteId(2);
 
 //        touristNoteDao.deleteTouristNote(touristNote);
 
@@ -63,11 +63,11 @@ public class TouristNoteDaoImplTest {
     public void updateTouristNote() throws Exception {
         visitor.setVisitorId(2);
 
-        touristNote.setTouristNoteId(1);
-        touristNote.setTouristNoteHeadLine("update line");
-        touristNote.setTouristNoteInfo("update info");
-        touristNote.setTouristNoteTime(new Date());
-        touristNote.setVisitor(visitor);
+//        touristNote.setTouristNoteId(1);
+//        touristNote.setTouristNoteHeadLine("update line");
+//        touristNote.setTouristNoteInfo("update info");
+//        touristNote.setTouristNoteTime(new Date());
+//        touristNote.setVisitor(visitor);
 
         touristNoteDao.updateTouristNote(touristNote);
     }
