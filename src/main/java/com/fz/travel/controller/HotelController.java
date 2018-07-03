@@ -49,7 +49,7 @@ public class HotelController extends BaseController {
 
     //修改酒店信息
     public String updateHotel(){
-        hotelService.updateHotel(hotel);
+        jsonResult = hotelService.updateHotel(hotel);
         return Action.SUCCESS;
     }
 

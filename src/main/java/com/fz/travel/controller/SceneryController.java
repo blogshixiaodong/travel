@@ -28,18 +28,19 @@ public class SceneryController extends BaseController {
     //添加景点信息
     public String createScenery(){
         sceneryService.addScenery(scenery);
+        jsonResult = "添加成功";
         return Action.SUCCESS;
     }
 
     //删除酒店信息
     public String deleteSceneryBySceneryId(){
-        sceneryService.deleteSceneryBySceneryId(scenery.getSceneryId());
+        jsonResult = sceneryService.deleteSceneryBySceneryId(scenery.getSceneryId());
         return Action.SUCCESS;
     }
 
     //修改酒店信息
     public String updateSceney(){
-        sceneryService.updateScenery(scenery);
+        jsonResult = sceneryService.updateScenery(scenery);
         return Action.SUCCESS;
     }
 

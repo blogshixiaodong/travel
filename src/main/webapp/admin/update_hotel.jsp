@@ -202,16 +202,13 @@
                 "hotelHighPrice":hotelHighPrice
             }
         }
+        //查询键
         $("#submit").click(function(){
              var url = "../hotel/queryHotelByCondition.action";
              initTable($("#hotels"),url,queryHotelByCondition,columns);
              return false;
         });
-        $("#btnGroup").click(function(){
-          var hotelId = $(this).parent().parent().childIndex(1).html();
-          $("#updateHotelId").value(hotelId)
-          $("#mymodal").modal();
-        });
+        //修改键
         $('#hotels').on("click", ".updatebBtnGroup", function() {
             var hotelId = $(this).parent().parent().children().get(0).innerHTML;
             var hotelName = $(this).parent().parent().children().get(1).innerHTML;
@@ -227,15 +224,27 @@
             $("#updateHotelIntroduce").val(hotelIntroduce);
             $("#myModal").modal();
         });
-
+        //(模态框)确认修改键
         $("#updateBtn").click(function(){
-            $("#myModal").modal("hide");
             var hotelId = $("#updateHotelId").val();
             var hotelName = $("#updateHotelName").val();
             var hotelAddress = $("#updateHotelAddress").val();
             var hotelPhone = $("#updateHotelPhone").val();
             var hotelPrice = $("#updateHotelPrice").val();
             var hotelIntroduce = $("#updateHotelIntroduce").val();
+            if(hotelName == "" || hotelAddress == "" || hotelPhone == "" || hotelPrice == "" || hotelIntroduce == ""){
+                alert("修改失败，修改信息需填写完整");
+                return;
+            }
+            if(checkNumber(hotelPrice)){
+                alert("酒店价格格式不正确");
+                return;
+            }
+            if(checkNumber(hotelPhone)){
+                alert("酒店电话格式不正确");
+                return;
+            }
+            $("#myModal").modal("hide");
             $.ajax({
                 url: "../hotel/updateHotel.action",
                 type: "post",
@@ -250,7 +259,8 @@
                 dataType: "json",
                 success: function(responseText){
                     alert(responseText);
-                    location.href = "../admin/admin_index.jsp";
+                    //location.href = "../admin/admin_index.jsp";
+                    location.reload();
                 }
             });
         });
