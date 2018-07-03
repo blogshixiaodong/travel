@@ -1,8 +1,3 @@
-INSERT INTO User VALUES(1, '11', '111', '男', '21', '183', '福建省', 'C:');
-INSERT INTO User VALUES(2, '22', '222', '女', '22', '171', '福建省', 'D:');
-INSERT INTO User VALUES(3, '33', '333', '男', '23', '159', '福建省', 'F:');
-INSERT INTO User VALUES(4, '44', '444', '女', '24', '156', '福建省', 'E:');
-INSERT INTO User VALUES(5, '55', '555', '男', '25', '128', '福建省', 'F:');
 
 INSERT INTO hotel VALUES(1, '11', '183590', '123', 120.5, '福建省');
 INSERT INTO hotel VALUES(2, '22', '18535490', '15223', 1120.5, '福建省');
@@ -17,9 +12,9 @@ INSERT INTO touristnote VALUES(2, 'tourist note', 'head line', '2018-6-19', 2);
 INSERT INTO touristnote VALUES(3, 'tourist note note', 'head line line', '2018-6-19', 1);
 
 
-INSERT INTO touristLine VALUES(1, 999.9);
-INSERT INTO touristLine VALUES(2, 233.9);
-INSERT INTO touristLine VALUES(3, 199.9);
+INSERT INTO touristLine VALUES(1, 999.9, '1');
+INSERT INTO touristLine VALUES(2, 233.9, '11');
+INSERT INTO touristLine VALUES(3, 199.9, '111');
 
 INSERT INTO scenery VALUES(1, 'C://', 15.8, 'introduce', 'good', '2018-5-1');
 INSERT INTO scenery VALUES(2, 'D://', 9.9, 'abc', 'nice', '2015-9-1');
@@ -35,4 +30,3 @@ INSERT INTO linescenery VALUES(5, 2, 2, 2);
 INSERT INTO linescenery VALUES(6, 5, 2, 3);
 INSERT INTO linescenery VALUES(7, 1, 3, 1);
 INSERT INTO linescenery VALUES(8, 5, 3, 2);
-

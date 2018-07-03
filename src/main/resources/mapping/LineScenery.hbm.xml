@@ -8,8 +8,8 @@
             <column name="LINESCENERYID" />
             <generator class="native" />
         </id>
-        <property name="order" type="java.lang.Integer">
-            <column name="ORDER" />
+        <property name="sequence" type="java.lang.Integer">
+            <column name="SEQUENCE" />
         </property>
         <many-to-one name="scenery" class = "com.fz.travel.bean.Scenery" column="sceneryId" lazy="false" />
         <many-to-one name="touristLine" class="com.fz.travel.bean.TouristLine" column="touristLineId" lazy="false" />

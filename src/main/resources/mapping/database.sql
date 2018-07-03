@@ -38,7 +38,7 @@ CREATE TABLE `linescenery` (
   `lineSceneryId` int(11) NOT NULL auto_increment,
   `sceneryId` int(11) default NULL,
   `touristLineId` int(11) default NULL,
-  `order` int(11) default NULL,
+  `sequence` int(11) default NULL,
   PRIMARY KEY  (`lineSceneryId`),
   KEY `sceneryidfk` (`sceneryId`),
   KEY `lineidfk` (`touristLineId`),
