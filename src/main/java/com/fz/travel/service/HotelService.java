@@ -34,7 +34,7 @@ public interface HotelService {
     * @param :  [hotel]
     * @return : void
     */
-    void updateHotel(Hotel hotel);
+    String updateHotel(Hotel hotel);
 
     /*
     * @Description:查询所有酒店信息

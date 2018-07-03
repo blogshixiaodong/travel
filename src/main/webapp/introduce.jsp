@@ -15,6 +15,7 @@
 </head>
 <body>
     <div class="container">
+
         <jsp:include page="statics/templates/nav.jsp"></jsp:include>
 
         <div class="row">

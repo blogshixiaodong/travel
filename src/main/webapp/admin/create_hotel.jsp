@@ -91,22 +91,42 @@
 	<script type="text/javascript">
 
 	function sendAjax(){
+		var hotelName = $("#hotelName").val();
+		var hotelAddress = $("#hotelAddress").val();
+		var hotelPrice = $("#hotelPrice").val();
+		var hotelIntroduce = $("#hotelIntroduce").val();
+		var hotelPhone = $("#hotelPhone").val();
+		if(hotelName == "" || hotelAddress == "" || hotelPrice == null || hotelIntroduce == "" || hotelPhone == "" ){
+			alert("请将信息填写完整");
+			$("#hotelName").value = hotelName;
+			$("#hotelAddress").value = hotelAddress;
+			$("#hotelPrice").value = hotelPrice;
+			$("#hotelIntroduce").value = hotelIntroduce;
+			$("#hotelPhone").value = hotelPhone;
+			return;
+		}
 		$.ajax({
-			url:"hotel/",
+			url:"../hotel/createHotel.action",
 			type:"post",
 			data:{
-				"pageContainer.currentPageNo":currentPage
+				"hotel.hotelName": hotelName,
+				"hotel.hotelAddress": hotelAddress,
+				"hotel.hotelPrice": hotelPrice,
+				"hotel.hotelIntroduce" : hotelIntroduce,
+				"hotel.hotelPhone" : hotelPhone
 			},
 			dataType:"json",
 			success: function(responseText){
+				alert("添加成功");
+				location.href = "../admin/admin_index.jsp";
 			},
 			error: function(data){
 			}
 		});
 	}
-	 $("#btnGroup").on('click','.btn',function(){
-			var pageNo = $(this).attr('pageNo');
-			sendAjax(pageNo);
+	 $("#leaveInfoSubmit").click(function(){
+		 sendAjax();
+		 return false;
 	});
 	</script>
 </body>

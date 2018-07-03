@@ -21,8 +21,6 @@ public class Message implements Serializable {
 
     private Date replayTime;
 
-    private Integer visitorId;
-
     private Visitor visitor;
 
     public Integer getMessageId() {
@@ -65,14 +63,6 @@ public class Message implements Serializable {
         this.replayTime = replayTime;
     }
 
-    public Integer getVisitorId() {
-        return visitorId;
-    }
-
-    public void setVisitorId(Integer visitorId) {
-        this.visitorId = visitorId;
-    }
-
     public Visitor getVisitor() {
         return visitor;
     }
@@ -89,7 +79,6 @@ public class Message implements Serializable {
                 ", replayInfo='" + replayInfo + '\'' +
                 ", messageTime=" + messageTime +
                 ", replayTime=" + replayTime +
-                ", visitorId=" + visitorId +
                 ", visitor=" + visitor +
                 '}';
     }

@@ -16,6 +16,7 @@
 <body>
     <div class="container">
         <jsp:include page="statics/templates/nav.jsp"></jsp:include>
+
         <!-- 轮播图显示 -->
         <div class="row">
             <div id="myCarousel" class="carousel slide">
