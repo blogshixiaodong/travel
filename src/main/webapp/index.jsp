@@ -10,6 +10,7 @@
 <head>
     <title>FuZhou Travel</title>
     <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="vendors/bootstrap-table/css/bootstrap-table.min.css" />
     <link rel="stylesheet" href="module/css/common.css" />
     <link rel="stylesheet" href="module/css/index.css" />
 </head>
@@ -52,37 +53,19 @@
         <!-- 文章中心部分 -->
         <div class="row">
             <!-- 左边新闻列表 -->
-            <div class="col-md-8 cols-sm-12 cols-xs-12">
+            <div class="col-md-12 cols-sm-12 cols-xs-12">
                 <div class="row">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             旅游资讯
                             <front style="float: right">
-                                <a href="#">
+                                <a href="news.jsp">
                                     <span class="badge">→</span>
                                 </a>
                             </front>
                         </div>
                         <div class="panel-body">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>编号</th>
-                                        <th>标题</th>
-                                        <th>时间</th>
-                                        <th>类型</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>100</td>
-                                        <td>1</td>
-                                        <td>100</td>
-                                    </tr>
-                                </tbody>
-
-                            </table>
+                            <table id="newsTable" class="table table-striped table-hover"></table>
                         </div>
                     </div>
                 </div>
@@ -92,30 +75,12 @@
                         <div class="panel-heading">
                             最新线路
                             <front style="float: right">
-                                <a href="#">
+                                <a href="touristline.jsp">
                                     <span class="badge">→</span>
                                 </a>
                             </front>
                         </div>
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>编号</th>
-                                    <th>名称</th>
-                                    <th>价格</th>
-                                    <th>状态</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>100</td>
-                                    <td>1</td>
-                                    <td>100</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
+                        <table id="touristLineTable" class="table table-striped table-hover"></table>
                     </div>
                 </div>
 
@@ -124,36 +89,139 @@
                         <div class="panel-heading">
                             游客游记
                             <front style="float: right">
-                                <a href="#">
+                                <a href="touristnote.jsp">
                                     <span class="badge">→</span>
                                 </a>
                             </front>
                         </div>
                         <div class="panel-body">
-
+                            <table id="touristLineNoteTable" class="table table-striped table-hover"></table>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 侧边其他信息显示 -->
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">这里是面板头部标题</div>
-                    <div class="panel-body">这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分这里是面板内容部分</div>
                 </div>
             </div>
         </div>
     </div>
 
-
     <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="module/js/common/common.js"></script>
     <script type="text/javascript">
         //激活下拉列表
         $(".dropdown-toggle").dropdown();
         //激活轮播图
-        $('.carousel').carousel()
+        $('.carousel').carousel();
+
+        var newsColumns = [{
+            field: 'newsType',
+            title: '新闻类型',
+            align: 'center',
+            valign: 'middle',
+        }, {
+            field: 'newsHeadLine',
+            title: '新闻标题',
+            align: 'center',
+            valign: 'middle',
+            formatter: function(value, row, index) {
+                return '<a href="news/queryNewsByNewsId.action?news.newsId=' + row.newsId + '">' + value + '</a>';
+            },
+        }, {
+            field: 'newsDate',
+            title: '发表时间',
+            align: 'center',
+            valign: 'middle',
+            formatter: function(value, row, index) {
+                return jsonDateToString(value);
+            },
+        }];
+
+        var touristLineColumns = [{
+            field: 'touristLineId',
+            title: '线路编号',
+            align: 'center',
+            valign: 'middle',
+        }, {
+            field: 'touristLineName',
+            title: '线路名称',
+            align: 'center',
+            valign: 'middle',
+            formatter: function(value, row, index) {
+                return '<a href="touristNote/findTouristNoteById.action?touristNote.touristNoteId=' + row.touristNoteId + '">' + value + '</a>';
+            }
+        }, {
+            field: 'touristLinePrice',
+            title: '线路价格',
+            align: 'center',
+            valign: 'middle',
+
+        }];
+
+        var touristNoteColumns = [{
+            field: 'touristNoteId',
+            title: '游记编号',
+            align: 'center',
+            valign: 'middle',
+        }, {
+            field: 'touristNoteHeadLine',
+            title: '标题',
+            align: 'center',
+            valign: 'middle',
+            formatter: function(value, row, index) {
+                return '<a href="touristLine/findTouristLineListById.action?touristLine.touristLineId=' + row.touristLineId + '">' + value + '</a>';
+            }
+        }, {
+            field: 'touristNoteTime',
+            title: '发表时间',
+            align: 'center',
+            valign: 'middle',
+            formatter: function(value, row, index) {
+                return jsonDateToString(value);
+            },
+        }, {
+            field: 'visitor.visitorId',
+            title: '作者',
+            align: 'center',
+            valign: 'middle',
+
+        }];
+
+        $(function() {
+            initTable(
+                $("#newsTable"),
+                "news/queryAllNews.action",
+                function(params) {
+                    return {
+                        "pageContainer.pageSize": params.pageSize,
+                        "pageContainer.currentPageNo": params.pageNumber,
+                    };},
+                newsColumns);
+
+            initTable(
+                $("#touristLineTable"),
+                "touristLine/findTouristLineList.action",
+                function(params) {
+                    return {
+                        "pageContainer.pageSize": params.pageSize,
+                        "pageContainer.currentPageNo": params.pageNumber,
+                    };},
+                touristLineColumns);
+
+            initTable(
+                $("#touristLineNoteTable"),
+                "touristNote/findTouristNoteList.action",
+                function(params) {
+                    return {
+                        "pageContainer.pageSize": params.pageSize,
+                        "pageContainer.currentPageNo": params.pageNumber,
+                    };},
+                touristNoteColumns);
+        });
+
+
+
+
     </script>
 </body>
 </html>

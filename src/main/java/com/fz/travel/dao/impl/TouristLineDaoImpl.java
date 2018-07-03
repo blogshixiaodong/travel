@@ -37,6 +37,12 @@ public class TouristLineDaoImpl extends AbstractBaseDao<TouristLine> implements 
     }
 
     @Override
+    public PageContainer<TouristLine> selectTouristLineByName(String touristLineName) {
+        String hql = "FROM TouristLine t where t.touristLineName like ?";
+        return this.list(hql, pageContainer, "%" + touristLineName + "%");
+    }
+
+    @Override
     public PageContainer<TouristLine> selectTouristLineList() {
         String hql = "FROM TouristLine";
         return this.list(hql, pageContainer);

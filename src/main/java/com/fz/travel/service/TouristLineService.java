@@ -19,6 +19,8 @@ public interface TouristLineService {
 
     TouristLine queryTouristLineById(Serializable touristLineId);
 
+    PageContainer<TouristLine> queryTouristLineByName(String touristLineName, PageContainer<TouristLine> pageContainer);
+
     PageContainer<TouristLine> queryTouristLineList(PageContainer<TouristLine> pageContainer);
 
     /*

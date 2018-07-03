@@ -40,6 +40,12 @@ public class ToutistLineServiceImpl implements TouristLineService {
     }
 
     @Override
+    public PageContainer<TouristLine> queryTouristLineByName(String touristLineName, PageContainer<TouristLine> pageContainer) {
+        touristLineDao.setPageContainer(pageContainer);
+        return touristLineDao.selectTouristLineByName(touristLineName);
+    }
+
+    @Override
     public PageContainer<TouristLine> queryTouristLineList(PageContainer<TouristLine> pageContainer) {
         touristLineDao.setPageContainer(pageContainer);
         return touristLineDao.selectTouristLineList();

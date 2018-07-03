@@ -24,6 +24,9 @@ public interface TouristLineDao extends PageDao<TouristLine> {
     //根据线路编号查询
     TouristLine selectTouristLineById(Serializable touristLineId);
 
+    //根据游记名称查询
+    PageContainer<TouristLine> selectTouristLineByName(String touristLineName);
+
     //查询所有线路
     PageContainer<TouristLine> selectTouristLineList();
 

@@ -157,6 +157,12 @@ public class TouristLineController extends BaseController {
         return Action.SUCCESS;
     }
 
+    public String findLineSceneryByTouristLineName() {
+        pageContainer = touristLineService.queryTouristLineByName(touristLine.getTouristLineName(), pageContainer);
+        jsonResult = pageContainer.toJson("lineScenerySet","visitorSet");
+        return Action.SUCCESS;
+    }
+
     public String findTouristLineList() {
         pageContainer = touristLineService.queryTouristLineList(pageContainer);
         jsonResult = pageContainer.toJson("lineScenerySet","visitorSet");

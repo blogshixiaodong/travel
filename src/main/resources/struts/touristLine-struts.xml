@@ -43,6 +43,12 @@
             </result>
         </action>
 
+        <action name="findLineSceneryByTouristLineName" class="com.fz.travel.controller.TouristLineController" method="findLineSceneryByTouristLineName">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
         <action name="findTouristLineListByVisitorId" class="com.fz.travel.controller.TouristLineController" method="findTouristLineListByVisitorId">
             <result name="success" type="json">
                 <param name="root">jsonResult</param>

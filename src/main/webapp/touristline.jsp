@@ -25,15 +25,15 @@
                 <div class="panel-body">
                     <front style="float: right">
                         <front style="float: right">
-                            <%--<form style="margin:0px" class="form-inline">--%>
-                                <%--<div class="form-group">--%>
-                                    <%--<div class="input-group input-group-sm">--%>
-                                        <%--<span class="input-group-addon">线路编号</span>--%>
-                                        <%--<input id="idCondition" type="text" class="form-control"  value="" />--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<button id="submitCondition" type="button" class="btn btn-default btn-sm">查找</button>--%>
-                            <%--</form>--%>
+                            <form style="margin:0px" class="form-inline">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm">
+                                        <span class="input-group-addon">线路名称</span>
+                                        <input id="nameCondition" type="text" class="form-control"  value="" />
+                                    </div>
+                                </div>
+                                <button id="submitCondition" type="button" class="btn btn-default btn-sm">查找</button>
+                            </form>
                         </front>
                     </front>
                 </div>
@@ -82,18 +82,19 @@
         });
 
         $("#submitCondition").click(function() {
-            var id = $("#idCondition").val();
-            var url = "touristLine/findTouristLineListById.action";
+            var name = $("#nameCondition").val();
+            var url = "touristLine/findLineSceneryByTouristLineName.action";
             var queryParams = function(params) {
                 return {
                     "pageContainer.pageSize": params.pageSize,
                     "pageContainer.currentPageNo": params.pageNumber,
-                    "touristLine.touristLineId": id
+                    "touristLine.touristLineName": name
                 };
             };
             initTable($("#touristLine"), url, queryParams, columns);
             return false;
         });
+
     </script>
 </body>
 </html>

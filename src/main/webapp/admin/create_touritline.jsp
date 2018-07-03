@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/admin/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
@@ -64,33 +65,18 @@
                                     </div>
                                     <div class="form-group col-lg-3">
                                         <div class="input-group">
-                                            <button id="addScenery" type="button" class="btn btn-primary">添加景点</button>
                                             <button id="saveTouristLine" type="button" class="btn btn-primary">保存线路信息</button>
                                         </div>
-
                                     </div>
                                 </div>
                                 <hr />
                                 景点信息：
                                 <div id="sceneryList" class="row">
-                                    <div class="row">
-                                        <div class="form-group col-lg-3">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">景点编号</span>
-                                                <input class="form-control sceneryId" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-lg-3">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">景点名称</span>
-                                                <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-lg-3">
-                                            <div class="input-group">
-                                                <button type="button" class="btn btn-primary removeScenery">删除</button>
-                                            </div>
-                                        </div>
+                                    <div>
+                                        <select id="scenerySelect" class="selectpicker show-tick" title="请选择景点" data-live-search="true" data-size="5">
+                                            <!-- 页面加载后由ajax加载 -->
+                                        </select>
+                                        <button id="addScenery" type="button" class="btn btn-primary">添加景点</button>
                                     </div>
                                 </div>
                                 <!-- 隐藏模板 -->
@@ -98,13 +84,13 @@
                                     <div class="form-group col-lg-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">景点编号</span>
-                                            <input class="form-control sceneryId" type="text">
+                                            <input class="form-control sceneryId" type="text" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">景点名称</span>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control sceneryName" type="text" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group col-lg-3">
@@ -135,6 +121,7 @@
 
     <script type="text/javascript">
         $(function() {
+            //先将数据加载在模板中，供后续动态节点clone
             $.ajax({
                 url: "../scenery/queryAllScenery.action",
                 type: "get",
@@ -144,28 +131,38 @@
                     "pageContainer.currentPageNo": 1
                 },
                 success: function(responseText) {
-//                    var json = JSON.parse(responseText);
-//                    var select = $("#sceneryList");
-//                    var rows = json.rows;
-//                    for(var i = 0; i < rows.length; i++) {
-//                        var sceneryId = rows[i].sceneryId;
-//                        var sceneryName = rows[i].sceneryName;
-//                        select.append($("<option></option>").html(sceneryId + " : " + sceneryName));
-//                    };
-//                    select.selectpicker("refresh");
+                    var json = JSON.parse(responseText);
+                    var select = $("#sceneryList #scenerySelect");
+                    var rows = json.rows;
+                    for(var i = 0; i < rows.length; i++) {
+                        var sceneryId = rows[i].sceneryId;
+                        var sceneryName = rows[i].sceneryName;
+                        select.append($("<option></option>").html(sceneryId + " : " + sceneryName));
+                    };
+                    select.selectpicker("refresh");
                 }
             })
         });
 
         //克隆模板，添加数据返回节点
-        function createScenery() {
+        function createScenery(sceneryId, sceneryName) {
             var $template = $("#sceneryTemplate");
             var $clone = $template.clone().removeClass("hide").removeAttr("id");
+            $clone.find(".sceneryId").val(sceneryId);
+            $clone.find(".sceneryName").val(sceneryName);
             return $clone;
         };
 
         $("#addScenery").click(function() {
-            $("#sceneryList").append(createScenery());
+            if($("#scenerySelect").val() == "") {
+                alert("请先选择景点!");
+                return false;
+            }
+            var sceneryId = $("#scenerySelect").val().split(" : ")[0];
+            var sceneryName = $("#scenerySelect").val().split(" : ")[1];
+            $("#sceneryList").append(createScenery(sceneryId, sceneryName));
+            document.getElementById("scenerySelect").options.selectedIndex = 0;
+            $("#scenerySelect").selectpicker("refresh");
         });
 
         $("#sceneryList").on("click", ".removeScenery", function() {
