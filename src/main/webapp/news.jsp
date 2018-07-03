@@ -86,7 +86,6 @@
             <table id="news" class="table table-striped table-hover"></table>
         </div>
     </div>
-
 </div>
 
 <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>

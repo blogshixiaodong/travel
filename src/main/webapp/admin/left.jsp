@@ -55,9 +55,9 @@
 						<a><i class="fa fa-edit"></i>旅游新闻
 						<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="#">添加新闻</a></li>
+							<li><a href="create_news.jsp">添加新闻</a></li>
 							<li><a href="#">修改新闻</a></li>
-							<li><a href="#">删除新闻</a></li>
+							<li><a href="delete_news.jsp">删除新闻</a></li>
 						</ul>
 					</li>
 					
@@ -65,8 +65,8 @@
 						<a><i class="fa fa-table"></i>留言信息
 							<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="#">回复留言</a></li>
-							<li><a href="#">删除留言</a></li>
+							<li><a href="reply_message.jsp">回复留言</a></li>
+							<li><a href="message.jsp">留言</a></li>
 						</ul>
 					</li>
 					<li>
