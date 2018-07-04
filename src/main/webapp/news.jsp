@@ -98,7 +98,7 @@
                     align: 'center',
                     valign: 'middle',
                     formatter: function(value, row, index) {
-                        return jsonDateToString(value);
+                        return jsonDateToString1(value);
                     },
                 }],
                 responseHandler: function (e) {

@@ -2,6 +2,7 @@ package com.fz.travel.controller;
 
 import com.fz.travel.bean.TouristLine;
 import com.fz.travel.bean.Visitor;
+import com.fz.travel.bean.VisitorAccount;
 import com.fz.travel.service.VisitorService;
 import com.opensymphony.xwork2.Action;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,17 @@ public class VisitorController extends BaseController{
     private VisitorService visitorService;
 
     private TouristLine touristLine;
+
+    private VisitorAccount visitorAccount;
+
+    private Visitor visitor;
+
+    public String createVisitor(){
+        visitor.setVisitorAccount(visitorAccount);
+        visitorService.addVisitor(visitor);
+        jsonResult = "添加成功";
+        return Action.SUCCESS;
+    }
 
     public String visitorDestineTouristLine(){
         Visitor visitor = (Visitor) getSession().get("visitor");
@@ -41,5 +53,21 @@ public class VisitorController extends BaseController{
 
     public void setTouristLine(TouristLine touristLine) {
         this.touristLine = touristLine;
+    }
+
+    public VisitorAccount getVisitorAccount() {
+        return visitorAccount;
+    }
+
+    public void setVisitorAccount(VisitorAccount visitorAccount) {
+        this.visitorAccount = visitorAccount;
+    }
+
+    public Visitor getVisitor() {
+        return visitor;
+    }
+
+    public void setVisitor(Visitor visitor) {
+        this.visitor = visitor;
     }
 }

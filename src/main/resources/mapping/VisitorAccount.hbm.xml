@@ -7,7 +7,7 @@
     <class name="com.fz.travel.bean.VisitorAccount" table="visitoraccount" catalog="travel">
         <id name="accountId" type="java.lang.Integer">
             <column name="ACCOUNTID" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <property name="password" type="java.lang.String">
             <column name="PASSWORD" />

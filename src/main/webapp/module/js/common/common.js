@@ -14,7 +14,12 @@ function appendZero(number) {
     }
     return number;
 }
-
+function jsonDateToString1(dateObject) {
+    var year = 1900 + dateObject.year;
+    var month = 1 + dateObject.month;
+    var day = dateObject.date;
+    return year + "-" + appendZero(month) + "-" + appendZero(day) + " ";
+}
 
 function jsonDateToString(dateObject) {
     var year = 1900 + dateObject.year;
@@ -37,6 +42,15 @@ function checkNumber(theObj) {
         return true;
     }
     return false;
+}
+//验证是否是电话号码  以1开头的11数字
+function isPoneAvailable(phone) {
+    var myreg = /^1\d{10}$/;
+    if (!myreg.test(phone)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function createBtnGroup(btnGroup, json) {
