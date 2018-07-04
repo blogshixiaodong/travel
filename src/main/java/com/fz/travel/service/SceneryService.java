@@ -4,6 +4,8 @@ import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.Scenery;
 import javafx.scene.Scene;
 
+import java.io.File;
+
 /**
  * @author: jiangjaimin
  * @date :  2018/6/29.
@@ -51,4 +53,10 @@ public interface SceneryService {
     */
     PageContainer<Scenery> querySceneryBySceneryName(PageContainer<Scenery> pageContainer,String sceneryName);
 
+    /*
+    * @Description:上传景点图片
+    * @param :  []
+    * @return : boolean
+    */
+    boolean sceneryImgUpLoad(File upload,String uploadFileName);
 }

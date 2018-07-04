@@ -21,7 +21,7 @@
     <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                旅游新闻
+                留言信息
             </div>
             <div class="panel-body">
                 <front style="float: right">

@@ -8,6 +8,8 @@ import com.fz.travel.service.SceneryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
+
 /**
  * @author: jiangjaimin
  * @date :  2018/6/29.
@@ -40,6 +42,35 @@ public class SceneryServiceImpl implements SceneryService {
         }else{
             return "删除失败";
         }
+    }
+
+    @Override
+    public boolean sceneryImgUpLoad(File upload, String uploadFileName) {
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try {
+            inputStream = new FileInputStream(upload);
+            outputStream = new FileOutputStream("d:/images/"+uploadFileName);
+            byte buffer[] = new byte[1024];
+            int count = 0;
+            while((count=inputStream.read(buffer)) > 0){
+                outputStream.write(buffer,0,count);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                outputStream.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            try {
+                inputStream.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return true;
     }
 
     @Override

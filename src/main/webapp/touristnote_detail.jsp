@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <title>查看游记</title>
@@ -20,20 +21,20 @@
         <div class="row">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                    游记标题
+                    游记标题:<s:property value="#session.touristNote.touristNoteHeadLine" />
+                    <front style="float: right;" >
+                        <button id="returnBtn" class="btn btn-default btn-sm" type="submit">返回</button>
+                    </front>
                 </div>
                 <div class="panel-body">
-                    <div >
-                        <img src="statics/images/1.jpg" />
-                    </div>
                     <hr />
                     <p>
-                        大家好，欢迎大家访问CSDN博客开发组Blog。非常感谢大家这些年来对CSDN Blog的支持，为了更好的提高我们的服务质量和增加和用户的互动，我们特推出了博客开发组Blog，希望通过它能够获取用户对CSDN Blog平台、运营和发展的意见。大家对CSDN博客发展如果有什么好的意见也可以直接发信给我，我是CSDN的博客产品经理陈瑞江，电子邮件是crj AT csdn.net（请把AT换成@）。
+                    <td><s:property value="#session.touristNote.touristNoteInfo" /></td>
                     </p>
                 </div>
                 <div class="panel-footer">
                     <front>
-                        游记发表时间：2018-7-1
+                        游记发表时间：<s:date name="#session.touristNote.touristNoteTime" format="yyyy-MM-dd"/>
                     </front>
                     <div class="clearfix" />
                 </div>
@@ -44,5 +45,11 @@
     <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript">
+        $("#returnBtn").click(function(){
+           location.href = "touristnote.jsp";
+        });
+
+    </script>
 </body>
 </html>

@@ -9,6 +9,8 @@ import com.opensymphony.xwork2.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.io.File;
+
 /**
  * @author: jiangjaimin
  * @date :  2018/6/30.
@@ -22,11 +24,18 @@ public class SceneryController extends BaseController {
 
     private PageContainer<Scenery> pageContainer;
 
+    private File upload;
+
+    private String uploadFileName;
+
     @Autowired
     private SceneryService sceneryService;
 
     //添加景点信息
     public String createScenery(){
+        uploadImgRename();//重置上传文件名
+        sceneryService.sceneryImgUpLoad(upload,uploadFileName);
+        scenery.setSceneryPhoto(uploadFileName);
         sceneryService.addScenery(scenery);
         jsonResult = "添加成功";
         return Action.SUCCESS;
@@ -47,6 +56,7 @@ public class SceneryController extends BaseController {
     //根据景点编号查询景点信息
     public String querySceneryBySceneryId(){
         scenery = sceneryService.querySceneryBySceneryId(scenery.getSceneryId());
+        putSessionAttribute("scenery",scenery);
         return Action.SUCCESS;
     }
 
@@ -62,6 +72,11 @@ public class SceneryController extends BaseController {
         pageContainer = sceneryService.queryAllScenery(pageContainer);
         jsonResult = pageContainer.toJson("lineScenerySet");
         return Action.SUCCESS;
+    }
+
+    private void uploadImgRename(){
+        String suffix = uploadFileName.split("\\.")[1];
+        uploadFileName = scenery.getSceneryName()+"."+suffix;
     }
 
     public String getJsonResult() {
@@ -86,5 +101,21 @@ public class SceneryController extends BaseController {
 
     public void setPageContainer(PageContainer<Scenery> pageContainer) {
         this.pageContainer = pageContainer;
+    }
+
+    public File getUpload() {
+        return upload;
+    }
+
+    public void setUpload(File upload) {
+        this.upload = upload;
+    }
+
+    public String getUploadFileName() {
+        return uploadFileName;
+    }
+
+    public void setUploadFileName(String uploadFileName) {
+        this.uploadFileName = uploadFileName;
     }
 }

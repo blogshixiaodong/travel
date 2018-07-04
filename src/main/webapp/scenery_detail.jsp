@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.fz.travel.bean.Scenery" %><%--
   Created by IntelliJ IDEA.
   User: 15129
   Date: 2018/7/1
@@ -18,28 +18,31 @@
 <body>
     <div class="container">
         <jsp:include page="statics/templates/nav.jsp"/>
-
         <div class="row">
             <div class="panel panel-warning">
                 <div class="panel-heading">
-                   景点名称
+                   景点名称:<s:property value="#session.scenery.sceneryName" />
+                    <front style="float: right;" >
+                        <button id="returnBtn" class="btn btn-default btn-sm" type="submit">返回</button>
+                    </front>
                 </div>
+
                 <div class="panel-body">
-                    <div >
-                        <img src="statics/images/1.jpg" />
+                    <div style="display: inline; width: 40%">
+                        <img id="sceneryImg" style="width: 60%"/>
+                    </div>
+                    <div style="display: inline;">
+                        <s:property value="#session.scenery.sceneryIntroduce" />
                     </div>
                     <hr />
-                    <p>
-                        大家好，欢迎大家访问CSDN博客开发组Blog。非常感谢大家这些年来对CSDN Blog的支持，为了更好的提高我们的服务质量和增加和用户的互动，我们特推出了博客开发组Blog，希望通过它能够获取用户对CSDN Blog平台、运营和发展的意见。大家对CSDN博客发展如果有什么好的意见也可以直接发信给我，我是CSDN的博客产品经理陈瑞江，电子邮件是crj AT csdn.net（请把AT换成@）。
-                    </p>
+
                 </div>
                 <div class="panel-footer">
                     <front>
-                        价格： 99￥
+                        价格： <s:property value="#session.scenery.sceneryPrice" />
                     </front>
                     <front>
-                        开放时间：2018-7-1
-                        <s:property value="scenery.sceneryid" />
+                        开放时间：<s:property value="#session.scenery.sceneryOpenTime" />
                     </front>
                     <div class="clearfix" />
                 </div>
@@ -51,6 +54,16 @@
     <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap-table/js/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var sceneryImg ="<%=((Scenery)session.getAttribute("scenery")).getSceneryPhoto()%>";
+            var path = "images/getImage.action?name="+sceneryImg;
+            $("#sceneryImg").attr('src',path);
+        });
 
+        $("#returnBtn").click(function(){
+           location.href = "scenery.jsp";
+        });
+    </script>
 </body>
 </html>
