@@ -90,7 +90,7 @@
                     align: 'center',
                     valign: 'middle',
                     formatter: function(value, row, index) {
-                        return jsonDateToString(value);
+                        return jsonDateToString1(value);
                     },
                 },{
                     field: 'replayInfo',
@@ -112,7 +112,7 @@
                         if(value==null||value=="")
                             return "暂无回复信息！";
                         else
-                        return jsonDateToString(value);
+                        return jsonDateToString1(value);
                     },
                 }],
                 responseHandler: function (e) {

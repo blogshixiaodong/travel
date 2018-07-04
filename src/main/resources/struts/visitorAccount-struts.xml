@@ -21,6 +21,19 @@
                 <param name="location">../index.jsp</param>
             </result>
         </action>
+        <action name="findVisitorAccountByAccountId" class="com.fz.travel.controller.VisitorAccountController" method="findVisitorAccountByAccountId">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+        <action name="hasVisitorAccount" class="com.fz.travel.controller.VisitorAccountController" method="hasVisitorAccount">
+            <result name="success" type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+
+
 
     </package>
 </struts>

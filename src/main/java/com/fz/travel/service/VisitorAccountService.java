@@ -37,4 +37,11 @@ public interface VisitorAccountService {
     * @return : boolean
     */
     Visitor visitorAccountLoginCheck(VisitorAccount visitorAccount);
+
+    /*
+    * @Description:根据账号编号 查询是否有该账号
+    * @param :  [visitorAccountId]
+    * @return : java.lang.String
+    */
+    String hasVisitorAccount(Integer visitorAccountId);
 }

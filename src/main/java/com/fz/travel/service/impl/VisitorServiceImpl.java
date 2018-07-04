@@ -3,8 +3,10 @@ package com.fz.travel.service.impl;
 import com.fz.travel.bean.PageContainer;
 import com.fz.travel.bean.TouristLine;
 import com.fz.travel.bean.Visitor;
+import com.fz.travel.bean.VisitorAccount;
 import com.fz.travel.dao.PageDao;
 import com.fz.travel.dao.TouristLineDao;
+import com.fz.travel.dao.VisitorAccountDao;
 import com.fz.travel.dao.VisitorDao;
 import com.fz.travel.dao.impl.AbstractBaseDao;
 import com.fz.travel.service.VisitorService;
@@ -26,9 +28,15 @@ public class VisitorServiceImpl extends AbstractBaseDao<Visitor> implements Visi
     @Autowired
     private TouristLineDao touristLineDao;
 
+    @Autowired
+    private VisitorAccountDao visitorAccountDao;
+
     @Override
     public void addVisitor(Visitor visitor) {
         visitorDao.insertVisitor(visitor);
+        VisitorAccount visitorAccount = visitor.getVisitorAccount();
+        visitorAccount.setVisitor(visitor);
+        visitorAccountDao.insertVisitorAccount(visitorAccount);
     }
 
     @Override

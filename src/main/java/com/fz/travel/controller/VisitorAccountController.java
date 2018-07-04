@@ -18,12 +18,15 @@ public class VisitorAccountController extends BaseController{
 
     private VisitorAccount visitorAccount;
 
+    private Visitor visitor;
+
     @Autowired
     private VisitorAccountService visitorAccountService;
 
     //用户注册
     public String createVisitorAccount(){
         visitorAccountService.addVisitorAccount(visitorAccount);
+        jsonResult = "创建成功";
         return Action.SUCCESS;
     }
 
@@ -44,6 +47,16 @@ public class VisitorAccountController extends BaseController{
         return Action.SUCCESS;
     }
 
+    public String findVisitorAccountByAccountId(){
+        visitorAccountService.queryVisitorAccountByVisitorAccountId(visitorAccount.getAccountId());
+        return Action.SUCCESS;
+    }
+
+    public String hasVisitorAccount(){
+        jsonResult = visitorAccountService.hasVisitorAccount(visitorAccount.getAccountId());
+        return Action.SUCCESS;
+    }
+
     public VisitorAccount getVisitorAccount() {
         return visitorAccount;
     }
@@ -58,5 +71,13 @@ public class VisitorAccountController extends BaseController{
 
     public void setJsonResult(String jsonResult) {
         this.jsonResult = jsonResult;
+    }
+
+    public Visitor getVisitor() {
+        return visitor;
+    }
+
+    public void setVisitor(Visitor visitor) {
+        this.visitor = visitor;
     }
 }

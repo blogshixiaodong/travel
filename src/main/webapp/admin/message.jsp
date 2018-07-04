@@ -140,7 +140,7 @@
         align: 'center',
         valign: 'middle',
         formatter: function(value, row, index) {
-            return jsonDateToString(value);
+            return jsonDateToString1(value);
         },
     },{
         field: 'replayInfo',
@@ -162,7 +162,7 @@
             if(value==null||value=="")
                 return "暂无回复信息！";
             else
-                return jsonDateToString(value);
+                return jsonDateToString1(value);
         },
     }, {
         //field: '删除',
@@ -171,22 +171,25 @@
         valign: 'middle',
         formatter: function(value, row, index) {
             return '<a href="../message/deleteMessageByMessageId?message.messageId='+row.messageId+ '">' + '删除'+ '</a>'+'     '+ '<a href="#" class=" updatebBtnGroup">'+"回复"+' </a>';
-        }
-    }];
-
+        },
+    }]
+    $("#btnGroup").click(function(){
+        var messageId= $(this).parent().parent().childIndex(1).html();
+        var messageInfo= $(this).parent().parent().childIndex(2).html();
+        $("#updateMessageId").value(messageId)
+        $("#mymodal").modal();
+    });
     $('#message').on("click", ".updatebBtnGroup", function() {
         var messageId =  $(this).parent().parent().children().get(0).innerHTML;
         var messageInfo = $(this).parent().parent().children().get(1).innerHTML;
         var replayInfo = $(this).parent().parent().children().get(3).innerHTML;
+
         $("#updateMessageId").val(messageId)
         $("#updateMessageInfo").val(messageInfo)
-
-        if(replayInfo =="暂无回复信息！"){
-            $("#myModal").modal();
-        }else{
-            alert("已回复!");
+        $("#myModal").modal();
+        if(replayInfo!="暂无回复信息！"){
+            $("#myModal").modal("hide");
         }
-        return false;
     });
 
     $("#updateBtn").click(function(){

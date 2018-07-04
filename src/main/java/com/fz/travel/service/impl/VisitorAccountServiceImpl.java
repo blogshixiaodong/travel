@@ -26,6 +26,16 @@ public class VisitorAccountServiceImpl implements VisitorAccountService {
     @Override
     public VisitorAccount queryVisitorAccountByVisitorAccountId(Integer visitorAccountId) {
         return visitorAccountDao.selectVisitorAccountByVisitorAccountId(visitorAccountId);
+
+    }
+
+    @Override
+    public String hasVisitorAccount(Integer visitorAccountId) {
+        VisitorAccount visitorAccount = visitorAccountDao.selectVisitorAccountByVisitorAccountId(visitorAccountId);
+        if(visitorAccount != null){
+            return "该账号已被注册";
+        }
+        return "";
     }
 
     @Override
