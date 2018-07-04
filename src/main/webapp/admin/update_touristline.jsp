@@ -192,12 +192,25 @@
 
         //确认修改
         $("#submitUpdate").click(function() {
+            var touristLineId = $("#touristLineId").val();
+            var touristLineName = $("#touristLineName").val();
+            var touristLinePrice = $("#touristLinePrice").val();
+            if(!checkNumber(touristLinePrice)) {
+                alert("线路价格非法数据.");
+                return false;
+            }
+
             var sceneryIds = [];
             $("#sceneryGroup .sceneryId").each(function() {
                 sceneryIds.push($(this).val());
             });
             //序列化k-v
-            var params = $.param({'sceneryIds': sceneryIds, "touristLine.touristLineId": $("#touristLineId").val()}, true);
+            var params = $.param({
+                "sceneryIds": sceneryIds,
+                "touristLine.touristLineId": touristLineId,
+                "touristLine.touristLineName": touristLineName,
+                "touristLine.touristLinePrice": touristLinePrice},
+            true);
             $.ajax({
                 url: "../touristLine/updateTouristLine.action",
                 type: "post",
@@ -211,7 +224,6 @@
                 }
             });
         });
-
     </script>
 </body>
 </html>

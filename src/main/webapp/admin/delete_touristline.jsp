@@ -108,7 +108,8 @@
                     "touristLine.touristLineId": touristLineId
                 },
                 success: function(responseText) {
-                    alert(responseText);
+                    //alert(responseText);
+                    location.reload();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("删除出错,请重新尝试.");
