@@ -54,7 +54,7 @@
                                     <li><a href="${pageContext.request.contextPath}/adminLogin.jsp">管理员登陆</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">注册</a></li>
+                            <li><a href="${pageContext.request.contextPath}/register.jsp">注册</a></li>
                         </ul>
                     </div>
                 </s:if>

@@ -53,7 +53,13 @@
                                        新闻标题：<input id="news.newsHeadLine" name="news.newsHeadLine" type="text" class="form-control" />
                                     </div>
                                     <div class="input-group date" >
-                                        新闻类型：<input id="news.newsType" name="news.newsType" type="text" class="form-control" />
+                                        新闻类型：<br>
+                                        <select id="news.newsType" name="news.newsType">
+                                            <option value="简明新闻"  selected="selected">简明新闻</option>
+                                            <option value="综合新闻">综合新闻</option>
+                                            <option value="动态新闻">动态新闻</option>
+                                            <option value="事件新闻">事件新闻</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group date" >
@@ -89,19 +95,15 @@
 <script language="javascript">
     function Validate() {
         var newsHeadLine = document.getElementById("news.newsHeadLine");
-        var newstype = document.getElementById("news.newsType");
+
         var newsContent = document.getElementById("news.newsContent");
         if (newsHeadLine.value == null || newsHeadLine.value== "") {
             alert("请输入新闻标题");
             newsHeadLine.focus();
 
-            return false;        }
-        if (newstype.value == null || newstype.value == "") {
-            alert("请输入新闻类型");
-            newstype.focus();
-
             return false;
         }
+
         if (newsContent.value == null || newsContent.value == "") {
             alert("请输入内容");
             newsContent.focus();

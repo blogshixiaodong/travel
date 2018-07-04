@@ -42,9 +42,7 @@
             </key>
             <many-to-many class="com.fz.travel.bean.TouristLine" column="TOURISTLINEID" />
         </set>
-
         <one-to-one name="visitorAccount" class="com.fz.travel.bean.VisitorAccount" property-ref="visitor">
         </one-to-one>
-        
     </class>
 </hibernate-mapping>
