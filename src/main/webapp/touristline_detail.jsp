@@ -23,12 +23,14 @@
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     线路编号: <s:property value="#session.touristLine.touristLineId" />
+                    <front style="float: right;" >
+                        <button id="returnBtn" class="btn btn-default btn-sm" type="submit">返回</button>
+                    </front>
                     <s:if test="%{#session.visitor != null}">
                         <front style="float: right">
                             <button type="submit" class="btn btn-default btn-sm" >预定</button>
                         </front>
                     </s:if>
-
                 </div>
                 <div style="margin-left: 0px">
 
@@ -61,5 +63,11 @@
     <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="module/js/common/common.js"></script>
+    <script type="text/javascript">
+        $("#returnBtn").click(function(){
+           location.href = "touristline.jsp";
+        });
+
+    </script>
 </body>
 </html>

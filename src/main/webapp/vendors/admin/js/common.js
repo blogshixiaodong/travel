@@ -22,6 +22,15 @@ function AppendZero(number) {
 			+ AppendZero(hours) + ":" + AppendZero(minutes) + ":"
 			+ AppendZero(seconds);
 }
+
+//验证字符串是否是数字
+function checkNumber(theObj) {
+	var reg = /^[0-9]+.?[0-9]*$/;
+	if(reg.test(theObj)) {
+		return true;
+	}
+	return false;
+}
  
 //将星期1-7，具体上课时间1-4， 转为 星期一 上午 1-2节
 function schooltime(day, attendTime) {

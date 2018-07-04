@@ -45,7 +45,8 @@ public class TouristNoteController extends BaseController {
     }
 
     public String findTouristNoteById() {
-        touristNoteService.queryTouristNoteById(touristNote.getTouristNoteId());
+        touristNote = touristNoteService.queryTouristNoteById(touristNote.getTouristNoteId());
+        this.putSessionAttribute("touristNote",touristNote);
         return Action.SUCCESS;
     }
 

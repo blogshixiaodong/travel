@@ -20,7 +20,7 @@
     <!-- 导航栏部分 -->
 
     <jsp:include page="statics/templates/nav.jsp"></jsp:include>
-    <div class="row">
+<%--    <div class="row">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 旅游新闻
@@ -28,28 +28,45 @@
             <div class="panel-body">
                 <a href="news.jsp" >显示所有新闻</a>
             </div>
-
         </div>
-    </div>
+    </div>--%>
 
     <div class="row">
          <div class="panel panel-warning">
              <div class="panel-heading">
             新闻标题： <s:property value="#session.news.newsHeadLine" />
-             </div>
-             <div class="panel-heading">
+             <front style="float: right;" >
+                 <button id="returnBtn" class="btn btn-default btn-sm" type="submit">返回</button>
+             </front>
+             <front style="margin-left: 30px" >
                  新闻类型： <s:property value="#session.news.newsType" />
-                 &nbsp&nbsp&nbsp
+             </front>
+             <front style="margin-left: 30px">
                  发表时间：<s:date name="#session.news.newsDate" format="yyyy-MM-dd"/>
+             </front>
              </div>
-             <div class="panel-heading">
-                 新闻内容： <s:property value="#session.news.newsContent" />
+             <div class="panel-body">
+                 <div class="panel-heading">
+
+                 </div>
+                 <p>
+                      <s:property value="#session.news.newsContent" />
+                 </p>
+                 <div class="panel-footer">
+                     <div class="clearfix" />
+                 </div>
              </div>
-        </div>
+         </div>
     </div>
 </div>
 <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="vendors/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="module/js/common/common.js"></script>
+<script type="text/javascript">
+    $("#returnBtn").click(function(){
+       location.href = "news.jsp";
+    });
+
+</script>
 </body>
 </html>
