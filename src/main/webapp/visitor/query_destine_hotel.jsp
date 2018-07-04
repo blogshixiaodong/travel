@@ -135,7 +135,7 @@
                 };
             }
             function linkToDetail(value, row, index) {
-                return '<a href="hotel/queryHotelByHotelId.action?hotel.hotelId=' + row.hotelId + '">' + value + '</a>';
+                return '<a href="../hotel/queryHotelByHotelId.action?hotel.hotelId=' + row.hotelId + '">' + value + '</a>';
             }
         }
 

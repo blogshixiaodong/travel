@@ -32,8 +32,8 @@
 					<li>
 						<a><i class="fa fa-home"></i>景点信息<span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu">
-							<li><a href="#"  >上传图片</a></li>
-							<li><a href="create_scenery.jsp"  >添加景点</a></li>
+							<li><a href="create_scenery_img.jsp"  >添加景点</a></li>
+							<%--<li><a href="create_scenery.jsp"  >添加景点</a></li>--%>
 							<li><a href="update_scenery.jsp" >修改景点</a></li>
 							<li><a href="delete_scenery.jsp" >删除景点</a></li>
 						</ul>

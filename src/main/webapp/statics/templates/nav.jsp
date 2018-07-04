@@ -83,9 +83,9 @@
                                     <li><a href="${pageContext.request.contextPath}/touristnote.jsp">游记查看</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">旅游新闻</a></li>
+                            <li><a href="${pageContext.request.contextPath}/news.jsp">旅游新闻</a></li>
                             <li class="dropdown">
-                                <a href="${pageContext.request.contextPath}/news.jsp" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="${pageContext.request.contextPath}/hotel.jsp" class="dropdown-toggle" data-toggle="dropdown">
                                     周边酒店
                                     <b class="caret"></b>
                                 </a>
