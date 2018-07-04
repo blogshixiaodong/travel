@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/admin/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
@@ -44,11 +45,18 @@
                                                     修改
                                                 </h4>
                                             </div>
-                                            <div class="modal-body">
+                                            <div id="updateModal"  class="modal-body">
                                                 线路编号：<input id="touristLineId" type="text" class="form-control" disabled />
                                                 线路名称：<input id="touristLineName" type="text" class="form-control" />
                                                 线路价格：<input id="touristLinePrice" type="text" class="form-control" />
                                                 <hr />
+
+
+                                                <select id="scenerySelect" class="selectpicker show-tick" title="请选择景点" data-live-search="true" data-size="5">
+                                                    <!-- 页面加载后由ajax加载 -->
+                                                </select>
+                                                <button id="addScenery" type="button" class="btn btn-primary">添加景点</button>
+                                                <br />
                                                 景点列表：
                                                 <div id="sceneryGroup">
 
@@ -93,6 +101,7 @@
     <script src="../vendors/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../vendors/admin/js/custom.min.js"></script>
     <script src="../vendors/admin/js/common.js"></script>
@@ -154,6 +163,27 @@
                     var json = JSON.parse(responseText);
                     fillModal(touristLineId, touristLineName, touristLinePrice, json);
                     $("#modal").modal();
+                    //加载所有景点信息
+                    $.ajax({
+                        url: "../scenery/queryAllScenery.action",
+                        type: "get",
+                        dataType: "json",
+                        data: {
+                            "pageContainer.pageSize" : 100,
+                            "pageContainer.currentPageNo": 1
+                        },
+                        success: function(responseText) {
+                            var json = JSON.parse(responseText);
+                            var select = $("#updateModal #scenerySelect");
+                            var rows = json.rows;
+                            for(var i = 0; i < rows.length; i++) {
+                                var sceneryId = rows[i].sceneryId;
+                                var sceneryName = rows[i].sceneryName;
+                                select.append($("<option></option>").html(sceneryId + " : " + sceneryName));
+                            };
+                            select.selectpicker("refresh");
+                        }
+                    })
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("修改出错,请重新尝试.");
@@ -164,6 +194,8 @@
 
         });
 
+
+
         //克隆模板，添加数据返回节点
         function createScenery(sceneryId, sceneryName) {
             var $template = $("#sceneryTemplate");
@@ -171,7 +203,20 @@
             $clone.find(".sceneryId").val(sceneryId);
             $clone.find(".sceneryName").val(sceneryName);
             return $clone;
-        }
+        };
+
+        //添加新的景点
+        $("#addScenery").click(function() {
+            if($("#scenerySelect").val() == "") {
+                alert("请先选择景点!");
+                return false;
+            }
+            var sceneryId = $("#scenerySelect").val().split(" : ")[0];
+            var sceneryName = $("#scenerySelect").val().split(" : ")[1];
+            $("#sceneryGroup").append(createScenery(sceneryId, sceneryName));
+            document.getElementById("scenerySelect").options.selectedIndex = 0;
+            $("#scenerySelect").selectpicker("refresh");
+        });
 
         //通过json,创建相应的节点
         function fillModal(touristLineId, touristLineName, touristLinePrice, json) {
@@ -218,6 +263,7 @@
                 data: params,
                 success: function(responseText) {
                     $("#modal").modal("hide");
+                    location.reload();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     alert("error");

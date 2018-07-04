@@ -25,9 +25,9 @@
 
         </action>
         <action name="replyMessage" class="com.fz.travel.controller.MessageController" method="replyMessage">
-            <result name="success" type="redirect">
+            <result name="success" type="json">
                 <!--删除成功,进入留言界面-->
-                <param name="location">../admin/message.jsp</param>
+                <param name="root">jsonResult</param>
             </result>
 
         </action>

@@ -209,8 +209,9 @@
             },
             dataType: "json",
             success: function(responseText){
-                alert(responseText);
-                location.href = "../admin/message.jsp";
+                //alert(responseText);
+                //location.href = "../admin/message.jsp";
+                location.reload();
             }
         });
     });

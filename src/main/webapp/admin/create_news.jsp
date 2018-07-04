@@ -51,7 +51,7 @@
                                 <div class="col-md-3 col-sm-3 col-xs-12 form-group" style="margin-left: 30px">
                                     <div class="input-group date" >
                                        新闻标题：<input id="news.newsHeadLine" name="news.newsHeadLine" type="text" class="form-control" />
-                                    </div>
+                                    </div><br>
                                     <div class="input-group date" >
                                         新闻类型：<br>
                                         <select id="news.newsType" name="news.newsType">
@@ -60,17 +60,19 @@
                                             <option value="动态新闻">动态新闻</option>
                                             <option value="事件新闻">事件新闻</option>
                                         </select>
-                                    </div>
+                                    </div><br>
                                     <div class="form-group">
                                         <div class="input-group date" >
                                             新闻内容：
                                             <div class="col-md-13 col-sm-12 col-xs-13">
                                                 <textarea id="news.newsContent" name="news.newsContent" rows="8" class="resizable_textarea form-control"></textarea>
-                                                <br/><br/>
-                                                <button id="newsInfoSubmit" type="submit"  class='btn btn-success btn-sm' >提交</button>
-                                                <button id="newsInfoReset" type='reset' class='btn btn-success btn-sm'>重置</button>
+
                                             </div>
                                         </div>
+                                    </div> <br>
+                                    <div class="input-group date">
+                                        <button id="newsInfoSubmit" type="submit"  class='btn btn-success btn-sm' >提交</button>
+                                        <button id="newsInfoReset" type='reset' class='btn btn-success btn-sm'>重置</button>
                                     </div>
                                 </div>
                             </div>

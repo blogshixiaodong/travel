@@ -117,11 +117,11 @@
     <script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../vendors/admin/js/custom.min.js"></script>
+    <script type="text/javascript" src="../module/js/common/common.js"></script>
     <script src="../vendors/admin/js/common.js"></script>
 
     <script type="text/javascript">
         $(function() {
-            //先将数据加载在模板中，供后续动态节点clone
             $.ajax({
                 url: "../scenery/queryAllScenery.action",
                 type: "get",
@@ -171,7 +171,11 @@
 
         $("#saveTouristLine").click(function() {
             var touristName = $("#touristName").val();
-            var touristPrice = $("#touristName").val();
+            var touristPrice = $("#touristPrice").val();
+            if(!checkNumber(touristPrice)) {
+                alert("线路价格非法数据.");
+                return false;
+            }
             var sceneryIds = [];
             $("#sceneryList .sceneryId").each(function() {
                 sceneryIds.push($(this).val());

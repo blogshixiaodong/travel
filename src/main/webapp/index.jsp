@@ -183,8 +183,7 @@
             field: 'visitor.visitorId',
             title: '作者',
             align: 'center',
-            valign: 'middle',
-
+            valign: 'middle'
         }];
 
         $(function() {

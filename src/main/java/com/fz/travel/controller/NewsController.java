@@ -26,20 +26,16 @@ public class NewsController extends BaseController {
 
     //添加新闻
     public String createNews(){
-
         Date date = new Date();
         news.setNewsDate(date);
         newsService.addNews(news);
         return Action.SUCCESS;
     }
+
     //删除新闻
     public String deleteNewsByNewsId(){
-
-        System.out.println(news.getNewsId());
         newsService.removeByNews(news.getNewsId());
-
         return Action.SUCCESS;
-
     }
     //更改新闻
     public String updateNews(){
@@ -65,9 +61,9 @@ public class NewsController extends BaseController {
         putSessionAttribute("news",news1);
         return  Action.SUCCESS;
     }
+
     //显示所有新闻
     public String queryAllNews(){
-
         pageContainer = newsService.queryAllNews(pageContainer);
         jsonResult = pageContainer.toJson("newsSet");
         return Action.SUCCESS;

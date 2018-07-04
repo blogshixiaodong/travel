@@ -58,7 +58,8 @@
             $("#message").bootstrapTable("destroy");
             $("#message").bootstrapTable({
                 url: url,
-                method: "get",
+                method: "post",
+                contentType:"application/x-www-form-urlencoded",
                 cache: false, // 不缓存
                 striped: true, // 隔行加亮
                 height: 300,
@@ -142,13 +143,7 @@
         var head = $("#headCondition").val();
 
         var urls = "message/queryMessageByMessageInfo.action";
-//            TouristNoteTable.init(urls, function(params) {
-//                return {
-//                    "pageContainer.pageSize": params.pageSize,
-//                    "pageContainer.currentPageNo": params.pageNumber,
-//                    "touristNote.touristNoteHeadLine": head
-//                }
-//            });
+
         $("#message").bootstrapTable("destroy");
         var opt = {
             url: urls,

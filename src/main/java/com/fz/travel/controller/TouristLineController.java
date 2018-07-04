@@ -75,10 +75,10 @@ public class TouristLineController extends BaseController {
         //删除的景点
         List<LineScenery> deleteLineScenery = new ArrayList<>();
 
-        touristLine = touristLineService.queryTouristLineById(touristLine.getTouristLineId());
+        TouristLine localTouristLine = touristLineService.queryTouristLineById(touristLine.getTouristLineId());
 
         LineScenery lineScenery = null;
-        Iterator<LineScenery> iterable = touristLine.getLineScenerySet().iterator();
+        Iterator<LineScenery> iterable = localTouristLine.getLineScenerySet().iterator();
         while(iterable.hasNext()) {
             lineScenery = iterable.next();
             if(isContaineSceneryIds(lineScenery.getScenery().getSceneryId())) {
@@ -90,7 +90,8 @@ public class TouristLineController extends BaseController {
 
         }
         //更新线路基本信息
-        //touristLineService.updateTouristLine(touristLine);
+        touristLine.setLineScenerySet(localTouristLine.getLineScenerySet());
+        touristLineService.updateTouristLine(touristLine);
         //更新景点信息
         doUpdateLineScenery(touristLine, deleteLineScenery);
         return Action.SUCCESS;
@@ -132,7 +133,7 @@ public class TouristLineController extends BaseController {
         Iterator<LineScenery> iterable = touristLine.getLineScenerySet().iterator();
         while(iterable.hasNext()) {
             LineScenery lineScenery = iterable.next();
-            sceneryIds.add(lineScenery.getScenery().getSceneryId());
+            localSceneryIds.add(lineScenery.getScenery().getSceneryId());
         }
 
         //前端传递景点id在线路中不存在

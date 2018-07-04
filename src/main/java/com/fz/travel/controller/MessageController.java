@@ -32,17 +32,17 @@ public class MessageController extends BaseController {
             message.setMessageTime(date);
             messageService.addMessage(message);
             return  Action.SUCCESS;
+        } else {
+            return Action.ERROR;
         }
-        else
-          return Action.ERROR;
     }
+
     //删除留言
     public String deleteMessageByMessageId(){
        messageService.removeByMessage(message.getMessageId());
-
-            return Action.SUCCESS;
-
+        return Action.SUCCESS;
     }
+
     //回复留言
     public String replyMessage(){
         Date date = new Date();
@@ -54,13 +54,14 @@ public class MessageController extends BaseController {
         messageService.reply(message);
         return Action.SUCCESS;
     }
-    //按留言时间查询留言
 
+    //按留言时间查询留言
     public String  queryMessageByMessageInfo(){
         pageContainer = messageService.queryByMessageInfo(message.getMessageInfo(),pageContainer);
         jsonResult = pageContainer.toJson("visitor");
         return Action.SUCCESS;
     }
+
     //显示所有留言
     public String queryAllMessage(){
         pageContainer = messageService.queryAllMessage(pageContainer);
